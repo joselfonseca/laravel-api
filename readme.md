@@ -59,6 +59,16 @@ php artisan migrate
 
 You should be done with the basic configuration.
 
+## Homestead VM
+
+The Laravel API ships with a Homestead VM that you can use as your development environment.
+
+- Create a `Homestead.yaml` file based on `Homestead.yaml.example` and modify it to suit your needs.
+- Run `vagrant up` from the project root to initialize the VM.
+- Don't forget to update your hosts file to point the domain to the Homestead machine.
+
+For more information about Homestead visit the official documentation [https://laravel.com/docs/5.2/homestead#per-project-installation](https://laravel.com/docs/5.2/homestead#per-project-installation)
+
 ## oAuth 2 Authentication server
 
 The started kit has already implemented the oAuth2 server bridge package for League/oAuth2 which means you get API authentication out of the box

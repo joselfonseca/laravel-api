@@ -31,7 +31,8 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
         "scrutinizer/ocular": "~1.1",
-        "barryvdh/laravel-ide-helper": "2.1.*"
+        "barryvdh/laravel-ide-helper": "2.1.*",
+        "laravel/homestead": "^3.0"
     },
     "autoload": {
         "classmap": [
