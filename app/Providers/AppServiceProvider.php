@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Auth\EloquentUserResolver;
 use Illuminate\Support\ServiceProvider;
+use App\Contracts\UserResolverInterface;
 use App\Exceptions\OAuthExceptionHandler;
 use App\Exceptions\UnauthorizedExceptionHandler;
 use League\OAuth2\Server\Exception\OAuthException;
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerOAuthExceptionHandler();
+        $this->app->bind(UserResolverInterface::class, EloquentUserResolver::class);
     }
 
     /**

@@ -6,6 +6,7 @@ use DB;
 use Carbon\Carbon;
 use App\Tests\TestCase;
 use App\Entities\Users\User;
+use App\Contracts\UserResolverInterface;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
@@ -198,5 +199,16 @@ class OAuthServerTest extends TestCase
             'client_id' => "12345",
             'client_secret' => "12345"
         ])->seeStatusCode(200);
+    }
+
+    /**
+     * @test
+     */
+    public function itResolvesUserFromId()
+    {
+        $user = factory(User::class)->create();
+        $resolver = app(UserResolverInterface::class);
+        $resolved = $resolver->resolveById($user->id);
+        $this->assertEquals($user->id, $resolved->id);
     }
 }
