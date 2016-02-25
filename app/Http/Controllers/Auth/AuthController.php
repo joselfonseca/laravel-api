@@ -8,6 +8,7 @@ use LucaDegasperi\OAuth2Server\Authorizer;
 
 /**
  * Class AuthController
+ *
  * @package App\Http\Controllers\Auth
  */
 class AuthController extends Controller
@@ -21,6 +22,7 @@ class AuthController extends Controller
 
     /**
      * AuthController constructor.
+     *
      * @param Authorizer $authorizer
      */
     public function __construct(Authorizer $authorizer)
@@ -30,6 +32,7 @@ class AuthController extends Controller
 
     /**
      * issue an Access token to the user with the oAuth2 server
+     *
      * @return mixed
      */
     public function authorizeClient()

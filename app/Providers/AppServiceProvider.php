@@ -10,6 +10,7 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 /**
  * Class AppServiceProvider
+ *
  * @package App\Providers
  */
 class AppServiceProvider extends ServiceProvider
@@ -42,11 +43,15 @@ class AppServiceProvider extends ServiceProvider
     protected function registerOAuthExceptionHandler()
     {
         $handler = $this->app->make('api.exception');
-        $handler->register(function (OAuthException $exception) {
-            return app(OAuthExceptionHandler::class)->handle($exception);
-        });
-        $handler->register(function (UnauthorizedHttpException $exception) {
-            return app(UnauthorizedExceptionHandler::class)->handle($exception);
-        });
+        $handler->register(
+            function (OAuthException $exception) {
+                return app(OAuthExceptionHandler::class)->handle($exception);
+            }
+        );
+        $handler->register(
+            function (UnauthorizedHttpException $exception) {
+                return app(UnauthorizedExceptionHandler::class)->handle($exception);
+            }
+        );
     }
 }

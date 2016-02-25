@@ -9,6 +9,7 @@ use League\OAuth2\Server\Exception\InvalidRequestException;
 
 /**
  * Class OAuthExceptionHandler
+ *
  * @package App\Exceptions
  */
 class OAuthExceptionHandler
@@ -32,30 +33,36 @@ class OAuthExceptionHandler
     protected function invalidRequest(OAuthException $e)
     {
         if ($e instanceof InvalidRequestException) {
-            return Response::make([
-                'errors' => [
-                    'status' => '400',
-                    'code' => 'InvalidRequest',
-                    'title' => 'Invalid Request',
-                    'detail' => 'The body does not have the necessary data to process the transaction',
-                    'source' => [
-                        'parameter' => $e->parameter
+            return Response::make(
+                [
+                    'errors' => [
+                        'status' => '400',
+                        'code' => 'InvalidRequest',
+                        'title' => 'Invalid Request',
+                        'detail' => 'The body does not have the necessary data to process the transaction',
+                        'source' => [
+                            'parameter' => $e->parameter
+                        ]
                     ]
-                ]
-            ], 400);
+                ],
+                400
+            );
         }
         if ($e instanceof InvalidRefreshException) {
-            return Response::make([
-                'errors' => [
-                    'status' => '400',
-                    'code' => 'InvalidRefreshToken',
-                    'title' => 'Invalid Refresh Token',
-                    'detail' => 'The refresh token is invalid',
-                    'source' => [
-                        'parameter' => $e->parameter
+            return Response::make(
+                [
+                    'errors' => [
+                        'status' => '400',
+                        'code' => 'InvalidRefreshToken',
+                        'title' => 'Invalid Refresh Token',
+                        'detail' => 'The refresh token is invalid',
+                        'source' => [
+                            'parameter' => $e->parameter
+                        ]
                     ]
-                ]
-            ], 400);
+                ],
+                400
+            );
         }
     }
 
@@ -65,14 +72,17 @@ class OAuthExceptionHandler
      */
     protected function invalidCredentials(OAuthException $e)
     {
-        return Response::make([
-            'errors' => [
-                'status' => '401',
-                'code' => 'InvalidCredentials',
-                'title' => 'Invalid Credentials',
-                'detail' => 'The information for the login is invalid'
-            ]
-        ], 401);
+        return Response::make(
+            [
+                'errors' => [
+                    'status' => '401',
+                    'code' => 'InvalidCredentials',
+                    'title' => 'Invalid Credentials',
+                    'detail' => 'The information for the login is invalid'
+                ]
+            ],
+            401
+        );
     }
 
     /**
@@ -81,13 +91,16 @@ class OAuthExceptionHandler
      */
     protected function invalidClient($e)
     {
-        return Response::make([
-            'errors' => [
-                'status' => '401',
-                'code' => 'InvalidClient',
-                'title' => 'Invalid Client',
-                'detail' => 'The client requesting the information is not registered in the API'
-            ]
-        ], 401);
+        return Response::make(
+            [
+                'errors' => [
+                    'status' => '401',
+                    'code' => 'InvalidClient',
+                    'title' => 'Invalid Client',
+                    'detail' => 'The client requesting the information is not registered in the API'
+                ]
+            ],
+            401
+        );
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\Guard;
 /**
  * Class PasswordGrantVerifier
  * Verify the credentials are correct
+ *
  * @package App\Auth
  */
 class PasswordGrantVerifier
@@ -19,6 +20,7 @@ class PasswordGrantVerifier
 
     /**
      * PasswordGrantVerifier constructor.
+     *
      * @param Guard $auth
      */
     public function __construct(Guard $auth)
