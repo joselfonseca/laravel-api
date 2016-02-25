@@ -36,5 +36,4 @@ class AuthController extends Controller
     {
         return $this->response->array($this->authorizer->issueAccessToken());
     }
-
 }

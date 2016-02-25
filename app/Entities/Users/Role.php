@@ -9,5 +9,4 @@ class Role extends EntrustRole
 {
 
     use SoftDeletes;
-
 }

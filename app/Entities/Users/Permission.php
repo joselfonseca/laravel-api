@@ -9,5 +9,4 @@ class Permission extends EntrustPermission
 {
 
     use SoftDeletes;
-
 }

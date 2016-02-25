@@ -7,7 +7,6 @@ use League\OAuth2\Server\Exception\OAuthException;
 use League\OAuth2\Server\Exception\InvalidRefreshException;
 use League\OAuth2\Server\Exception\InvalidRequestException;
 
-
 /**
  * Class OAuthExceptionHandler
  * @package App\Exceptions
@@ -21,7 +20,7 @@ class OAuthExceptionHandler
      */
     public function handle(OAuthException $e)
     {
-        if(method_exists($this, camel_case($e->errorType))){
+        if (method_exists($this, camel_case($e->errorType))) {
             return $this->{camel_case($e->errorType)}($e);
         }
     }
@@ -32,7 +31,7 @@ class OAuthExceptionHandler
      */
     protected function invalidRequest(OAuthException $e)
     {
-        if($e instanceof InvalidRequestException){
+        if ($e instanceof InvalidRequestException) {
             return Response::make([
                 'errors' => [
                     'status' => '400',
@@ -45,7 +44,7 @@ class OAuthExceptionHandler
                 ]
             ], 400);
         }
-        if($e instanceof InvalidRefreshException){
+        if ($e instanceof InvalidRefreshException) {
             return Response::make([
                 'errors' => [
                     'status' => '400',
@@ -80,7 +79,8 @@ class OAuthExceptionHandler
      * @param $e
      * @return mixed
      */
-    protected function invalidClient($e){
+    protected function invalidClient($e)
+    {
         return Response::make([
             'errors' => [
                 'status' => '401',
@@ -90,5 +90,4 @@ class OAuthExceptionHandler
             ]
         ], 401);
     }
-
 }
