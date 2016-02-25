@@ -1,9 +1,17 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "joselfonseca/laravel-api",
+    "description": "Laravel API starter Kit will give you most of the boilerplate that you need for creating Laravel API's",
+    "keywords": ["framework", "laravel", "Api", "REST", "dingo", "oAuth2"],
     "license": "MIT",
     "type": "project",
+    "authors": [
+        {
+            "name": "Jose Fonseca",
+            "email": "jose@ditecnologia.com",
+            "homepage": "https://josefonseca.me",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",

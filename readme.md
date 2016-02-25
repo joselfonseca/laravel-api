@@ -2,7 +2,7 @@
 
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Laravel API starter Kit will give you all the boilerplate that you need for:
+Laravel API starter Kit will give you most of the boilerplate that you need for creating Laravel API's
 
 - [Dingo API](https://github.com/dingo/api)
 - [OAuth 2 Server](https://github.com/lucadegasperi/oauth2-server-laravel)
