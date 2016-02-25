@@ -7,6 +7,7 @@ use App\Contracts\UserResolverInterface;
 
 /**
  * Class EloquentUserResolver
+ *
  * @package App\Auth
  */
 class EloquentUserResolver implements UserResolverInterface
@@ -19,6 +20,7 @@ class EloquentUserResolver implements UserResolverInterface
 
     /**
      * EloquentUserResolver constructor.
+     *
      * @param User $user
      */
     public function __construct(User $user)
@@ -28,7 +30,8 @@ class EloquentUserResolver implements UserResolverInterface
 
     /**
      * Resolve user with eloquent
-     * @param $id
+     *
+     * @param  $id
      * @return mixed
      */
     public function resolveById($id)

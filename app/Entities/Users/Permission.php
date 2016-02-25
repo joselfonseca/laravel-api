@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Permission
+ *
  * @package App\Entities\Users
  */
 class Permission extends EntrustPermission

@@ -4,6 +4,7 @@ namespace App\Contracts;
 
 /**
  * Interface UserResolverInterface
+ *
  * @package App\Auth
  */
 interface UserResolverInterface
@@ -11,7 +12,8 @@ interface UserResolverInterface
 
     /**
      * Resolve a user from ID
-     * @param $id
+     *
+     * @param  $id
      * @return mixed
      */
     public function resolveById($id);

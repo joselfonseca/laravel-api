@@ -12,6 +12,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 /**
  * Class User
+ *
  * @package App\Entities\Users
  */
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract

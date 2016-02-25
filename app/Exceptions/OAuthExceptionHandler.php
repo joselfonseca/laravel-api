@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Response;
 use League\OAuth2\Server\Exception\OAuthException;
+use League\OAuth2\Server\Exception\AccessDeniedException;
 use League\OAuth2\Server\Exception\InvalidRefreshException;
 use League\OAuth2\Server\Exception\InvalidRequestException;
 
@@ -89,7 +90,7 @@ class OAuthExceptionHandler
      * @param $e
      * @return mixed
      */
-    protected function invalidClient($e)
+    protected function invalidClient(OAuthException $e)
     {
         return Response::make(
             [
@@ -101,6 +102,139 @@ class OAuthExceptionHandler
                 ]
             ],
             401
+        );
+    }
+
+    /**
+     * @param OAuthException $e
+     * @return mixed
+     */
+    protected function accessDenied(OAuthException $e)
+    {
+        return Response::make(
+            [
+                'errors' => [
+                    'status' => '401',
+                    'code' => 'AccessDenied',
+                    'title' => 'Access Denied',
+                    'detail' => "The resource owner or authorization server denied the request."
+                ]
+            ],
+            401
+        );
+    }
+
+    /**
+     * @param OAuthException $e
+     * @return mixed
+     */
+    protected function invalidGrant(OAuthException $e)
+    {
+        return Response::make(
+            [
+                'errors' => [
+                    'status' => '400',
+                    'code' => 'InvalidGrant',
+                    'title' => 'Invalid Grant',
+                    'detail' => $e->getMessage()
+                ]
+            ],
+            400
+        );
+    }
+
+    /**
+     * @param OAuthException $e
+     * @return mixed
+     */
+    protected function invalidScope(OAuthException $e)
+    {
+        return Response::make(
+            [
+                'errors' => [
+                    'status' => '400',
+                    'code' => 'InvalidScope',
+                    'title' => 'Invalid Scope',
+                    'detail' => $e->getMessage()
+                ]
+            ],
+            400
+        );
+    }
+
+    /**
+     * @param OAuthException $e
+     * @return mixed
+     */
+    protected function serverError(OAuthException $e)
+    {
+        return Response::make(
+            [
+                'errors' => [
+                    'status' => '500',
+                    'code' => 'ServerError',
+                    'title' => 'Server Error',
+                    'detail' => $e->getMessage()
+                ]
+            ],
+            500
+        );
+    }
+
+    /**
+     * @param OAuthException $e
+     * @return mixed
+     */
+    protected function unauthorizedClient(OAuthException $e)
+    {
+        return Response::make(
+            [
+                'errors' => [
+                    'status' => '400',
+                    'code' => 'UnauthorizedClient',
+                    'title' => 'Unauthorized Client',
+                    'detail' => $e->getMessage()
+                ]
+            ],
+            400
+        );
+    }
+
+    /**
+     * @param OAuthException $e
+     * @return mixed
+     */
+    protected function unsupportedGrantType(OAuthException $e)
+    {
+        return Response::make(
+            [
+                'errors' => [
+                    'status' => '400',
+                    'code' => 'UnsupportedGrantType',
+                    'title' => 'Unsupported Grant Type',
+                    'detail' => $e->getMessage()
+                ]
+            ],
+            400
+        );
+    }
+
+    /**
+     * @param OAuthException $e
+     * @return mixed
+     */
+    protected function unsupportedResponseType(OAuthException $e)
+    {
+        return Response::make(
+            [
+                'errors' => [
+                    'status' => '400',
+                    'code' => 'UnsupportedResponseType',
+                    'title' => 'Unsupported Response Type',
+                    'detail' => $e->getMessage()
+                ]
+            ],
+            400
         );
     }
 }

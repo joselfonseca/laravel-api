@@ -9,6 +9,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 
 /**
  * Class AuthServiceProvider
+ *
  * @package App\Providers
  */
 class AuthServiceProvider extends ServiceProvider
@@ -39,19 +40,24 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function registerOAuthProvider()
     {
-        app('Dingo\Api\Auth\Auth')->extend('oauth', function ($app) {
-            $provider = new OAuth2($app['oauth2-server.authorizer']->getChecker());
+        app('Dingo\Api\Auth\Auth')->extend(
+            'oauth', function ($app) {
+                $provider = new OAuth2($app['oauth2-server.authorizer']->getChecker());
 
-            $provider->setUserResolver(function ($id) {
-                $resolver = app(UserResolverInterface::class);
-                return $resolver->resolveById($id);
-            });
+                $provider->setUserResolver(
+                    function ($id) {
+                        $resolver = app(UserResolverInterface::class);
+                        return $resolver->resolveById($id);
+                    }
+                );
 
-            $provider->setClientResolver(function ($id) {
+                $provider->setClientResolver(
+                    function ($id) {
+                    }
+                );
 
-            });
-
-            return $provider;
-        });
+                return $provider;
+            }
+        );
     }
 }
