@@ -14,7 +14,7 @@ Laravel API starter Kit will give you most of the boilerplate that you need for 
 - [Eloquent Sluggable](https://github.com/cviebrock/eloquent-sluggable)
 - [Laravel UUID](https://github.com/webpatser/laravel-uuid)
 
-### Instalation
+## Instalation
 
 To install the project you can use composer
 
@@ -59,11 +59,11 @@ php artisan migrate
 
 You should be done with the basic configuration.
 
-### oAuth 2 Authentication server
+## oAuth 2 Authentication server
 
 The started kit has already implemented the oAuth2 server bridge package for League/oAuth2 which means you get API authentication out of the box
 
-## Authenticating with the oAuth2 server
+### Authenticating with the oAuth2 server
 
 The available grants by default are:
 
@@ -128,10 +128,10 @@ if the credentials are incorrect it should return the appropriate 401 response
 
 For more information please visit [The oAuth2 repository](https://github.com/lucadegasperi/oauth2-server-laravel/tree/master/docs)
 
-### Dingo/Api
+## Dingo/Api
 
 This started kit has already set up [dingo/api](https://github.com/dingo/api) to manage routes, requests, responses, protecting endpoint, versioning and much more, for more details please visit [https://github.com/dingo/api](https://github.com/dingo/api) 
 
-### License
+## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
