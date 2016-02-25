@@ -50,8 +50,7 @@ class OAuthServerTest extends TestCase
             'client_secret' => "4802938409238409238409823",
             'username' => "email@email.com",
             "password" => "98989898"
-        ])
-            ->seeStatusCode(401)
+        ])->seeStatusCode(401)
             ->seeJson([
                 'errors' => [
                     'status' => '401',
@@ -115,8 +114,7 @@ class OAuthServerTest extends TestCase
             'client_secret' => "12345",
             'username' => "email@email.com",
             'password' => "testing"
-        ])
-            ->seeStatusCode(401)
+        ])->seeStatusCode(401)
             ->seeJson([
                 'errors' => [
                     'status' => '401',

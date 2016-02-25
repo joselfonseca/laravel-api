@@ -13,7 +13,9 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
 
-    use Authenticatable, CanResetPassword, EntrustUserTrait, SoftDeletes;
+    use Authenticatable, CanResetPassword, SoftDeletes, EntrustUserTrait {
+        EntrustUserTrait::restore insteadof SoftDeletes;
+    }
 
     /**
      * The database table used by the model.
