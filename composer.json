@@ -8,13 +8,21 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "dingo/api": "1.0.*@dev",
-        "lucadegasperi/oauth2-server-laravel": "5.0.*"
+        "lucadegasperi/oauth2-server-laravel": "5.0.*",
+        "joselfonseca/laravel-tactician" : "0.2.*",
+        "zizaco/entrust": "1.5.*",
+        "prettus/l5-repository": "2.1.*",
+        "prettus/laravel-validation": "1.1.*",
+        "sofa/eloquence": "~5.1@dev",
+        "cviebrock/eloquent-sluggable" : "3.1.*",
+        "webpatser/laravel-uuid": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1"
+        "phpspec/phpspec": "~2.1",
+        "barryvdh/laravel-ide-helper": "2.1.*"
     },
     "autoload": {
         "classmap": [
