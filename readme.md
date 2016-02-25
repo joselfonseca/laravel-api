@@ -67,7 +67,7 @@ The Laravel API ships with a Homestead VM that you can use as your development e
 - Run `vagrant up` from the project root to initialize the VM.
 - Don't forget to update your hosts file to point the domain to the Homestead machine.
 
-For more information about Homestead visit the official documentation [https://laravel.com/docs/5.2/homestead#per-project-installation](https://laravel.com/docs/5.2/homestead#per-project-installation)
+For more information about Homestead visit the official documentation [https://laravel.com/docs/5.1/homestead#per-project-installation](https://laravel.com/docs/5.1/homestead#per-project-installation)
 
 ## oAuth 2 Authentication server
 
@@ -141,6 +141,10 @@ For more information please visit [The oAuth2 repository](https://github.com/luc
 ## Dingo/Api
 
 This started kit has already set up [dingo/api](https://github.com/dingo/api) to manage routes, requests, responses, protecting endpoint, versioning and much more, for more details please visit [https://github.com/dingo/api](https://github.com/dingo/api) 
+
+## Tests
+
+Navigate to the project root and run `vendor/bin/phpunit` after installing all the composer dependencies and after the .env file was created.
 
 ## License
 
