@@ -8,7 +8,7 @@ php:
 before_script:
   - composer self-update
   - composer install
-  - php -r \"copy('.env.example', '.env');\"
+  - php -r "copy('.env.example', '.env');"
   - php artisan key:generate
 script:
   - phpunit --coverage-clover=coverage.clover

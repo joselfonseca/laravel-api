@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/joselfonseca/laravel-api.svg)](https://travis-ci.org/joselfonseca/laravel-api)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
-[![Packagist](https://img.shields.io/packagist/v/joselfonseca/laravel-api.svg)]()
 
 Laravel API starter Kit will give you most of the boilerplate that you need for creating Laravel API's
 
