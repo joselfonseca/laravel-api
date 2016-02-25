@@ -23,7 +23,7 @@ class OAuthServerTest extends TestCase
      */
     public function itRejectsAnExternalRequest()
     {
-        $this->post('/api/auth/login', [])
+        $this->post('/api/oauth/authorize', [])
             ->seeStatusCode(400)
             ->seeJson([
                 'errors' => [
@@ -44,7 +44,7 @@ class OAuthServerTest extends TestCase
      */
     public function itRejectsInvalidClient()
     {
-        $this->post('/api/auth/login', [
+        $this->post('/api/oauth/authorize', [
             'grant_type' => 'password',
             'client_id' => "98798798798798798798",
             'client_secret' => "4802938409238409238409823",
@@ -75,7 +75,7 @@ class OAuthServerTest extends TestCase
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        $this->post('/api/auth/login', [
+        $this->post('/api/oauth/authorize', [
             'grant_type' => 'password',
             'client_id' => "12345",
             'client_secret' => "12345",
@@ -108,7 +108,7 @@ class OAuthServerTest extends TestCase
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        $this->post('/api/auth/login', [
+        $this->post('/api/oauth/authorize', [
             'grant_type' => 'password',
             'client_id' => "12345",
             'client_secret' => "12345",
@@ -139,7 +139,7 @@ class OAuthServerTest extends TestCase
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         $user = factory(User::class)->create();
-        $this->post('/api/auth/login', [
+        $this->post('/api/oauth/authorize', [
             'grant_type' => 'password',
             'client_id' => "12345",
             'client_secret' => "12345",
@@ -163,7 +163,7 @@ class OAuthServerTest extends TestCase
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         $user = factory(User::class)->create();
-        $response = $this->post('/api/auth/login', [
+        $response = $this->post('/api/oauth/authorize', [
             'grant_type' => 'password',
             'client_id' => "12345",
             'client_secret' => "12345",
@@ -172,12 +172,31 @@ class OAuthServerTest extends TestCase
         ])
             ->seeStatusCode(200);
         $responseBody = json_decode($response->response->getContent());
-        $this->post('/api/auth/refresh-token', [
+        $this->post('/api/oauth/authorize', [
             'grant_type' => 'refresh_token',
             'client_id' => "12345",
             'client_secret' => "12345",
             'refresh_token' => $responseBody->refresh_token
         ])
             ->seeStatusCode(200);
+    }
+
+    /**
+     * @test
+     */
+    public function itValidatesClientCredentials()
+    {
+        DB::table('oauth_clients')->insert([
+            'id' => '12345',
+            'secret' => '12345',
+            'name' => 'Testing Env',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        $this->post('/api/oauth/authorize', [
+            'grant_type' => 'client_credentials',
+            'client_id' => "12345",
+            'client_secret' => "12345"
+        ])->seeStatusCode(200);
     }
 }

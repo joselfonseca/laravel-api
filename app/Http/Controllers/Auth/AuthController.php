@@ -29,19 +29,10 @@ class AuthController extends Controller
     }
 
     /**
-     * Log in the user with the oAuth2 server
+     * issue an Access token to the user with the oAuth2 server
      * @return mixed
      */
-    public function login()
-    {
-        return $this->response->array($this->authorizer->issueAccessToken());
-    }
-
-    /**
-     * Refresh the user's token
-     * @return mixed
-     */
-    public function refreshToken()
+    public function authorizeClient()
     {
         return $this->response->array($this->authorizer->issueAccessToken());
     }
