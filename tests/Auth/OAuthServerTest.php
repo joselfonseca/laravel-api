@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Tests\TestCase;
 use App\Entities\Users\User;
 use App\Contracts\UserResolverInterface;
+use App\Contracts\ClientResolverInterface;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
@@ -210,5 +211,21 @@ class OAuthServerTest extends TestCase
         $resolver = app(UserResolverInterface::class);
         $resolved = $resolver->resolveById($user->id);
         $this->assertEquals($user->id, $resolved->id);
+    }
+
+    /**
+     * @test
+     */
+    public function itResolvesClientFromId()
+    {
+        $resolver = app(ClientResolverInterface::class);
+        DB::table('oauth_clients')->insert([
+            'id' => '12345',
+            'secret' => '12345',
+            'name' => 'Testing Env',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        $this->assertEquals('12345', $resolver->resolveById('12345')->id);
     }
 }

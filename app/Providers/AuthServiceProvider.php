@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Dingo\Api\Auth\Provider\OAuth2;
 use App\Contracts\UserResolverInterface;
+use App\Contracts\ClientResolverInterface;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -53,6 +54,8 @@ class AuthServiceProvider extends ServiceProvider
 
                 $provider->setClientResolver(
                     function ($id) {
+                        $resolver = app(ClientResolverInterface::class);
+                        return $resolver->resolveById($id);
                     }
                 );
 

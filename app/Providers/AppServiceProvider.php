@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Auth\EloquentUserResolver;
+use App\Auth\EloquentClientResolver;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\UserResolverInterface;
 use App\Exceptions\OAuthExceptionHandler;
+use App\Contracts\ClientResolverInterface;
 use App\Exceptions\UnauthorizedExceptionHandler;
 use League\OAuth2\Server\Exception\OAuthException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
@@ -26,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->registerOAuthExceptionHandler();
         $this->app->bind(UserResolverInterface::class, EloquentUserResolver::class);
+        $this->app->bind(ClientResolverInterface::class, EloquentClientResolver::class);
     }
 
     /**
