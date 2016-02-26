@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/joselfonseca/laravel-api.svg)](https://travis-ci.org/joselfonseca/laravel-api)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Laravel API starter Kit will give you most of the boilerplate that you need for creating Laravel API's
+Laravel API starter Kit will give you most of the boilerplate that you need for creating API's using Laravel Framework version 5.1
 
 - [Dingo API](https://github.com/dingo/api)
 - [OAuth 2 Server](https://github.com/lucadegasperi/oauth2-server-laravel)
