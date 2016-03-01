@@ -5,7 +5,7 @@
 
 Laravel API starter Kit will provide you with the tools for making API's that everyone will love, it brings the power of Dingo/Api already set up to make it easier to handle routing, versioning, responses and much more, Authentication is already provided with an oAuth2 server with the `client_credentials`, `password` and `refresh token` grants so you don't have to worry about installing and setting it up yourself. We brought the power of the [Tactician Command bus](http://tactician.thephpleague.com/) to laravel in a simple package [https://github.com/joselfonseca/laravel-tactician](https://github.com/joselfonseca/laravel-tactician) created and maintained by [Jose Fonseca](https://github.com/joselfonseca).
 
-If you like to work with repositories we also brought the popular Laravel 5 repositories package as well as the Eloquence packages to make your models more powerful.
+If you like to work with repositories we also brought the popular Laravel 5 repositories package as well as the Eloquence package to make your models more powerful.
 
 Because we now hiding the auto-incremental ID's from the database is important, we have added Laravel UUID which will help you create UUID's for your database records. 
 
