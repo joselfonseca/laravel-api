@@ -20,7 +20,7 @@ Here is a list of the packages installed:
 - [Eloquent Sluggable](https://github.com/cviebrock/eloquent-sluggable)
 - [Laravel UUID](https://github.com/webpatser/laravel-uuid)
 
-## Instalation
+## Installation
 
 To install the project you can use composer
 
@@ -87,7 +87,7 @@ The available grants by default are:
 - Password Grant
 - Refresh Token Grant
 
-First you will need to create a client in the `oauth_clients` table, you can refer tho the test [here](https://github.com/joselfonseca/laravel-api/blob/master/tests/Auth/OAuthServerTest.php#L71) for an example. Once you have a client you can send the request to authenticate using this grant to the endpoint `/api/oauth/authorize`
+First you will need to create a client in the `oauth_clients` table, you can refer to the test [here](https://github.com/joselfonseca/laravel-api/blob/master/tests/Auth/OAuthServerTest.php#L71) for an example. Once you have a client you can send the request to authenticate using this grant to the endpoint `/api/oauth/authorize`
 
 ```
 POST /api/oauth/authorize HTTP/1.1
@@ -142,11 +142,30 @@ if the credentials are incorrect it should return the appropriate 401 response
 }
 ```
 
-For more information please visit [The oAuth2 repository](https://github.com/lucadegasperi/oauth2-server-laravel/tree/master/docs)
+For more information please visit [The oAuth2 repository](https://github.com/lucadegasperi/oauth2-server-laravel/tree/master/docs) 
 
-## Dingo/Api
+## Routing
 
-This started kit has already set up [dingo/api](https://github.com/dingo/api) to manage routes, requests, responses, protecting endpoint, versioning and much more, for more details please visit [https://github.com/dingo/api](https://github.com/dingo/api) 
+We use Dingo/Api for routing, this means you have all the methods available [here](https://github.com/dingo/api/wiki/Creating-API-Endpoints)
+
+### Example routes
+
+```php 
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function ($api) {
+        $api->group(['prefix' => 'oauth'], function ($api) {
+            $api->post('authorize', 'App\Http\Controllers\Auth\AuthController@authorizeClient');
+        });
+        // Protected routes
+        $api->group(['middleware' => 'api.auth', 'namespace' => 'App\Http\Controllers'], function($api){
+            // profile routes
+            $api->get('me', 'Users\ProfileController@me');
+            // users routes
+            $api->resource('users', 'Users\UsersController');
+        });
+    }
+);
+```
 
 ## Tests
 
@@ -154,4 +173,4 @@ Navigate to the project root and run `vendor/bin/phpunit` after installing all t
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+The Laravel API Starter kit is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
