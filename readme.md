@@ -167,6 +167,58 @@ $api->version('v1', function ($api) {
 );
 ```
 
+## Uuid
+
+The started kit comes with a UUID observer to add to your models, this way the uuid will be generated when the model is being created.
+
+This is an example for the User model.
+
+```php
+namespace App\Providers;
+
+use App\Entities\Users\User;
+use App\Observers\UuidObserver;
+use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+/**
+ * Class EventServiceProvider
+ * @package App\Providers
+ */
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * The event listener mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [
+
+    ];
+
+    /**
+     * Register any other events for your application.
+     *
+     * @param  \Illuminate\Contracts\Events\Dispatcher $events
+     * @return void
+     */
+    public function boot(DispatcherContract $events)
+    {
+        parent::boot($events);
+        $this->registerObservers();
+    }
+
+    /**
+     * @return $this
+     */
+    public function registerObservers()
+    {
+        User::observe(app(UuidObserver::class));
+        return $this;
+    }
+}
+```
+
 ## Tests
 
 Navigate to the project root and run `vendor/bin/phpunit` after installing all the composer dependencies and after the .env file was created.
