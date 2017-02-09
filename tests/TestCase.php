@@ -1,27 +1,35 @@
 <?php
 
-namespace App\Tests;
+namespace Tests;
 
-class TestCase extends \Illuminate\Foundation\Testing\TestCase
+use Exception;
+use App\Exceptions\Handler;
+use Illuminate\Contracts\Debug\ExceptionHandler;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+
+abstract class TestCase extends BaseTestCase
 {
-    /**
-     * The base URL to use while testing the application.
-     *
-     * @var string
-     */
-    protected $baseUrl = 'http://localhost';
+    use CreatesApplication;
 
-    /**
-     * Creates the application.
-     *
-     * @return \Illuminate\Foundation\Application
-     */
-    public function createApplication()
+    public function installApp($mail = 'jose@example.com', $name = 'Jose Fonseca')
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        $service = app(\App\Services\Installation\AppInstallationService::class);
+        $service->installApp([
+            'name' => $name,
+            'email' => $mail,
+            'password' => 'secret1234',
+            'password_confirmation' => 'secret1234',
+        ]);
+    }
 
-        $app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
-
-        return $app;
+    public function disableErrorHandling()
+    {
+        $this->app->instance(ExceptionHandler::class, new class extends Handler {
+            public function __construct() {}
+            public function report(Exception $e) {}
+            public function render($request, Exception $e) {
+                throw $e;
+            }
+        });
     }
 }

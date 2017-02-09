@@ -1,0 +1,75 @@
+FORMAT: 1A
+HOST: https://api.example.com/
+
+# Starter Kit API
+Welcome to the Starter Kit API
+
+# Data Structures
+
+## oAuth Password Request (object)
+- `grant_type`: `password` (string, required) - Grant type to use in the authentication
+- `client_id`: 234 (number, required) - Client ID provided by the API administrator
+- `client_secret`: `uoi7899sa8dha7s876dh87as6d` (string, required) - Client secret provided by the API administrator
+- `username`: `email@example.com` (string, required) - User's email
+- `password`: `e5d2ae50483b906f026a066bfce41a2102f22e21` (string, required) - User's password
+- `scope`: profile (string, optional) - Token's scope
+
+## oAuth Refresh Token Request (object)
+- `grant_type`: `refresh_token` (string, required) - Grant type to use in the authentication
+- `client_id`: 234 (number, required) - Client ID provided by the API administrator
+- `client_secret`: `uoi7899sa8dha7s876dh87as6d` (string, required) - Client secret provided by the API administrator
+- `refresh_token`: `yJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjllMzIzNGMyZjEwNGJlY2M3NmU2N2QwMzQ2NzQ5YmNhNjUyOTIxZTA3OGRkMDgyN2IwNDQ1MzkzZjRiNDhlZDA2NjVmOGMzYWRjZWYwMGMyIn0.eyJhdWQiOiIxIiwianRpIjoiOWUzMjM0YzJmMTA0YmVjYzc2ZTY3ZDAzNDY3NDliY2E2NTI5MjFlMDc4ZGQwODI3YjA0NDUzOTNmNGI0OGVkMDY2NWY4YzNhZGNlZjAwYzIiLCJpYXQiOjE0NzU3MjI5MjUsIm5iZiI6MTQ3NTcyMjkyNSwiZXhwIjoxNDc3MDE4OTI1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Ngq80pZ-YB4ju-GnTKIhH4VLtk-ZUMGTH6gOZ-UeQ2ZFnKYkcYxlWqAUzH2fKGRAByP0YHQvKkf6MldyJEFnjyjtoNqyJJF5WYklari4cW2AF6WuxO3bJUg1IlX6z2IrKsSZJv9A9Utsnkd4ZVPMHHWOwxShESKq4XSXSdjBCpr3cLkGc-IQ-gcEmnd0TGr1Ca5tyP2_0H-wgmT-bDmSSoBxvfjjqkICxL4kFNmGb0mKC4WSACz8GXyjcwVQ03yXYpkROFcK-OuUdfa71hQCBX8-HUzbHf7MsNRFkOQdPIjW9fqWJTvNP3aQVig04xuyUUJgSUIbsbbOxnBC8rZHYG_0s1Fns_jjsaHnLqcNnoKscHA-MZmaafCGz4GjeIe27prEWM2eSoQet94jJK79Nr6FJYoD1ktjlBMWPZIbenIrG-dM8hit24rcdr6Xh_FTI6MZViY77WWbvjbHjzNsHkbAZrt_65fP3A5sCt0Vl6SEk6Y4N0EgIF0MtTwaCe09JslwXj8zqF7n5Xk0Zbfm5S16XcKKR57K9xSVoQMrvIpyBPOevU1zWTNwjVoKvIRvRreQtuFzFyngXllW2ZSd8zRGG1NMWBaw0umeuFaeWxELmh9s8iophUOZYK2B_MEa1UpUQ4qkj_I1J9uMEqpdBbO-qDKOI6XFciOuNPhae-c` (string, required)
+
+## Access Token Response (object)
+- `token_type` : `Bearer` (string)
+- `expires_in` : 1296000 (number)
+- `access_token` : `yJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjllMzIzNGMyZjEwNGJlY2M3NmU2N2QwMzQ2NzQ5YmNhNjUyOTIxZTA3OGRkMDgyN2IwNDQ1MzkzZjRiNDhlZDA2NjVmOGMzYWRjZWYwMGMyIn0.eyJhdWQiOiIxIiwianRpIjoiOWUzMjM0YzJmMTA0YmVjYzc2ZTY3ZDAzNDY3NDliY2E2NTI5MjFlMDc4ZGQwODI3YjA0NDUzOTNmNGI0OGVkMDY2NWY4YzNhZGNlZjAwYzIiLCJpYXQiOjE0NzU3MjI5MjUsIm5iZiI6MTQ3NTcyMjkyNSwiZXhwIjoxNDc3MDE4OTI1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Ngq80pZ-YB4ju-GnTKIhH4VLtk-ZUMGTH6gOZ-UeQ2ZFnKYkcYxlWqAUzH2fKGRAByP0YHQvKkf6MldyJEFnjyjtoNqyJJF5WYklari4cW2AF6WuxO3bJUg1IlX6z2IrKsSZJv9A9Utsnkd4ZVPMHHWOwxShESKq4XSXSdjBCpr3cLkGc-IQ-gcEmnd0TGr1Ca5tyP2_0H-wgmT-bDmSSoBxvfjjqkICxL4kFNmGb0mKC4WSACz8GXyjcwVQ03yXYpkROFcK-OuUdfa71hQCBX8-HUzbHf7MsNRFkOQdPIjW9fqWJTvNP3aQVig04xuyUUJgSUIbsbbOxnBC8rZHYG_0s1Fns_jjsaHnLqcNnoKscHA-MZmaafCGz4GjeIe27prEWM2eSoQet94jJK79Nr6FJYoD1ktjlBMWPZIbenIrG-dM8hit24rcdr6Xh_FTI6MZViY77WWbvjbHjzNsHkbAZrt_65fP3A5sCt0Vl6SEk6Y4N0EgIF0MtTwaCe09JslwXj8zqF7n5Xk0Zbfm5S16XcKKR57K9xSVoQMrvIpyBPOevU1zWTNwjVoKvIRvRreQtuFzFyngXllW2ZSd8zRGG1NMWBaw0umeuFaeWxELmh9s8iophUOZYK2B_MEa1UpUQ4qkj_I1J9uMEqpdBbO-qDKOI6XFciOuNPhae-c` (string)
+- `refresh_token` : `yJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjllMzIzNGMyZjEwNGJlY2M3NmU2N2QwMzQ2NzQ5YmNhNjUyOTIxZTA3OGRkMDgyN2IwNDQ1MzkzZjRiNDhlZDA2NjVmOGMzYWRjZWYwMGMyIn0.eyJhdWQiOiIxIiwianRpIjoiOWUzMjM0YzJmMTA0YmVjYzc2ZTY3ZDAzNDY3NDliY2E2NTI5MjFlMDc4ZGQwODI3YjA0NDUzOTNmNGI0OGVkMDY2NWY4YzNhZGNlZjAwYzIiLCJpYXQiOjE0NzU3MjI5MjUsIm5iZiI6MTQ3NTcyMjkyNSwiZXhwIjoxNDc3MDE4OTI1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Ngq80pZ-YB4ju-GnTKIhH4VLtk-ZUMGTH6gOZ-UeQ2ZFnKYkcYxlWqAUzH2fKGRAByP0YHQvKkf6MldyJEFnjyjtoNqyJJF5WYklari4cW2AF6WuxO3bJUg1IlX6z2IrKsSZJv9A9Utsnkd4ZVPMHHWOwxShESKq4XSXSdjBCpr3cLkGc-IQ-gcEmnd0TGr1Ca5tyP2_0H-wgmT-bDmSSoBxvfjjqkICxL4kFNmGb0mKC4WSACz8GXyjcwVQ03yXYpkROFcK-OuUdfa71hQCBX8-HUzbHf7MsNRFkOQdPIjW9fqWJTvNP3aQVig04xuyUUJgSUIbsbbOxnBC8rZHYG_0s1Fns_jjsaHnLqcNnoKscHA-MZmaafCGz4GjeIe27prEWM2eSoQet94jJK79Nr6FJYoD1ktjlBMWPZIbenIrG-dM8hit24rcdr6Xh_FTI6MZViY77WWbvjbHjzNsHkbAZrt_65fP3A5sCt0Vl6SEk6Y4N0EgIF0MtTwaCe09JslwXj8zqF7n5Xk0Zbfm5S16XcKKR57K9xSVoQMrvIpyBPOevU1zWTNwjVoKvIRvRreQtuFzFyngXllW2ZSd8zRGG1NMWBaw0umeuFaeWxELmh9s8iophUOZYK2B_MEa1UpUQ4qkj_I1J9uMEqpdBbO-qDKOI6XFciOuNPhae-c` (string)
+
+## Error 404 (object)
+- code: 404 (number)
+- message: `Not found` (string)
+
+## Error 400 (object)
+- code: 400 (number)
+- message: `Bad Request` (string)
+
+## Error 403 (object)
+- code: 403 (number)
+- message: `Forbidden` (string)
+
+## Error 401 (object)
+- code: 401 (number)
+- message: `Unauthorized` (string)
+
+## Error 405 (object)
+- code: 405 (number)
+- message: `Method Not Allowed` (string)
+
+## Login [/auth/token/]
+
+For the API authentication we use the [oAuth2](https://oauth.net/2/) protocol. 
+
+### Get Access Token with user credentials [POST]
+
+To get an access token make sure to have your client ID and client secret.
+
++ Request (application/json)
+
+    + Attributes (oAuth Password Request)
+
++ Response 200 (application/json)
+
+    + Attributes (Access Token Response)
+    
+### Refresh Access Token [POST /auth/token]
+
+To refresh an access token make sure to have your client ID, client secret and refresh token
+
++ Request (application/json)
+
+    + Attributes (oAuth Refresh Token Request)
+
++ Response 200 (application/json)
+
+    + Attributes (Access Token Response)
