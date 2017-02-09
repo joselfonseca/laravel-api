@@ -122,10 +122,10 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
     public function update($id, array $attributes = [])
     {
         $model = $this->find($id);
-        if(isset($attributes['email']) && $attributes['email'] != $model->email) {
+        if (isset($attributes['email']) && $attributes['email'] != $model->email) {
             $this->validationUpdateRules['email'] = 'sometimes|required|unique:users,email,'.$model->id;
         }
-        if(isset($attributes['password'])) {
+        if (isset($attributes['password'])) {
             unset($attributes['password']);
         }
         $this->runValidator($attributes, $this->validationUpdateRules, $this->validationMessages);

@@ -44,5 +44,4 @@ interface UsersServiceContract
      * @return bool
      */
     public function delete($id);
-
 }

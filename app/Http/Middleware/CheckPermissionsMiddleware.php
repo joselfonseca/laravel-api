@@ -18,8 +18,8 @@ class CheckPermissionsMiddleware
      */
     public function handle($request, Closure $next, $permission)
     {
-        if(!empty($permission)) {
-            if(!Auth::user()->hasPermissionTo($permission)){
+        if (!empty($permission)) {
+            if (!Auth::user()->hasPermissionTo($permission)) {
                 throw new AccessDeniedHttpException('Insufficient Permissions');
             }
         }

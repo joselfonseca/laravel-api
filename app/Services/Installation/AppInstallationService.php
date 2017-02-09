@@ -43,5 +43,4 @@ class AppInstallationService implements AppInstallationServiceContract
         $this->bus->addHandler(InstallAppCommand::class, InstallAppHandler::class);
         return $this->bus->dispatch(InstallAppCommand::class, $installationData, $this->middleware);
     }
-
 }

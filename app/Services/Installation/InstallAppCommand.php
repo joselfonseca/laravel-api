@@ -2,7 +2,6 @@
 
 namespace App\Services\Installation;
 
-
 /**
  * Class InstallAppCommand
  * @package App\Services\Installation
@@ -44,5 +43,4 @@ class InstallAppCommand
         $this->password = $password;
         $this->password_confirmation = $password_confirmation;
     }
-
 }

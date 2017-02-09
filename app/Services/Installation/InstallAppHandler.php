@@ -85,7 +85,7 @@ class InstallAppHandler
      */
     public function createRoles()
     {
-        $this->roles = $this->roles->map(function($role){
+        $this->roles = $this->roles->map(function ($role) {
             return Role::create($role);
         });
         return $this;
@@ -97,7 +97,7 @@ class InstallAppHandler
     public function createPermissions()
     {
         $this->permissions = $this->permissions->map(function ($group) {
-            return collect($group)->map(function($permission) {
+            return collect($group)->map(function ($permission) {
                 return Permission::create($permission);
             });
         });
@@ -140,5 +140,4 @@ class InstallAppHandler
         });
         return $this;
     }
-
 }

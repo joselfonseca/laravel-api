@@ -39,6 +39,4 @@ class ApplicationWasInstalled
         $this->roles = $roles;
         $this->permissions = $permissions;
     }
-
-
 }
