@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\Users\UsersServiceContract;
+use Joselfonseca\LaravelApiTools\Traits\ResponseBuilder;
 
 /**
  * Class UsersController
@@ -12,6 +13,8 @@ use App\Contracts\Users\UsersServiceContract;
  */
 class UsersController extends Controller
 {
+
+    use ResponseBuilder;
 
     /**
      * @var UsersServiceContract
@@ -26,6 +29,7 @@ class UsersController extends Controller
     {
         $this->service = $service;
         $this->middleware('permission:List users')->only('index');
+        $this->middleware('permission:List users')->only('show');
         $this->middleware('permission:Create users')->only('store');
         $this->middleware('permission:Update users')->only('update');
         $this->middleware('permission:Delete users')->only('destroy');
@@ -37,7 +41,17 @@ class UsersController extends Controller
     public function index()
     {
         $users = $this->service->get();
-        return $this->service->transform($users);
+        return response()->json($this->service->transform($users));
+    }
+
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id)
+    {
+        return response()->json($this->service->transform($this->service->find($id)));
     }
 
     /**
@@ -47,8 +61,8 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->all();
-        $this->service->create($attributes);
-        return response()->json()->setStatusCode(201);
+        $user = $this->service->create($attributes);
+        return $this->created(url('api/users/'.$user->uuid), $this->service->transform($user));
     }
 
     /**
@@ -70,6 +84,6 @@ class UsersController extends Controller
     public function destroy(Request $request, $uuid)
     {
         $this->service->delete($uuid);
-        return response()->json()->setStatusCode(204);
+        return $this->noContent();
     }
 }

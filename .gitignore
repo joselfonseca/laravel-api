@@ -7,3 +7,4 @@ Homestead.json
 yarn.lock
 /public/css/
 /public/js/
+/packages

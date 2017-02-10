@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Entities\User;
+use App\Services\Users\UsersService;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -48,6 +49,20 @@ class UsersEndpointsTest extends TestCase
         $response->assertStatus(403);
     }
 
+    function test_it_can_show_user()
+    {
+        $user = factory(\App\Entities\User::class)->create([
+            'email' => 'me@example.com'
+        ]);
+        Passport::actingAs(User::first());
+        $response = $this->json('GET', '/api/users/'.$user->uuid);
+        $response->assertHeader('Content-Type', 'application/json');
+        $response->assertStatus(200);
+        $jsonResponse = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('data', $jsonResponse);
+        $this->assertEquals('me@example.com', $jsonResponse['data']['email']);
+    }
+
     function test_it_can_create_user()
     {
         Passport::actingAs(User::first());
@@ -83,7 +98,7 @@ class UsersEndpointsTest extends TestCase
     {
         Passport::actingAs(User::first());
         $user = factory(\App\Entities\User::class)->create();
-        $response = $this->json('PUT', 'api/users/'.$user->uuid, [
+        $response = $this->json('PATCH', 'api/users/'.$user->uuid, [
             'name' => 'Jose Fonseca'
         ]);
         $response->assertStatus(200);
@@ -97,7 +112,7 @@ class UsersEndpointsTest extends TestCase
     {
         Passport::actingAs(User::first());
         $user = factory(\App\Entities\User::class)->create();
-        $response = $this->json('PUT', 'api/users/'.$user->uuid, [
+        $response = $this->json('PATCH', 'api/users/'.$user->uuid, [
             'name' => ''
         ]);
         $response->assertStatus(422);

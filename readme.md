@@ -9,6 +9,9 @@ Here is a list of the packages installed:
 
 - [Laravel Tactician Command Bus](https://github.com/joselfonseca/laravel-tactician)
 - [Laravel API Tools](https://github.com/joselfonseca/laravel-api-tools)
+- [Laravel Passport](https://laravel.com/docs/5.4/passport)
+- [Laravel Permission](https://github.com/spatie/laravel-permission)
+- [Laravel Uuid](https://github.com/webpatser/laravel-uuid)
 
 ## Installation
 
