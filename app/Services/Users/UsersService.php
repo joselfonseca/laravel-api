@@ -6,6 +6,7 @@ use App\Entities\User;
 use League\Fractal\TransformerAbstract;
 use App\Transformers\Users\UserTransformer;
 use App\Contracts\Users\UsersServiceContract;
+use League\Fractal\Serializer\JsonApiSerializer;
 use Joselfonseca\LaravelApiTools\Contracts\FractalAble;
 use Joselfonseca\LaravelApiTools\Contracts\ValidateAble;
 use Joselfonseca\LaravelApiTools\Traits\FractalAbleTrait;
@@ -76,6 +77,14 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
     public function setTransformer() : TransformerAbstract
     {
         return app(UserTransformer::class);
+    }
+
+    /**
+     * @return JsonApiSerializer
+     */
+    public function setSerializer()
+    {
+        return new JsonApiSerializer(url('api'));
     }
 
     /**
