@@ -23,7 +23,7 @@
                             Authentication for your API
                         </div>
                         <div class="panel-body">
-                            Here the Auth docs
+                            Here your Auth Docs
                         </div>
                     </div>
                 </div>
