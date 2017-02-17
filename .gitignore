@@ -8,3 +8,5 @@ yarn.lock
 /public/css/
 /public/js/
 /packages
+/storage/oauth-private.key
+/storage/oauth-public.key
