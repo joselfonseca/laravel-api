@@ -17,7 +17,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "joselfonseca/laravel-tactician" : "0.3.*",
-        "joselfonseca/laravel-api-tools": "^2.1",
+        "joselfonseca/laravel-api-tools": "^2.2",
         "laravel/passport": "^2.0",
         "webpatser/laravel-uuid": "^2.0",
         "spatie/laravel-permission": "^1.7"
