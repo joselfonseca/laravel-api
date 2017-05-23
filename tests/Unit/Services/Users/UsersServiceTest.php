@@ -36,7 +36,7 @@ class UsersServiceTest extends TestCase
     }
 
     /**
-     * @expectedException \Joselfonseca\LaravelApiTools\Exceptions\ValidationException
+     * @expectedException \Dingo\Api\Exception\ResourceException
      */
     function test_it_validates_user_input_for_creation()
     {
@@ -50,7 +50,7 @@ class UsersServiceTest extends TestCase
     }
 
     /**
-     * @expectedException \Joselfonseca\LaravelApiTools\Exceptions\ValidationException
+     * @expectedException \Dingo\Api\Exception\ResourceException
      */
     function test_it_validates_existing_email_for_creation()
     {
@@ -66,7 +66,7 @@ class UsersServiceTest extends TestCase
     }
 
     /**
-     * @expectedException \Joselfonseca\LaravelApiTools\Exceptions\ValidationException
+     * @expectedException \Dingo\Api\Exception\ResourceException
      */
     function test_it_validates_password_confirmation_for_creation()
     {
@@ -80,7 +80,7 @@ class UsersServiceTest extends TestCase
     }
 
     /**
-     * @expectedException \Joselfonseca\LaravelApiTools\Exceptions\ValidationException
+     * @expectedException \Dingo\Api\Exception\ResourceException
      */
     function test_it_validates_password_length_for_creation()
     {
@@ -148,7 +148,7 @@ class UsersServiceTest extends TestCase
     }
 
     /**
-     * @expectedException \Joselfonseca\LaravelApiTools\Exceptions\ValidationException
+     * @expectedException \Dingo\Api\Exception\ResourceException
      */
     function test_it_validates_email_in_use_on_update()
     {

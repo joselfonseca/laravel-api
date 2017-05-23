@@ -15,12 +15,14 @@
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.4.*",
+        "dingo/api": "1.0.*@dev",
         "laravel/tinker": "~1.0",
         "joselfonseca/laravel-tactician" : "0.3.*",
-        "joselfonseca/laravel-api-tools": "^2.2",
+        "spatie/laravel-fractal": "^3.3",
         "laravel/passport": "^2.0",
         "webpatser/laravel-uuid": "^2.0",
-        "spatie/laravel-permission": "^1.7"
+        "spatie/laravel-permission": "^1.7",
+        "joselfonseca/laravel-api-tools" : "3.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -37,7 +39,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Joselfonseca\\LaravelApiTools\\": "packages/laravel-api-tools/src/"
         }
     },
     "scripts": {

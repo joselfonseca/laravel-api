@@ -4,7 +4,7 @@ namespace Tests;
 
 use Exception;
 use App\Exceptions\Handler;
-use Illuminate\Contracts\Debug\ExceptionHandler;
+use Dingo\Api\Contract\Debug\ExceptionHandler;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase

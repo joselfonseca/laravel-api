@@ -1,16 +1,17 @@
 <?php
 
-use Illuminate\Http\Request;
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function ($api) {
+    $api->get('ping', function(){
+        return [
+            'status' => 'ok',
+            'timestamp' => \Carbon\Carbon::now()
+        ];
+    });
 
-Route::get('ping', function(){
-    return [
-        'status' => 'ok',
-        'timestamp' => \Carbon\Carbon::now()
-    ];
-});
-
-Route::group(['middleware' => 'auth:api'], function() {
-    Route::resource('users', 'Users\UsersController');
+    $api->group(['middleware' => ['api.auth', 'throttle:60,1'], 'providers' => ['passport']], function ($api) {
+        $api->resource('users', 'App\Http\Controllers\Users\UsersController');
+    });
 });
 
 

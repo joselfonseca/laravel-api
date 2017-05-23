@@ -23,7 +23,7 @@ class UsersEndpointsTest extends TestCase
     {
         factory(\App\Entities\User::class, 30)->create();
         Passport::actingAs(User::first());
-        $response = $this->json('GET', '/api/users');
+        $response = $this->json('GET', 'api/users');
         $response->assertHeader('Content-Type', 'application/json');
         $response->assertStatus(200);
         $jsonResponse = json_decode($response->getContent(), true);
@@ -34,8 +34,9 @@ class UsersEndpointsTest extends TestCase
         $this->assertEquals(20, $jsonResponse['meta']['pagination']['count']);
         $this->assertCount(20, $jsonResponse['data']);
         $this->assertArrayHasKey('id', $jsonResponse['data'][0]);
-        $this->assertArrayHasKey('name', $jsonResponse['data'][0]);
-        $this->assertArrayHasKey('email', $jsonResponse['data'][0]);
+        $this->assertArrayHasKey('attributes', $jsonResponse['data'][0]);
+        $this->assertArrayHasKey('name', $jsonResponse['data'][0]['attributes']);
+        $this->assertArrayHasKey('email', $jsonResponse['data'][0]['attributes']);
     }
 
     function test_it_validates_permission_for_listing_users()
@@ -45,7 +46,7 @@ class UsersEndpointsTest extends TestCase
             'email' => 'me@example.com'
         ]);
         Passport::actingAs($user);
-        $response = $this->json('GET', 'api/users');
+        $response = $this->json('GET', '/api/users');
         $response->assertStatus(403);
     }
 
@@ -60,7 +61,7 @@ class UsersEndpointsTest extends TestCase
         $response->assertStatus(200);
         $jsonResponse = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('data', $jsonResponse);
-        $this->assertEquals('me@example.com', $jsonResponse['data']['email']);
+        $this->assertEquals('me@example.com', $jsonResponse['data']['attributes']['email']);
     }
 
     function test_it_can_create_user()
@@ -86,6 +87,8 @@ class UsersEndpointsTest extends TestCase
             'name' => 'Some User',
             'email' => 'some@email.com',
             'password' => '123456789qq',
+        ], [
+            'Accept' => 'application/vnd.api.v1+json'
         ]);
         $response->assertStatus(422);
         $this->assertDatabaseMissing('users', [
@@ -124,6 +127,8 @@ class UsersEndpointsTest extends TestCase
         $user = factory(\App\Entities\User::class)->create();
         $response = $this->json('DELETE', 'api/users/'.$user->uuid, [
 
+        ], [
+            'Accept' => 'application/vnd.api.v1+json'
         ]);
         $response->assertStatus(204);
         $this->assertDatabaseMissing('users', [
