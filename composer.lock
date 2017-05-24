@@ -715,12 +715,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/joselfonseca/laravel-api-tools.git",
-                "reference": "c1c1651d1250b0d9d30c184ff2ed7c2085d825f3"
+                "reference": "539e5b5e40b1335a843ae9613b61a30107e35c99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joselfonseca/laravel-api-tools/zipball/c1c1651d1250b0d9d30c184ff2ed7c2085d825f3",
-                "reference": "c1c1651d1250b0d9d30c184ff2ed7c2085d825f3",
+                "url": "https://api.github.com/repos/joselfonseca/laravel-api-tools/zipball/539e5b5e40b1335a843ae9613b61a30107e35c99",
+                "reference": "539e5b5e40b1335a843ae9613b61a30107e35c99",
                 "shasum": ""
             },
             "require": {
@@ -752,7 +752,7 @@
                 }
             ],
             "description": "Some tools for Laravel API development, nothing really new, just wrappers and helper stuff",
-            "time": "2017-05-23 20:26:32"
+            "time": "2017-05-24 18:18:25"
         },
         {
             "name": "joselfonseca/laravel-tactician",
