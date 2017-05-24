@@ -4,7 +4,6 @@
 Homestead.yaml
 Homestead.json
 .env
-yarn.lock
 /public/css/
 /public/js/
 /packages
