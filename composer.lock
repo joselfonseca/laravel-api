@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "286d7776eb30f804fcbb15f35eac46d1",
-    "content-hash": "d2add817fc9e6203fb865256e3215865",
+    "hash": "5fcd3b35162095e9aea896501a3db248",
+    "content-hash": "23b92919dcd9212adf82cd675370b183",
     "packages": [
         {
             "name": "dingo/api",
@@ -708,6 +708,51 @@
                 }
             ],
             "time": "2015-04-20 18:58:01"
+        },
+        {
+            "name": "joselfonseca/laravel-api-tools",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joselfonseca/laravel-api-tools.git",
+                "reference": "c1c1651d1250b0d9d30c184ff2ed7c2085d825f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joselfonseca/laravel-api-tools/zipball/c1c1651d1250b0d9d30c184ff2ed7c2085d825f3",
+                "reference": "c1c1651d1250b0d9d30c184ff2ed7c2085d825f3",
+                "shasum": ""
+            },
+            "require": {
+                "dingo/api": "1.0.*@dev",
+                "php": ">=5.6",
+                "spatie/laravel-fractal": "^3.3",
+                "webpatser/laravel-uuid": "^2.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/database": "^3.3",
+                "orchestra/testbench": "~3.4",
+                "phpunit/phpunit": "~5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Joselfonseca\\LaravelApiTools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jose Luis Fonseca",
+                    "email": "jose@ditecnologia.com"
+                }
+            ],
+            "description": "Some tools for Laravel API development, nothing really new, just wrappers and helper stuff",
+            "time": "2017-05-23 20:26:32"
         },
         {
             "name": "joselfonseca/laravel-tactician",
@@ -4690,7 +4735,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "dingo/api": 20
+        "dingo/api": 20,
+        "joselfonseca/laravel-api-tools": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

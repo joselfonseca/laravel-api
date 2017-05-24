@@ -22,7 +22,7 @@
         "laravel/passport": "^2.0",
         "webpatser/laravel-uuid": "^2.0",
         "spatie/laravel-permission": "^1.7",
-        "joselfonseca/laravel-api-tools" : "3.0.*"
+        "joselfonseca/laravel-api-tools" : "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://example.com/api
+HOST: https://example.com
 
 # Laravel API
 Welcome to the Starter Kit API, here you will find all the information related to the endpoints available.
@@ -41,6 +41,10 @@ This endpoint will allow you to get the users registered in the system
             + (User Object)
         + meta
             + pagination (User Pagination)
+        + links
+            + self: `http://laravelapi.dev/api/users?page=1` (string)
+            + first: `http://laravelapi.dev/api/users?page=1` (string)
+            + last: `http://laravelapi.dev/api/users?page=1` (string)
 
 + Response 401 (application/json)
 
@@ -188,36 +192,38 @@ This endpoint will allow you to delete a user from the system
 # Data Structures
 
 ## Error 404 (object)
-- code: 404 (number)
-- title: `Not found` (string)
+- status_code: 404 (number)
+- message: `Not found` (string)
 
 ## Error 400 (object)
-- code: 400 (number)
-- title: `Bad Request` (string)
+- status_code: 400 (number)
+- message: `Bad Request` (string)
 
 ## Error 403 (object)
-- code: 403 (number)
-- title: `Forbidden` (string)
+- status_code: 403 (number)
+- message: `Forbidden` (string)
 
 ## Error 401 (object)
-- code: 401 (number)
-- title: `Unauthorized` (string)
+- status_code: 401 (number)
+- message: `Unauthorized` (string)
 
 ## Error 405 (object)
-- code: 405 (number)
-- title: `Method Not Allowed` (string)
+- status_code: 405 (number)
+- message: `Method Not Allowed` (string)
 
 ## Error 422 (object)
-- code: 422 (number)
-- title: `Validation error` (string)
+- status_code: 422 (number)
+- message: `Validation error` (string)
 - errors (array) `Array of errors present in the validation`
 
 ## User Object (object)
+- type: `user` (string)
 - id: `d4d42ea0-ee77-11e6-b823-6d63c6504afc` (string)
-- name: `Jhon Doe` (string)
-- email: `email@example.com` (string)
-- created_at: `2017-02-09T03:28:32+00:00` (string)
-- updated_at: `2017-02-09T03:28:32+00:00` (string)
+- attributes
+    - name: `Jhon Doe` (string)
+    - email: `email@example.com` (string)
+    - created_at: `2017-02-09T03:28:32+00:00` (string)
+    - updated_at: `2017-02-09T03:28:32+00:00` (string)
 
 ## User Create (object)
 - name: `Jhon Doe` (string, required)
