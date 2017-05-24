@@ -4,13 +4,16 @@ namespace App\Services\Users;
 
 use App\Entities\User;
 use League\Fractal\TransformerAbstract;
+use Dingo\Api\Exception\ResourceException;
 use App\Transformers\Users\UserTransformer;
 use App\Contracts\Users\UsersServiceContract;
 use Joselfonseca\LaravelApiTools\Contracts\FractalAble;
 use Joselfonseca\LaravelApiTools\Contracts\ValidateAble;
+use Joselfonseca\LaravelApiTools\Traits\FilterableTrait;
 use Joselfonseca\LaravelApiTools\Traits\FractalAbleTrait;
 use Joselfonseca\LaravelApiTools\Traits\ValidateAbleTrait;
-use Joselfonseca\LaravelApiTools\Exceptions\ValidationException;
+use Joselfonseca\LaravelApiTools\Traits\OrderQueryResultHelper;
+use Joselfonseca\LaravelApiTools\Traits\ProcessMultipleParameterHelper;
 
 /**
  * Class UsersService
@@ -19,7 +22,7 @@ use Joselfonseca\LaravelApiTools\Exceptions\ValidationException;
 class UsersService implements FractalAble, ValidateAble, UsersServiceContract
 {
 
-    use FractalAbleTrait, ValidateAbleTrait;
+    use FractalAbleTrait, ValidateAbleTrait, FilterableTrait, OrderQueryResultHelper, ProcessMultipleParameterHelper;
 
     /**
      * @var array
@@ -35,7 +38,7 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
      */
     protected $validationUpdateRules = [
         'name' => 'sometimes|required',
-        'email' => 'sometimes|required|unique:users,email'
+        'password' => 'sometimes|required|min:8|confirmed'
     ];
 
     /**
@@ -78,13 +81,21 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
         return app(UserTransformer::class);
     }
 
+
     /**
+     * @param array $attributes
      * @param int $limit
-     * @return mixed
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function get($limit = 20)
+    public function get(Array $attributes = [], $limit = 20)
     {
         $model = $this->model->with($this->includes);
+        $this->addFilter($attributes);
+        $this->applyFilters($model, $attributes);
+
+        $this->processOrderingRules($attributes);
+        $this->applyOrderingRules($model);
+
         if (!empty($limit)) {
             return $model->paginate($limit);
         }
@@ -103,7 +114,7 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
     /**
      * @param array $attributes
      * @return User
-     * @throws ValidationException
+     * @throws ResourceException
      */
     public function create(array $attributes = [])
     {
@@ -117,7 +128,7 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
      * @param int|string $id
      * @param array $attributes
      * @return User
-     * @throws ValidationException
+     * @throws ResourceException
      */
     public function update($id, array $attributes = [])
     {
@@ -125,23 +136,40 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
         if (isset($attributes['email']) && $attributes['email'] != $model->email) {
             $this->validationUpdateRules['email'] = 'sometimes|required|unique:users,email,'.$model->id;
         }
+        $this->runValidator($attributes, $this->validationUpdateRules, $this->validationMessages);
         if(isset($attributes['password'])) {
             $attributes['password'] = bcrypt($attributes['password']);
         }
-        $this->runValidator($attributes, $this->validationUpdateRules, $this->validationMessages);
         $model->fill($attributes);
         $model->save();
         return $model->fresh();
     }
 
     /**
-     * @param int|string $id
+     * @param int|string $ids
      * @return bool
      */
-    public function delete($id)
+    public function delete($ids)
     {
-        $model = $this->find($id);
-        $model->delete();
+        $parameters = $this->processParameter($ids);
+
+        foreach ($parameters as $id) {
+            $model = $this->find($id);
+            $model->delete();
+        }
+
         return true;
+    }
+
+    /**
+     * Filterable fields
+     * @return array
+     */
+    public function getFilterableFields()
+    {
+        return [
+            'name' => 'partial',
+            'email' => 'partial',
+        ];
     }
 }

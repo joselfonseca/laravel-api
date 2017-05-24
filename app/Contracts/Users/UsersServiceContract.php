@@ -12,11 +12,13 @@ use Joselfonseca\LaravelApiTools\Exceptions\ValidationException;
 interface UsersServiceContract
 {
 
+
     /**
+     * @param array $attributes
      * @param int $limit
      * @return mixed
      */
-    public function get($limit = 20);
+    public function get(array $attributes = [], $limit = 20);
 
     /**
      * @param int|string $id

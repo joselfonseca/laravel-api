@@ -37,11 +37,15 @@ class UsersController extends Controller
 
 
     /**
+     * @param Request $request
      * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->service->get();
+        $attributes = $request->except('page');
+        $limit = isset($attributes['limit']) ? $attributes['limit'] : env('PAGINATION_VALUE', 20);
+        $users = $this->service->get($attributes, $limit);
+        $users->appends($attributes);
         return $this->response->array($this->service->transform($users));
     }
 
@@ -82,12 +86,12 @@ class UsersController extends Controller
 
     /**
      * @param Request $request
-     * @param $uuid
+     * @param $uuids
      * @return mixed
      */
-    public function destroy(Request $request, $uuid)
+    public function destroy(Request $request, $uuids)
     {
-        $this->service->delete($uuid);
+        $this->service->delete($uuids);
         return $this->response->noContent();
     }
 }

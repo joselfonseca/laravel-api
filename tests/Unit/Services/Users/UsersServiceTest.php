@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Services\Installation;
+namespace Tests\Unit\Services\Users;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -108,7 +108,7 @@ class UsersServiceTest extends TestCase
     {
         factory(\App\Entities\User::class, 50)->create();
         $this->makeService();
-        $collection = $this->service->get(null);
+        $collection = $this->service->get([], null);
         $this->assertInstanceOf(\Illuminate\Support\Collection::class, $collection);
         $this->assertCount(50, $collection);
         $this->assertInstanceOf(\App\Entities\User::class, $collection->first());
