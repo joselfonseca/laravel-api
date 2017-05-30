@@ -18,11 +18,11 @@
         "dingo/api": "1.0.*@dev",
         "laravel/tinker": "~1.0",
         "joselfonseca/laravel-tactician" : "0.3.*",
+        "joselfonseca/laravel-api-tools" : "3.0.*",
         "spatie/laravel-fractal": "^3.3",
         "laravel/passport": "^2.0",
         "webpatser/laravel-uuid": "^2.0",
-        "spatie/laravel-permission": "^1.7",
-        "joselfonseca/laravel-api-tools" : "dev-master"
+        "spatie/laravel-permission": "^1.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

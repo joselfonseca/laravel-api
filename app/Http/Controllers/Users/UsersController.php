@@ -83,6 +83,17 @@ class UsersController extends Controller
         return $this->response->array($this->service->transform($user));
     }
 
+    /**
+     * @param Request $request
+     * @param $uuid
+     * @return mixed
+     */
+    public function partialUpdate(Request $request, $uuid)
+    {
+        $user = $this->service->update($uuid, $request->all(), true);
+        return $this->response->array($this->service->transform($user));
+    }
+
 
     /**
      * @param Request $request

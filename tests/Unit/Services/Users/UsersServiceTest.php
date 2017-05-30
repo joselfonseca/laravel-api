@@ -35,6 +35,24 @@ class UsersServiceTest extends TestCase
         ]);
     }
 
+    function test_it_can_create_user_with_roles()
+    {
+        $this->makeService();
+        $data = [
+            'name' => 'Jose Fonseca',
+            'email' => 'some@example.com',
+            'password' => '12345678',
+            'password_confirmation' => '12345678',
+        ];
+        $model = $this->service->create($data);
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Model::class, $model);
+        $this->assertInstanceOf(\App\Entities\User::class, $model);
+        $this->assertDatabaseHas('users', [
+            'name' => 'Jose Fonseca',
+            'email' => 'some@example.com',
+        ]);
+    }
+
     /**
      * @expectedException \Dingo\Api\Exception\ResourceException
      */
@@ -129,7 +147,7 @@ class UsersServiceTest extends TestCase
         $this->assertNotEquals('jose fonseca', $user->name);
         $newUser = $this->service->update($user->uuid, [
             'name' => 'jose fonseca'
-        ]);
+        ], true);
         $this->assertEquals('jose fonseca', $newUser->name);
         $this->assertDatabaseHas('users', [
             'name' => 'jose fonseca'
@@ -143,8 +161,21 @@ class UsersServiceTest extends TestCase
         $this->assertNotEquals('jose@example.com', $user->email);
         $newUser = $this->service->update($user->uuid, [
             'email' => 'jose@example.com'
-        ]);
+        ], true);
         $this->assertEquals('jose@example.com', $newUser->email);
+    }
+
+    /**
+     * @expectedException \Dingo\Api\Exception\ResourceException
+     */
+    function test_it_validates_no_partial_update()
+    {
+        $user = factory(\App\Entities\User::class)->create();
+        $this->makeService();
+        $this->assertNotEquals('jose fonseca', $user->name);
+        $this->service->update($user->uuid, [
+            'name' => 'jose fonseca'
+        ]);
     }
 
     /**
@@ -157,6 +188,7 @@ class UsersServiceTest extends TestCase
         $this->makeService();
         $this->assertNotEquals($user->email, $user2->email);
         $this->service->update($user->uuid, [
+            'name' => $user->name,
             'email' => $user2->email
         ]);
     }

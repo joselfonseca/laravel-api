@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+# Decide which docker-compose file to use
+COMPOSE_FILE="dev"
+
+# Disable pseudo-TTY allocation for CI (Jenkins)
+TTY=""
+
+if [ ! -z "$BUILD_NUMBER" ]; then
+    COMPOSE_FILE="ci"
+    TTY="-T"
+fi
+
+# Change settings for CI
+if [ ! -z "$BUILD_NUMBER" ]; then
+    # We need the full path here because /sbin is not in user Jenkin's $PATH
+    export XDEBUG_HOST=$(/sbin/ifconfig docker0 | grep "inet addr" | cut -d ':' -f 2 | cut -d ' ' -f 1)
+else
+    export XDEBUG_HOST=$(ipconfig getifaddr en1)
+fi
+
+export CONTAINER_ENV=${CONTAINER_ENV:-local}
+
+# Create docker-compose command to run
+COMPOSE="docker-compose -f docker-compose.${COMPOSE_FILE}.yml"
+
+# If we pass any arguments...
+if [ $# -gt 0 ];then
+
+    # If "art" is used, pass-thru to "artisan"
+    # inside a new container
+    if [ "$1" == "art" ]; then
+        shift 1
+        $COMPOSE run --rm \
+            -w /var/www/html \
+            app \
+            php artisan "$@"
+
+    # If "composer" is used, pass-thru to "composer"
+    # inside a new container
+    elif [ "$1" == "composer" ]; then
+        shift 1
+        $COMPOSE run --rm \
+            -w /var/www/html \
+            app \
+            composer "$@"
+
+    # If "test" is used, run unit tests,
+    # pass-thru any extra arguments to php-unit
+    elif [ "$1" == "test" ]; then
+        shift 1
+        $COMPOSE run --rm \
+            -w /var/www/html \
+            app \
+            ./vendor/bin/phpunit "$@"
+
+    elif [ "$1" == "t" ]; then
+            shift 1
+            $COMPOSE exec \
+                app \
+                sh -c "cd /var/www/html && ./vendor/bin/phpunit $@"
+
+    elif [ "$1" == "bash" ]; then
+            shift 1
+            $COMPOSE run --rm \
+                -w /var/www/html \
+                app \
+                "$@"
+
+
+    # Else, pass-thru args to docker-compose
+    else
+        $COMPOSE "$@"
+    fi
+
+else
+    $COMPOSE ps
+fi

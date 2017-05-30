@@ -36,10 +36,11 @@ interface UsersServiceContract
     /**
      * @param int|string $id
      * @param array $attributes
+     * @param bool $partial
      * @return User
      * @throws ValidationException
      */
-    public function update($id, array $attributes = []);
+    public function update($id, array $attributes = [], $partial = false);
 
     /**
      * @param int|string $id

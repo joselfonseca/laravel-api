@@ -11,6 +11,12 @@ use League\Fractal\TransformerAbstract;
  */
 class UserTransformer extends TransformerAbstract
 {
+
+    /**
+     * @var array
+     */
+    protected $defaultIncludes = ['roles'];
+
     /**
      * @param User $model
      * @return array
@@ -22,7 +28,16 @@ class UserTransformer extends TransformerAbstract
             'name' => $model->name,
             'email' => $model->email,
             'created_at' => $model->created_at->toIso8601String(),
-            'updated_at' => $model->updated_at->toIso8601String(),
+            'updated_at' => $model->updated_at->toIso8601String()
         ];
+    }
+
+    /**
+     * @param User $model
+     * @return \League\Fractal\Resource\Collection
+     */
+    public function includeRoles(User $model)
+    {
+        return $this->collection($model->roles, new RoleTransformer(), 'roles');
     }
 }

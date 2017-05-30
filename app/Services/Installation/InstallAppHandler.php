@@ -2,6 +2,7 @@
 
 namespace App\Services\Installation;
 
+use Artisan;
 use App\Entities\Role;
 use App\Entities\Permission;
 use App\Contracts\Users\UsersServiceContract;
@@ -71,6 +72,7 @@ class InstallAppHandler
      */
     public function handle(InstallAppCommand $command)
     {
+        Artisan::call('passport:install');
         $this->createRoles()
             ->createPermissions()
             ->createAdminUser((array) $command)

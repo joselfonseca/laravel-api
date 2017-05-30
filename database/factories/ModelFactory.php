@@ -23,3 +23,10 @@ $factory->define(App\Entities\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Entities\Role::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'uuid' => $faker->uuid
+    ];
+});

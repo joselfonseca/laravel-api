@@ -33,14 +33,22 @@ class UsersEndpointsTest extends TestCase
         $jsonResponse = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('data', $jsonResponse);
         $this->assertArrayHasKey('meta', $jsonResponse);
+        $this->assertArrayHasKey('included', $jsonResponse);
         $this->assertArrayHasKey('pagination', $jsonResponse['meta']);
         $this->assertEquals(31, $jsonResponse['meta']['pagination']['total']);
         $this->assertEquals(20, $jsonResponse['meta']['pagination']['count']);
         $this->assertCount(20, $jsonResponse['data']);
         $this->assertArrayHasKey('id', $jsonResponse['data'][0]);
         $this->assertArrayHasKey('attributes', $jsonResponse['data'][0]);
+        $this->assertArrayHasKey('links', $jsonResponse['data'][0]);
+        $this->assertArrayHasKey('relationships', $jsonResponse['data'][0]);
         $this->assertArrayHasKey('name', $jsonResponse['data'][0]['attributes']);
         $this->assertArrayHasKey('email', $jsonResponse['data'][0]['attributes']);
+        $this->assertArrayHasKey('roles', $jsonResponse['data'][0]['relationships']);
+        $this->assertArrayHasKey('data', $jsonResponse['data'][0]['relationships']['roles']);
+        $this->assertArrayHasKey('self', $jsonResponse['data'][0]['relationships']['roles']['links']);
+        $this->assertArrayHasKey('related', $jsonResponse['data'][0]['relationships']['roles']['links']);
+        $this->assertEquals('roles', $jsonResponse['included'][0]['type']);
     }
 
     function test_it_list_second_page_of_users()
@@ -235,6 +243,22 @@ class UsersEndpointsTest extends TestCase
         $this->assertDatabaseHas('users', [
             'name' => 'Jose Fonseca',
             'id' => $user->id
+        ]);
+    }
+
+    function test_it_can_update_a_user_with_full_entity()
+    {
+        Passport::actingAs(User::first());
+        $user = factory(\App\Entities\User::class)->create();
+        $response = $this->json('PUT', 'api/users/'.$user->uuid, [
+            'name' => 'Jose Fonseca',
+            'email' => 'new@example.com'
+        ]);
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('users', [
+            'name' => 'Jose Fonseca',
+            'id' => $user->id,
+            'email' => 'new@example.com'
         ]);
     }
 

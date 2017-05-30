@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  app:
+    extends:
+      file: docker-compose.base.yml
+      service: app
+    ports:
+      - "80:80"
+    links:
+      - redis
+      - mysql
+  redis:
+    extends:
+      file: docker-compose.base.yml
+      service: redis
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - "33060:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: api
+      MYSQL_USER: api
+      MYSQL_PASSWORD: ty6765tr4r0098
+volumes:
+  mysqldata:
+    driver: "local"
+  redisdata:
+    driver: "local"
