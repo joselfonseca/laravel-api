@@ -1,23 +1,23 @@
 <?php
 
-$api = app('Dingo\Api\Routing\Router');
-$api->version('v1', function ($api) {
-    $api->get('ping', function(){
-        return [
-            'status' => 'ok',
-            'timestamp' => \Carbon\Carbon::now()
-        ];
-    });
+Route::get('ping', function(){
+    return [
+        'status' => 'ok',
+        'timestamp' => \Carbon\Carbon::now()
+    ];
+});
 
-    $api->group(['middleware' => ['api.auth', 'throttle:60,1'], 'providers' => ['passport']], function ($api) {
-        $api->get('users', 'App\Http\Controllers\Users\UsersController@index');
-        $api->post('users', 'App\Http\Controllers\Users\UsersController@store');
-        $api->get('users/{uuid}', 'App\Http\Controllers\Users\UsersController@show');
-        $api->put('users/{uuid}', 'App\Http\Controllers\Users\UsersController@update');
-        $api->patch('users/{uuid}', 'App\Http\Controllers\Users\UsersController@partialUpdate');
-        $api->delete('users/{uuid}', 'App\Http\Controllers\Users\UsersController@destroy');
+Route::group(['middleware' => ['auth:api'], ], function () {
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', 'Api\Users\UsersController@index');
+        Route::post('/', 'Api\Users\UsersController@store');
+        Route::get('/{uuid}', 'Api\Users\UsersController@show');
+        Route::put('/{uuid}', 'Api\Users\UsersController@update');
+        Route::patch('/{uuid}', 'Api\Users\UsersController@partialUpdate');
+        Route::delete('/{uuid}', 'Api\Users\UsersController@destroy');
     });
 });
+
 
 
 

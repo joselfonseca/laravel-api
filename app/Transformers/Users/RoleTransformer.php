@@ -15,7 +15,7 @@ class RoleTransformer extends TransformerAbstract
     /**
      * @var array
      */
-    protected $availableIncludes = ['permissions'];
+    protected $defaultIncludes = ['permissions'];
 
     /**
      * @param Role $model
@@ -37,7 +37,7 @@ class RoleTransformer extends TransformerAbstract
      */
     public function includePermissions(Role $model)
     {
-        return $this->collection($model->permissions, new PermissionTransformer(), 'permissions');
+        return $this->collection($model->permissions, new PermissionTransformer());
     }
 
 }

@@ -1,4 +1,4 @@
-FROM joselfonsecadt/php7.0:1.0.0
+FROM joselfonsecadt/php7.0:1.1.0
 
 MAINTAINER Jose Fonseca <jose@ditecnologia.com>
 
@@ -8,14 +8,23 @@ COPY docker/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 
 COPY docker/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
-COPY . /var/www/html/
-
-EXPOSE 80
-
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 WORKDIR /var/www/html/
 
+COPY composer.json ./
+
+COPY composer.lock ./
+
+RUN composer install --no-dev --no-scripts --no-autoloader
+
+COPY . /var/www/html/
+
+RUN composer dump-autoload --optimize && \
+	php artisan optimize
+
 RUN cp .env.example .env
+
+EXPOSE 80
 
 CMD ["/usr/bin/supervisord"]

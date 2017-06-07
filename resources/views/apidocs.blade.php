@@ -61,153 +61,95 @@
 <h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://example.com</span>/api/users</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/vnd.api.v1+json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBlOGVhOGY0YWY2Yjg3NzU0YjZjZDBjNjdkNzBmMjdhYTZkMmRjNjU3YzIwYTU0MjQ3NWRlZGU4Y2VkNTc1N2IwZDcwMWFmNTAyMGU4MGE4In0.eyJhdWQiOiIxIiwianRpIjoiMGU4ZWE4ZjRhZjZiODc3NTRiNmNkMGM2N2Q3MGYyN2FhNmQyZGM2NTdjMjBhNTQyNDc1ZGVkZThjZWQ1NzU3YjBkNzAxYWY1MDIwZTgwYTgiLCJpYXQiOjE0NzYyOTk1NTQsIm5iZiI6MTQ3NjI5OTU1NCwiZXhwIjoxNDc3NTk1NTU0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.gTOotTVp2eF_HvuW48ngGqdly4bocNMlvY0al0YmYPJ_tjBQYegE4AjtCH2bWUf9aUz8tQqhMr2UFae3JV6VDQC9VzoGK8gU_nulM0BkqaCCxadqrw_slcd4he9hT0FE3WshvdZKcmgaVovgrI2-sAnX3n749BiWtWLEpw6x-TdEHEVcW6uRfRWyrwKhPBfOk-hXpgbecgT8LYdBW531P1ryjSJzzi5zBEe0Ecbp9Lo-fV69AW8ZBnG1DBjzxW-hvE0rRLXXnI4-f9rbQfK6QUzfG3Dg2INexcKxu9sQ3Vn5wHhQyu4_nTNQh8rsgphdAqFnEo-FQZrRWejkKbOi_BcpQybaXNn7Qln-96QF6PAzT-2E08VmL4XeVNcSvmM1sPVwirnSXo4UIFSsHvvIdVfEYEXD8XDonlnVO74RgBDMXWs6xo7dmDNaqQxKt9J_s_xtmyM3w62C4QucKw7MY0zOqviEyXySbrYbgazO_Pl1--GXtksE8tVMW8OW6Y8fw0JE0GEd5hZVadR277A5164QAJhiGXI_mKNTtUZVNaj0JpKEQpu4tod_BJR_DxzvcpKHwc1YrfrPOul6mL4kZeafkehPe79jxrCXKgKEuGlgSFcyrXUNCtME9LxsMID6QpJ-tfx4i0jqjixd_smqpjPPYqhPuqhox3uMLcDgM6s</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
-        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/relationships/roles"</span></span>,
-            "<span class="hljs-attribute">related</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/roles"</span>
-          </span>}</span>,
-          "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
-            {
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-            </span>},
-            {
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-            </span>}
-          ]
-        </span>}
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
+      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
+      "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+      "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+      "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+          {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+          </span>},
+          {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+          </span>}
+        ]
       </span>}
     </span>},
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
-        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/relationships/roles"</span></span>,
-            "<span class="hljs-attribute">related</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/roles"</span>
-          </span>}</span>,
-          "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
-            {
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-            </span>},
-            {
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-            </span>}
-          ]
-        </span>}
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
+      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
+      "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+      "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+      "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+          {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+          </span>},
+          {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+          </span>}
+        ]
       </span>}
     </span>},
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
-        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/relationships/roles"</span></span>,
-            "<span class="hljs-attribute">related</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/roles"</span>
-          </span>}</span>,
-          "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
-            {
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-            </span>},
-            {
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-            </span>}
-          ]
-        </span>}
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
+      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
+      "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+      "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+      "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+          {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+          </span>},
+          {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+          </span>}
+        ]
       </span>}
     </span>},
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
-        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/relationships/roles"</span></span>,
-            "<span class="hljs-attribute">related</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/roles"</span>
-          </span>}</span>,
-          "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
-            {
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-            </span>},
-            {
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-            </span>}
-          ]
-        </span>}
-      </span>}
-    </span>}
-  ]</span>,
-  "<span class="hljs-attribute">included</span>": <span class="hljs-value">[
-    {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/roles/01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-      </span>}
-    </span>},
-    {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/roles/01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
+      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
+      "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+      "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+      "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+          {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+          </span>},
+          {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+          </span>}
+        ]
       </span>}
     </span>}
   ]</span>,
@@ -224,20 +166,12 @@
         "<span class="hljs-attribute">last</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users?page=2"</span>
       </span>}
     </span>}
-  </span>}</span>,
-  "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users?page=1"</span></span>,
-    "<span class="hljs-attribute">first</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users?page=1"</span></span>,
-    "<span class="hljs-attribute">last</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users?page=1"</span>
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
   "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">included</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
     </span>}</span>,
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
@@ -276,20 +210,6 @@
               </span>}
             </span>}
           </span>}
-        </span>}
-      </span>}
-    </span>}</span>,
-    "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">first</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">last</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}
       </span>}
     </span>}
@@ -367,62 +287,28 @@
   ]
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>201</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span></span>,
-    "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
-      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
-      "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-      "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/relationships/roles"</span></span>,
-          "<span class="hljs-attribute">related</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/roles"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
-          {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-          </span>},
-          {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-          </span>}
-        ]
-      </span>}
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
+    "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+    "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+    "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+          "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+          "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+          "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+          "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+        </span>}
+      ]
     </span>}
-  </span>}</span>,
-  "<span class="hljs-attribute">included</span>": <span class="hljs-value">[
-    {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/roles/01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-      </span>}
-    </span>},
-    {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/roles/01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-      </span>}
-    </span>}
-  ]
+  </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
@@ -430,65 +316,30 @@
     "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
       "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-        </span>}</span>,
         "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}
-          </span>}
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}
-          </span>}
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
           "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-              "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-                  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-                  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-                    "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
-                      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-                    </span>}</span>,
-                    "<span class="hljs-attribute">related</span>": <span class="hljs-value">{
-                      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-                    </span>}
-                  </span>}
-                </span>}</span>,
-                "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
-                  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
-                </span>}
-              </span>}
+            "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
             </span>}
           </span>}
         </span>}
       </span>}
-    </span>}</span>,
-    "<span class="hljs-attribute">included</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
     </span>}
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>422</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -552,62 +403,28 @@
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div><div id="users-api-users-resource-get-1" class="action get"><h4 class="action-heading"><div class="name">Get single user</div><a href="#users-api-users-resource-get-1" class="method get">GET</a><code class="uri">/api/users/{id}</code></h4><p>This endpoint will allow you to get a single user</p>
 <h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://example.com</span>/api/users/<span class="hljs-attribute" title="id">d4d42ea0-ee77-11e6-b823-6d63c6504afc</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>d4d42ea0-ee77-11e6-b823-6d63c6504afc</span></span></dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/vnd.api.v1+json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBlOGVhOGY0YWY2Yjg3NzU0YjZjZDBjNjdkNzBmMjdhYTZkMmRjNjU3YzIwYTU0MjQ3NWRlZGU4Y2VkNTc1N2IwZDcwMWFmNTAyMGU4MGE4In0.eyJhdWQiOiIxIiwianRpIjoiMGU4ZWE4ZjRhZjZiODc3NTRiNmNkMGM2N2Q3MGYyN2FhNmQyZGM2NTdjMjBhNTQyNDc1ZGVkZThjZWQ1NzU3YjBkNzAxYWY1MDIwZTgwYTgiLCJpYXQiOjE0NzYyOTk1NTQsIm5iZiI6MTQ3NjI5OTU1NCwiZXhwIjoxNDc3NTk1NTU0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.gTOotTVp2eF_HvuW48ngGqdly4bocNMlvY0al0YmYPJ_tjBQYegE4AjtCH2bWUf9aUz8tQqhMr2UFae3JV6VDQC9VzoGK8gU_nulM0BkqaCCxadqrw_slcd4he9hT0FE3WshvdZKcmgaVovgrI2-sAnX3n749BiWtWLEpw6x-TdEHEVcW6uRfRWyrwKhPBfOk-hXpgbecgT8LYdBW531P1ryjSJzzi5zBEe0Ecbp9Lo-fV69AW8ZBnG1DBjzxW-hvE0rRLXXnI4-f9rbQfK6QUzfG3Dg2INexcKxu9sQ3Vn5wHhQyu4_nTNQh8rsgphdAqFnEo-FQZrRWejkKbOi_BcpQybaXNn7Qln-96QF6PAzT-2E08VmL4XeVNcSvmM1sPVwirnSXo4UIFSsHvvIdVfEYEXD8XDonlnVO74RgBDMXWs6xo7dmDNaqQxKt9J_s_xtmyM3w62C4QucKw7MY0zOqviEyXySbrYbgazO_Pl1--GXtksE8tVMW8OW6Y8fw0JE0GEd5hZVadR277A5164QAJhiGXI_mKNTtUZVNaj0JpKEQpu4tod_BJR_DxzvcpKHwc1YrfrPOul6mL4kZeafkehPe79jxrCXKgKEuGlgSFcyrXUNCtME9LxsMID6QpJ-tfx4i0jqjixd_smqpjPPYqhPuqhox3uMLcDgM6s</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span></span>,
-    "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
-      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
-      "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-      "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/relationships/roles"</span></span>,
-          "<span class="hljs-attribute">related</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/roles"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
-          {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-          </span>},
-          {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-          </span>}
-        ]
-      </span>}
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
+    "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+    "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+    "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+          "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+          "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+          "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+          "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+        </span>}
+      ]
     </span>}
-  </span>}</span>,
-  "<span class="hljs-attribute">included</span>": <span class="hljs-value">[
-    {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/roles/01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-      </span>}
-    </span>},
-    {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/roles/01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-      </span>}
-    </span>}
-  ]
+  </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
@@ -615,65 +432,30 @@
     "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
       "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-        </span>}</span>,
         "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}
-          </span>}
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}
-          </span>}
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
           "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-              "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-                  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-                  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-                    "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
-                      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-                    </span>}</span>,
-                    "<span class="hljs-attribute">related</span>": <span class="hljs-value">{
-                      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-                    </span>}
-                  </span>}
-                </span>}</span>,
-                "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
-                  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
-                </span>}
-              </span>}
+            "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
             </span>}
           </span>}
         </span>}
       </span>}
-    </span>}</span>,
-    "<span class="hljs-attribute">included</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
     </span>}
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -739,62 +521,28 @@
   ]
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span></span>,
-    "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
-      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
-      "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-      "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/relationships/roles"</span></span>,
-          "<span class="hljs-attribute">related</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/roles"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
-          {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-          </span>},
-          {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-          </span>}
-        ]
-      </span>}
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
+    "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+    "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+    "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+          "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+          "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+          "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+          "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+        </span>}
+      ]
     </span>}
-  </span>}</span>,
-  "<span class="hljs-attribute">included</span>": <span class="hljs-value">[
-    {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/roles/01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-      </span>}
-    </span>},
-    {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/roles/01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-      </span>}
-    </span>}
-  ]
+  </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
@@ -802,65 +550,30 @@
     "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
       "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-        </span>}</span>,
         "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}
-          </span>}
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}
-          </span>}
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
           "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-              "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-                  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-                  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-                    "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
-                      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-                    </span>}</span>,
-                    "<span class="hljs-attribute">related</span>": <span class="hljs-value">{
-                      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-                    </span>}
-                  </span>}
-                </span>}</span>,
-                "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
-                  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
-                </span>}
-              </span>}
+            "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
             </span>}
           </span>}
         </span>}
       </span>}
-    </span>}</span>,
-    "<span class="hljs-attribute">included</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
     </span>}
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>422</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -938,62 +651,28 @@
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span></span>,
-    "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
-      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
-      "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-      "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/relationships/roles"</span></span>,
-          "<span class="hljs-attribute">related</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/users/d4d42ea0-ee77-11e6-b823-6d63c6504afc/roles"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
-          {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-          </span>},
-          {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-          </span>}
-        ]
-      </span>}
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jhon Doe"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
+    "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+    "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+    "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+          "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+          "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
+          "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
+          "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
+        </span>}
+      ]
     </span>}
-  </span>}</span>,
-  "<span class="hljs-attribute">included</span>": <span class="hljs-value">[
-    {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/roles/01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-      </span>}
-    </span>},
-    {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"roles"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"01020af0-44b5-11e7-8001-41a6bfe4ef85"</span></span>,
-      "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Guest"</span></span>,
-        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span></span>,
-        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2017-02-09T03:28:32+00:00"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">self</span>": <span class="hljs-value"><span class="hljs-string">"http://laravelapi.dev/api/roles/01020af0-44b5-11e7-8001-41a6bfe4ef85"</span>
-      </span>}
-    </span>}
-  ]
+  </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
@@ -1001,65 +680,30 @@
     "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
       "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-        </span>}</span>,
         "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">created_at</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}
-          </span>}
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-            </span>}
-          </span>}
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">relationships</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
           "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">roles</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-              "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">links</span>": <span class="hljs-value">{
-                  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-                  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-                    "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
-                      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-                    </span>}</span>,
-                    "<span class="hljs-attribute">related</span>": <span class="hljs-value">{
-                      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-                    </span>}
-                  </span>}
-                </span>}</span>,
-                "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
-                  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
-                </span>}
-              </span>}
+            "<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
             </span>}
           </span>}
         </span>}
       </span>}
-    </span>}</span>,
-    "<span class="hljs-attribute">included</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
     </span>}
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>422</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -1179,7 +823,7 @@
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
     </span>}
   </span>}
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 29 May 2017</p><script>/* eslint-env browser */
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 06 Jun 2017</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 

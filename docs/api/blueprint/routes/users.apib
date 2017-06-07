@@ -23,15 +23,8 @@ This endpoint will allow you to get the users registered in the system
             + (User Object)
             + (User Object)
             + (User Object)
-        + included (array)
-            + (Role Object)
-            + (Role Object)
         + meta
             + pagination (User Pagination)
-        + links
-            + self: `http://laravelapi.dev/api/users?page=1` (string)
-            + first: `http://laravelapi.dev/api/users?page=1` (string)
-            + last: `http://laravelapi.dev/api/users?page=1` (string)
 
 + Response 401 (application/json)
 
@@ -60,9 +53,6 @@ This endpoint will allow you to create a user in the system
 
     + Attributes
         + data (User Object)
-        + included (array)
-            + (Role Object)
-            + (Role Object)
 
 + Response 422 (application/json)
 
@@ -97,9 +87,6 @@ This endpoint will allow you to get a single user
 
     + Attributes
         + data (User Object)
-        + included (array)
-            + (Role Object)
-            + (Role Object)
                 
 
 + Response 401 (application/json)
@@ -132,9 +119,6 @@ This endpoint will allow you to update the user's information, in this case the 
 
     + Attributes
         + data (User Object)
-        + included (array)
-            + (Role Object)
-            + (Role Object)
 
 + Response 422 (application/json)
 
@@ -170,9 +154,6 @@ This endpoint will allow you to update the user's information, please note that 
 
     + Attributes
         + data (User Object)
-        + included (array)
-            + (Role Object)
-            + (Role Object)
 
 + Response 422 (application/json)
 

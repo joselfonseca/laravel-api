@@ -166,10 +166,9 @@ return [
         /*
          * Package Service Providers...
          */
-        Dingo\Api\Provider\LaravelServiceProvider::class,
-        Joselfonseca\LaravelApiTools\Providers\LaravelApiToolsServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Spatie\Fractal\FractalServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
 

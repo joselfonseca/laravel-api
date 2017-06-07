@@ -2,7 +2,7 @@
 
 namespace App\Entities;
 
-use Joselfonseca\LaravelApiTools\Traits\UuidScopeTrait;
+use App\Support\UuidScopeTrait;
 
 /**
  * Class Role
