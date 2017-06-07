@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use Exception;
+use App\Exceptions\Handler;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -17,5 +19,16 @@ abstract class TestCase extends BaseTestCase
             'password' => 'secret1234',
             'password_confirmation' => 'secret1234',
         ]);
+    }
+
+    public function disableErrorHandling()
+    {
+        $this->app->instance(Handler::class, new class extends Handler {
+            public function __construct() {}
+            public function report(Exception $e) {}
+            public function render($request, Exception $e) {
+                throw $e;
+            }
+        });
     }
 }

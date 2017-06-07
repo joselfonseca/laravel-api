@@ -48,7 +48,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-
+        $user = $this->model->with('roles.permissions')->byUuid($id)->firstOrFail();
+        return fractal($user, new UserTransformer())->respond();
     }
 
 
@@ -58,7 +59,15 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed'
+        ]);
+        $user = $this->model->create($request->all());
+        return fractal($user, new UserTransformer())
+            ->respond(201)
+            ->header('location', url('api/users/'.$user->uuid));
     }
 
 
