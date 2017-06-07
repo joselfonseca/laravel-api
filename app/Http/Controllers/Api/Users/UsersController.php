@@ -15,8 +15,15 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 class UsersController extends Controller
 {
 
+    /**
+     * @var User
+     */
     protected $model;
 
+    /**
+     * UsersController constructor.
+     * @param User $model
+     */
     public function __construct(User $model)
     {
         $this->model = $model;
@@ -35,7 +42,7 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $paginator = $this->model->with('roles.permissions')
-            ->paginate($request->get('limit', env('PAGINATE_LIMIT', 20)));
+            ->paginate($request->get('limit', config('app.pagination_limit')));
         return fractal()->collection($paginator->getCollection(), new UserTransformer())
             ->paginateWith(new IlluminatePaginatorAdapter($paginator))
             ->respond();
@@ -78,7 +85,20 @@ class UsersController extends Controller
      */
     public function update(Request $request, $uuid)
     {
-
+        $user = $this->model->byUuid($uuid)->firstOrFail();
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+        ];
+        if($request->method() == "PATCH") {
+            $rules = [
+                'name' => 'sometimes|required',
+                'email' => 'sometimes|required|email|unique:users,email,'.$user->id,
+            ];
+        }
+        $this->validate($request, $rules);
+        $user->update($request->except('_token'));
+        return fractal($user->fresh(), new UserTransformer())->respond();
     }
 
     /**
@@ -86,19 +106,10 @@ class UsersController extends Controller
      * @param $uuid
      * @return mixed
      */
-    public function partialUpdate(Request $request, $uuid)
+    public function destroy(Request $request, $uuid)
     {
-
-    }
-
-
-    /**
-     * @param Request $request
-     * @param $uuids
-     * @return mixed
-     */
-    public function destroy(Request $request, $uuids)
-    {
-
+        $user = $this->model->byUuid($uuid)->firstOrFail();
+        $user->delete();
+        return response(null, 204);
     }
 }

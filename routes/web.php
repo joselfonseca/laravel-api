@@ -1,14 +1,6 @@
 <?php
-Route::get('/', function(){
-    return redirect('login');
-});
 
-Route::get('apidocs', function(){
-    // aglio -i docs/api/blueprint/apidocs.apib --theme-variables Flatly --theme-template triple -o resources/views/apidocs.blade.php
-    return view('apidocs');
-});
-
+Route::get('/', 'HomeController@index');
+Route::get('apidocs', 'ApiDocsController@index');
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
 

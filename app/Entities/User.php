@@ -9,6 +9,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Class User
+ * @package App\Entities
+ */
 class User extends Authenticatable
 {
     use Notifiable, UuidScopeTrait, HasApiTokens, HasRoles, SoftDeletes;

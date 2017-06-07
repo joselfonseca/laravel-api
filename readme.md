@@ -8,11 +8,10 @@ Laravel API starter Kit will provide you with the tools for making API's that ev
 
 Here is a list of the packages installed:
 
-- [Laravel Tactician Command Bus](https://github.com/joselfonseca/laravel-tactician)
-- [Laravel API Tools](https://github.com/joselfonseca/laravel-api-tools)
 - [Laravel Passport](https://laravel.com/docs/5.4/passport)
 - [Laravel Permission](https://github.com/spatie/laravel-permission)
 - [Laravel Uuid](https://github.com/webpatser/laravel-uuid)
+- [Laravel Tactician Command Bus](https://github.com/joselfonseca/laravel-tactician)
 
 ## Installation
 
@@ -66,7 +65,7 @@ Run `php artisan app:install` and fill out the information of the admin user.
 
 Run `yarn install` to install node dependencies
 
-Run `npm run dev` to compile the CSS and JS
+Run `yarn dev` to compile the CSS and JS
 
 You should be done with the basic configuration.
 

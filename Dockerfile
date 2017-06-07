@@ -25,6 +25,8 @@ RUN composer dump-autoload --optimize && \
 
 RUN cp .env.example .env
 
+RUN php artisan route:cache
+
 EXPOSE 80
 
 CMD ["/usr/bin/supervisord"]
