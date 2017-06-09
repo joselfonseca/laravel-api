@@ -1,7 +1,7 @@
 {
     "name": "joselfonseca/laravel-api",
     "description": "Laravel API starter Kit will give you most of the boilerplate that you need for creating Laravel API's",
-    "keywords": ["framework", "laravel", "Api", "REST", "oAuth2"],
+    "keywords": ["framework", "laravel", "Api", "REST", "oAuth2", "Dingo API"],
     "license": "MIT",
     "type": "project",
     "authors": [
@@ -19,7 +19,7 @@
         "joselfonseca/laravel-tactician": "0.3.*",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
-        "spatie/laravel-fractal": "^3.3",
+        "dingo/api": "1.0.*@dev",
         "spatie/laravel-permission": "^1.7",
         "webpatser/laravel-uuid": "^2.0"
     },

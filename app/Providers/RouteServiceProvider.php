@@ -58,6 +58,7 @@ class RouteServiceProvider extends ServiceProvider
 
     /**
      * Define the "api" routes for the application.
+     * Since we are using Dingo, the web middleware group will not apply
      *
      * These routes are typically stateless.
      *
@@ -65,9 +66,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
+        require base_path('routes/api.php');
     }
 }

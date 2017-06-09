@@ -18,6 +18,16 @@ class UsersEndpointsTest extends TestCase
         $this->installApp();
     }
 
+    function test_it_responds_unauthenticated_for_list_users()
+    {
+        $response = $this->json('GET','api/users');
+        $response->assertStatus(401);
+        $response->assertJson([
+            'message' => 'Unauthenticated.',
+            'status_code' => 401
+        ]);
+    }
+
     function test_it_list_users()
     {
         factory(\App\Entities\User::class, 30)->create();
@@ -73,17 +83,7 @@ class UsersEndpointsTest extends TestCase
             'password' => '12345678',
             'password_confirmation' => '12345678'
         ]);
-        $response->assertHeader('Content-Type', 'application/json');
-        $jsonResponse = json_decode($response->getContent(), true);
         $response->assertStatus(201);
-        $this->assertArrayHasKey('data', $jsonResponse);
-        $this->assertArrayHasKey('id', $jsonResponse['data']);
-        $this->assertArrayHasKey('name', $jsonResponse['data']);
-        $this->assertArrayHasKey('email', $jsonResponse['data']);
-        $this->assertArrayHasKey('data', $jsonResponse['data']['roles']);
-        $this->assertEquals('John Doe', $jsonResponse['data']['name']);
-        $this->assertEquals('john@example.com', $jsonResponse['data']['email']);
-        $response->assertHeader('Location', url('api/users/'.$jsonResponse['data']['id']));
         $this->assertDatabaseHas('users', [
             'name' => 'John Doe',
             'email' => 'john@example.com',

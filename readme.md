@@ -8,6 +8,7 @@ Laravel API starter Kit will provide you with the tools for making API's that ev
 
 Here is a list of the packages installed:
 
+- [Dingo API](https://github.com/dingo/api)
 - [Laravel Passport](https://laravel.com/docs/5.4/passport)
 - [Laravel Permission](https://github.com/spatie/laravel-permission)
 - [Laravel Uuid](https://github.com/webpatser/laravel-uuid)
@@ -36,6 +37,12 @@ Modify the .env file to suit your needs
 APP_ENV=local
 APP_DEBUG=true
 APP_KEY=base64:JqyMTmt5qr1CW6BH+GG+4iKfU4RiNjZTLy33TdTT7+4=
+
+API_STANDARDS_TREE=vnd
+API_SUBTYPE=api
+API_PREFIX=api
+API_VERSION=v1
+API_DEBUG=true
 
 DB_HOST=localhost
 DB_DATABASE=laravel_api

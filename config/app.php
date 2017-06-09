@@ -175,8 +175,8 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        Spatie\Fractal\FractalServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
 
@@ -188,6 +188,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ErrorHandlerServiceProvider::class
 
     ],
 

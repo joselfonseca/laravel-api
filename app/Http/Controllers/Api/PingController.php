@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
 
 /**
@@ -10,12 +11,14 @@ use App\Http\Controllers\Controller;
  */
 class PingController extends Controller
 {
+
+    use Helpers;
     /**
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        return response()->json([
+        return $this->response->array([
             'status' => 'ok',
             'timestamp' => \Carbon\Carbon::now()
         ]);

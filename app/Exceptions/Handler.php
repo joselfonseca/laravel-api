@@ -52,15 +52,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if($exception instanceof NotFoundHttpException){
-            return $this->renderNotFoundException($exception);
-        }
-        if($exception instanceof ModelNotFoundException) {
-            return $this->renderModelNotFoundException($exception);
-        }
-        if($exception instanceof AccessDeniedHttpException) {
-            return $this->renderAccessDeniedException($exception);
-        }
         return parent::render($request, $exception);
     }
 
@@ -73,72 +64,11 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
+
         if ($request->expectsJson()) {
             return response()->json(['message' => 'Unauthenticated.'], 401);
         }
 
         return redirect()->guest('login');
-    }
-
-    /**
-     * Create a response object from the given validation exception.
-     *
-     * @param  \Illuminate\Validation\ValidationException  $e
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    protected function convertValidationExceptionToResponse(ValidationException $e, $request)
-    {
-        if ($e->response) {
-            return $e->response;
-        }
-
-        $errors = $e->validator->errors()->getMessages();
-
-        if ($request->expectsJson()) {
-            return response()->json([
-                'message' => 'Validation error',
-                'errors' => $errors
-            ], 422);
-        }
-
-        return redirect()->back()->withInput(
-            $request->input()
-        )->withErrors($errors);
-    }
-
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function renderNotFoundException($e)
-    {
-        if(request()->expectsJson()){
-            return response()->json(['message' => 'Not Found'], 404);
-        }
-        return $this->renderHttpException($e);
-    }
-
-    /**
-     * @param $e
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function renderModelNotFoundException($e)
-    {
-        if(request()->expectsJson()){
-            return response()->json(['message' => 'Not Found'], 404);
-        }
-        throw new NotFoundHttpException();
-    }
-
-    /**
-     * @param $e
-     * @return \Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\Response
-     */
-    protected function renderAccessDeniedException($e)
-    {
-        if(request()->expectsJson()){
-            return response()->json(['message' => 'Forbidden'], 403);
-        }
-        return $this->renderHttpException($e);
     }
 }

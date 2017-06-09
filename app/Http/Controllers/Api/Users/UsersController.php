@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api\Users;
 
 use App\Entities\User;
 use Illuminate\Http\Request;
+use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
 use App\Transformers\Users\UserTransformer;
-use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 /**
  * Class UsersController
@@ -14,6 +14,8 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
  */
 class UsersController extends Controller
 {
+
+    use Helpers;
 
     /**
      * @var User
@@ -43,9 +45,7 @@ class UsersController extends Controller
     {
         $paginator = $this->model->with('roles.permissions')
             ->paginate($request->get('limit', config('app.pagination_limit')));
-        return fractal()->collection($paginator->getCollection(), new UserTransformer())
-            ->paginateWith(new IlluminatePaginatorAdapter($paginator))
-            ->respond();
+        return $this->response->paginator($paginator, new UserTransformer());
     }
 
 
@@ -56,7 +56,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = $this->model->with('roles.permissions')->byUuid($id)->firstOrFail();
-        return fractal($user, new UserTransformer())->respond();
+        return $this->response->item($user, new UserTransformer());
     }
 
 
@@ -72,9 +72,7 @@ class UsersController extends Controller
             'password' => 'required|min:8|confirmed'
         ]);
         $user = $this->model->create($request->all());
-        return fractal($user, new UserTransformer())
-            ->respond(201)
-            ->header('location', url('api/users/'.$user->uuid));
+        return $this->response->created(url('api/users/'.$user->uuid));
     }
 
 
@@ -98,7 +96,7 @@ class UsersController extends Controller
         }
         $this->validate($request, $rules);
         $user->update($request->except('_token'));
-        return fractal($user->fresh(), new UserTransformer())->respond();
+        return $this->response->item($user, new UserTransformer());
     }
 
     /**
@@ -110,6 +108,6 @@ class UsersController extends Controller
     {
         $user = $this->model->byUuid($uuid)->firstOrFail();
         $user->delete();
-        return response(null, 204);
+        return $this->response->noContent();
     }
 }
