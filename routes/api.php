@@ -19,6 +19,15 @@ $api->version('v1', function($api){
                 $api->delete('/{uuid}', 'Api\Users\UsersController@destroy');
             });
 
+            $api->group(['prefix' => 'roles'], function ($api) {
+                $api->get('/', 'Api\Users\RolesController@index');
+                $api->post('/', 'Api\Users\RolesController@store');
+                $api->get('/{uuid}', 'Api\Users\RolesController@show');
+                $api->put('/{uuid}', 'Api\Users\RolesController@update');
+                $api->patch('/{uuid}', 'Api\Users\RolesController@update');
+                $api->delete('/{uuid}', 'Api\Users\RolesController@destroy');
+            });
+
         });
 
     });

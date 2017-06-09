@@ -96,7 +96,7 @@ class UsersController extends Controller
         }
         $this->validate($request, $rules);
         $user->update($request->except('_token'));
-        return $this->response->item($user, new UserTransformer());
+        return $this->response->item($user->fresh(), new UserTransformer());
     }
 
     /**
