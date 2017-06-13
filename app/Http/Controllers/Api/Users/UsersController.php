@@ -11,6 +11,7 @@ use App\Transformers\Users\UserTransformer;
 /**
  * Class UsersController
  * @package App\Http\Controllers\Users
+ * @author Jose Fonseca <jose@ditecnologia.com>
  */
 class UsersController extends Controller
 {
@@ -38,6 +39,7 @@ class UsersController extends Controller
 
 
     /**
+     * Returns the Users resource with the roles relation
      * @param Request $request
      * @return mixed
      */
