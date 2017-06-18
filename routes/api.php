@@ -28,6 +28,8 @@ $api->version('v1', function($api){
                 $api->delete('/{uuid}', 'Api\Users\RolesController@destroy');
             });
 
+            $api->get('permissions', 'Api\Users\PermissionsController@index');
+
         });
 
     });

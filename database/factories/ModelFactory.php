@@ -30,3 +30,10 @@ $factory->define(App\Entities\Role::class, function (Faker\Generator $faker) {
         'uuid' => $faker->uuid
     ];
 });
+
+$factory->define(App\Entities\Permission::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'uuid' => $faker->uuid
+    ];
+});

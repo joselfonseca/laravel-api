@@ -74,6 +74,9 @@ class UsersController extends Controller
             'password' => 'required|min:8|confirmed'
         ]);
         $user = $this->model->create($request->all());
+        if($request->has('roles')) {
+            $user->syncRoles($request['roles']);
+        }
         return $this->response->created(url('api/users/'.$user->uuid));
     }
 
@@ -98,6 +101,9 @@ class UsersController extends Controller
         }
         $this->validate($request, $rules);
         $user->update($request->except('_token'));
+        if($request->has('roles')) {
+            $user->syncRoles($request['roles']);
+        }
         return $this->response->item($user->fresh(), new UserTransformer());
     }
 

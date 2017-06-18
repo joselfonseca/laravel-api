@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 use App\Support\UuidScopeTrait;
+use App\Support\HasPermissionsUuid;
 
 /**
  * Class Role
@@ -11,10 +12,11 @@ use App\Support\UuidScopeTrait;
 class Role extends \Spatie\Permission\Models\Role
 {
 
-    use UuidScopeTrait;
+    use UuidScopeTrait, HasPermissionsUuid;
 
     /**
      * @var array
      */
     protected $fillable = ['name', 'uuid'];
+
 }

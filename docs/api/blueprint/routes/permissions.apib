@@ -1,0 +1,36 @@
+
+## Permissions resource [/api/permissions]
+It requires your user to have permissions to fetch, create, update or delete roles in the system depending on the request you want to make
+
+### List permissions [GET]
+
+This endpoint will allow you to get the roles registered in the system
+
++ Request (application/vnd.api.v1+json)
+
+    + Headers
+                
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBlOGVhOGY0YWY2Yjg3NzU0YjZjZDBjNjdkNzBmMjdhYTZkMmRjNjU3YzIwYTU0MjQ3NWRlZGU4Y2VkNTc1N2IwZDcwMWFmNTAyMGU4MGE4In0.eyJhdWQiOiIxIiwianRpIjoiMGU4ZWE4ZjRhZjZiODc3NTRiNmNkMGM2N2Q3MGYyN2FhNmQyZGM2NTdjMjBhNTQyNDc1ZGVkZThjZWQ1NzU3YjBkNzAxYWY1MDIwZTgwYTgiLCJpYXQiOjE0NzYyOTk1NTQsIm5iZiI6MTQ3NjI5OTU1NCwiZXhwIjoxNDc3NTk1NTU0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.gTOotTVp2eF_HvuW48ngGqdly4bocNMlvY0al0YmYPJ_tjBQYegE4AjtCH2bWUf9aUz8tQqhMr2UFae3JV6VDQC9VzoGK8gU_nulM0BkqaCCxadqrw_slcd4he9hT0FE3WshvdZKcmgaVovgrI2-sAnX3n749BiWtWLEpw6x-TdEHEVcW6uRfRWyrwKhPBfOk-hXpgbecgT8LYdBW531P1ryjSJzzi5zBEe0Ecbp9Lo-fV69AW8ZBnG1DBjzxW-hvE0rRLXXnI4-f9rbQfK6QUzfG3Dg2INexcKxu9sQ3Vn5wHhQyu4_nTNQh8rsgphdAqFnEo-FQZrRWejkKbOi_BcpQybaXNn7Qln-96QF6PAzT-2E08VmL4XeVNcSvmM1sPVwirnSXo4UIFSsHvvIdVfEYEXD8XDonlnVO74RgBDMXWs6xo7dmDNaqQxKt9J_s_xtmyM3w62C4QucKw7MY0zOqviEyXySbrYbgazO_Pl1--GXtksE8tVMW8OW6Y8fw0JE0GEd5hZVadR277A5164QAJhiGXI_mKNTtUZVNaj0JpKEQpu4tod_BJR_DxzvcpKHwc1YrfrPOul6mL4kZeafkehPe79jxrCXKgKEuGlgSFcyrXUNCtME9LxsMID6QpJ-tfx4i0jqjixd_smqpjPPYqhPuqhox3uMLcDgM6s
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array)
+            + (Permission Object)
+            + (Permission Object)
+            + (Permission Object)
+            + (Permission Object)
+        + meta
+            + pagination (Permission Pagination)
+
++ Response 401 (application/json)
+
+    + Attributes (Error 401)
+
++ Response 403 (application/json)
+
+    + Attributes (Error 403)
+
++ Response 404 (application/json)
+
+    + Attributes (Error 404)

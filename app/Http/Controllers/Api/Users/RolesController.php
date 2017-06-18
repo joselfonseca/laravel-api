@@ -8,6 +8,10 @@ use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
 use App\Transformers\Users\RoleTransformer;
 
+/**
+ * Class RolesController
+ * @package App\Http\Controllers\Api\Users
+ */
 class RolesController extends Controller
 {
     use Helpers;
@@ -17,8 +21,9 @@ class RolesController extends Controller
      */
     protected $model;
 
+
     /**
-     * UsersController constructor.
+     * RolesController constructor.
      * @param Role $model
      */
     public function __construct(Role $model)
@@ -65,6 +70,9 @@ class RolesController extends Controller
             'name' => 'required'
         ]);
         $role = $this->model->create($request->all());
+        if($request->has('permissions')) {
+            $role->syncPermissions($request['permissions']);
+        }
         return $this->response->created(url('api/roles/'.$role->uuid));
     }
 
@@ -77,11 +85,13 @@ class RolesController extends Controller
     public function update(Request $request, $uuid)
     {
         $role = $this->model->byUuid($uuid)->firstOrFail();
-        $rules = [
+        $this->validate($request, [
             'name' => 'required'
-        ];
-        $this->validate($request, $rules);
+        ]);
         $role->update($request->except('_token'));
+        if($request->has('permissions')) {
+            $role->syncPermissions($request['permissions']);
+        }
         return $this->response->item($role->fresh(), new RoleTransformer());
     }
 

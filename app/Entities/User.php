@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use App\Support\HasRolesUuid;
 use App\Support\UuidScopeTrait;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -15,7 +16,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
-    use Notifiable, UuidScopeTrait, HasApiTokens, HasRoles, SoftDeletes;
+    use Notifiable, UuidScopeTrait, HasApiTokens, HasRoles, SoftDeletes, HasRolesUuid {
+        HasRolesUuid::getStoredRole insteadof HasRoles;
+    }
 
     /**
      * The attributes that are mass assignable.

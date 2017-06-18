@@ -41,9 +41,6 @@ class InstallAppHandlerTest extends TestCase
         $this->assertDatabaseHas('permissions', [
             'name' => 'List permissions'
         ]);
-        $this->assertDatabaseHas('permissions', [
-            'name' => 'Associate users with roles'
-        ]);
     }
 
     function test_it_creates_admin_user()
@@ -83,8 +80,6 @@ class InstallAppHandlerTest extends TestCase
         $this->assertTrue($role->hasPermissionTo('List users'));
         $this->assertTrue($role->hasPermissionTo('Delete users'));
         $this->assertTrue($role->hasPermissionTo('List permissions'));
-        $this->assertTrue($role->hasPermissionTo('Associate users with roles'));
-        $this->assertTrue($role->hasPermissionTo('Associate roles with permissions'));
     }
 
 }

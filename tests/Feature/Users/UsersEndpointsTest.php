@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Entities\Role;
 use Tests\TestCase;
 use App\Entities\User;
 use Laravel\Passport\Passport;
@@ -210,6 +211,7 @@ class UsersEndpointsTest extends TestCase
             'id' => $user->id
         ]);
     }
+
     function test_it_protects_the_user_from_being_deleted_by_user_with_no_permission()
     {
         $user = factory(\App\Entities\User::class)->create([
@@ -222,6 +224,65 @@ class UsersEndpointsTest extends TestCase
         $response = $this->json('DELETE', 'api/users/'.$user2->uuid, [
         ]);
         $response->assertStatus(403);
+    }
+
+    function test_it_can_create_user_with_associated_role()
+    {
+        Passport::actingAs(User::first());
+        $roles = factory(Role::class, 2)->create();
+        $response = $this->json('POST', 'api/users/', [
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+            'password' => '12345678',
+            'password_confirmation' => '12345678',
+            'roles' => $roles->pluck('uuid')->toArray()
+        ]);
+        $response->assertStatus(201);
+        $user = User::where('email', 'john@example.com')->first();
+        $roles->each(function($role) use ($user) {
+            $this->assertDatabaseHas('user_has_roles', [
+                'user_id' => $user->id,
+                'role_id' => $role->id
+            ]);
+        });
+    }
+
+    function test_it_updates_users_roles()
+    {
+        Passport::actingAs(User::first());
+        $roles = factory(Role::class, 2)->create();
+        $user = factory(User::class)->create();
+        $this->assertCount(0, $user->roles);
+        $response = $this->json('PATCH', 'api/users/'.$user->uuid, [
+            'roles' => $roles->pluck('uuid')->toArray()
+        ]);
+        $response->assertStatus(200);
+        $roles->each(function($role) use ($user) {
+            $this->assertDatabaseHas('user_has_roles', [
+                'user_id' => $user->id,
+                'role_id' => $role->id
+            ]);
+        });
+        $this->assertCount(2, $user->fresh()->roles);
+    }
+
+    function test_it_deletes_users_roles_if_empty_array_sent()
+    {
+        Passport::actingAs(User::first());
+        $roles = factory(Role::class, 2)->create();
+        $user = factory(User::class)->create()->syncRoles($roles);
+        $this->assertCount(2, $user->roles);
+        $response = $this->json('PATCH', 'api/users/'.$user->uuid, [
+            'roles' => []
+        ]);
+        $response->assertStatus(200);
+        $roles->each(function($role) use ($user) {
+            $this->assertDatabaseMissing('user_has_roles', [
+                'user_id' => $user->id,
+                'role_id' => $role->id
+            ]);
+        });
+        $this->assertCount(0, $user->fresh()->roles);
     }
 
 }

@@ -3,3 +3,35 @@
 - name: `Guest` (string)
 - created_at: `2017-02-09T03:28:32+00:00` (string)
 - updated_at: `2017-02-09T03:28:32+00:00` (string)
+- permissions (array)
+    - (Permission Object)
+    - (Permission Object)
+    - (Permission Object)
+
+## Role Create (object)
+- name: `Guest` (string)
+- permissions (array)
+    - `d4d42ea0-ee77-11e6-b823-6d63c6504afc` (string) Permission ID
+    - `d4d42ea0-ee77-11e6-b823-6d63c6504afc` (string) Permission ID
+    - `d4d42ea0-ee77-11e6-b823-6d63c6504afc` (string) Permission ID
+    
+## Role Update Full (object)
+- name: `Guest` (string)
+- permissions (array)
+    - `d4d42ea0-ee77-11e6-b823-6d63c6504afc` (string) Permission ID
+    - `d4d42ea0-ee77-11e6-b823-6d63c6504afc` (string) Permission ID
+    - `d4d42ea0-ee77-11e6-b823-6d63c6504afc` (string) Permission ID
+    
+## Role Update (object)
+- name: `Guest` (string)
+
+## Role Pagination (object)
+- total: 30 (number)
+- count: 20 (number)
+- per_page: 20 (number)
+- current_page: 1 (number)
+- total_pages: 2 (number)
+- links
+    - previous: `http://laravelapi.dev/api/roles?page=1` (string)
+    - next: `http://laravelapi.dev/api/roles?page=2` (string)
+    - last: `http://laravelapi.dev/api/roles?page=2` (string)

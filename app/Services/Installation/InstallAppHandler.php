@@ -38,16 +38,7 @@ class InstallAppHandler
             ['name' => 'Update roles'],
         ],
         'permissions' => [
-            ['name' => 'List permissions'],
-            ['name' => 'Create permissions'],
-            ['name' => 'Delete permissions'],
-            ['name' => 'Update permissions'],
-        ],
-        'users.roles' => [
-            ['name' => 'Associate users with roles']
-        ],
-        'roles.permissions' => [
-            ['name' => 'Associate roles with permissions']
+            ['name' => 'List permissions']
         ]
     ];
 
