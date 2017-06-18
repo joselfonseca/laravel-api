@@ -100,7 +100,8 @@ class UsersController extends Controller
             ];
         }
         $this->validate($request, $rules);
-        $user->update($request->except('_token'));
+        // Except password as we don't want to let the users change a password from this endpoint
+        $user->update($request->except('_token', 'password'));
         if($request->has('roles')) {
             $user->syncRoles($request['roles']);
         }
