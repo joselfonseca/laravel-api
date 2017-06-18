@@ -6,6 +6,7 @@ Homestead.json
 .env
 /public/css/
 /public/js/
+/public/fonts/
 /packages
 /storage/oauth-private.key
 /storage/oauth-public.key
