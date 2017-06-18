@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Services\Installation;
 
+use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -58,6 +59,22 @@ class InstallAppHandlerTest extends TestCase
         ]);
         $user = \App\Entities\User::where('email', 'jose@example.com')->first();
         $this->assertNotNull($user->uuid);
+    }
+
+    function test_it_validates_input_for_creating_user()
+    {
+        $handler = $this->makeHandler();
+        try{
+            $handler->createAdminUser([
+                'name' => 'Jose Fonseca',
+            ]);
+            $this->fail('Validation to create user did not run.');
+        } catch (ValidationException $e) {
+            $this->assertDatabaseMissing('users', [
+                'name' => 'Jose Fonseca',
+                'email' => 'jose@example.com',
+            ]);
+        }
     }
 
     function test_it_assigns_admin_role_to_admin_user()

@@ -6,6 +6,7 @@ use App\Entities\Role;
 use App\Entities\User;
 use App\Entities\Permission;
 use App\Services\Installation\Events\ApplicationWasInstalled;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Class InstallAppHandler
@@ -98,14 +99,22 @@ class InstallAppHandler
     /**
      * @param array $attributes
      * @return $this
+     * @throws ValidationException
      */
     public function createAdminUser(array $attributes = [])
     {
+        $validator = validator($attributes, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed'
+        ]);
+        if($validator->fails()) {
+            throw new ValidationException($validator);
+        }
         $this->adminUser = User::create([
             'name' => $attributes['name'],
             'email' => $attributes['email'],
-            'password' => $attributes['password'],
-            'password_confirmation' => $attributes['password_confirmation']
+            'password' => bcrypt($attributes['password'])
         ]);
         return $this;
     }

@@ -13,6 +13,9 @@ use Illuminate\Foundation\Inspiring;
 |
 */
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->describe('Display an inspiring quote');
+Artisan::command('dev:generate-personal-token {userId}', function ($userId) {
+    $user = \App\Entities\User::find($userId);
+    $this->info('Token for user '.$user->name);
+    $token = $user->createToken('Personal Access Token')->accessToken;
+    $this->info($token);
+})->describe('Generates a personal access token for a user');
