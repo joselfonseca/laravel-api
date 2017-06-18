@@ -114,7 +114,7 @@ class InstallAppHandler
         $this->adminUser = User::create([
             'name' => $attributes['name'],
             'email' => $attributes['email'],
-            'password' => bcrypt($attributes['password'])
+            'password' => $attributes['password']
         ]);
         return $this;
     }
