@@ -34,6 +34,7 @@ $api->version('v1', function($api){
                 $api->get('/', 'Api\Users\ProfileController@index');
                 $api->put('/', 'Api\Users\ProfileController@update');
                 $api->patch('/', 'Api\Users\ProfileController@update');
+                $api->put('/password', 'Api\Users\ProfileController@updatePassword');
             });
 
         });

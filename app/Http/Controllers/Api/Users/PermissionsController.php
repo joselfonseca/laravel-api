@@ -42,5 +42,4 @@ class PermissionsController extends Controller
     {
         return $this->response->paginator($this->model->paginate($request->get('limit', config('app.pagination_limit'))), new PermissionTransformer());
     }
-
 }

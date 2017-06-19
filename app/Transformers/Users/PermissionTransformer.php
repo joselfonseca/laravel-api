@@ -25,5 +25,4 @@ class PermissionTransformer extends TransformerAbstract
             'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
-
 }

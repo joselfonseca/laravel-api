@@ -44,8 +44,7 @@ class User extends Authenticatable
      */
     public static function create(array $attributes = [])
     {
-
-        if(array_key_exists('password', $attributes)) {
+        if (array_key_exists('password', $attributes)) {
             $attributes['password'] = bcrypt($attributes['password']);
         }
 

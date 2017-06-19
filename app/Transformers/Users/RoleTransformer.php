@@ -39,5 +39,4 @@ class RoleTransformer extends TransformerAbstract
     {
         return $this->collection($model->permissions, new PermissionTransformer());
     }
-
 }

@@ -108,7 +108,7 @@ class InstallAppHandler
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8|confirmed'
         ]);
-        if($validator->fails()) {
+        if ($validator->fails()) {
             throw new ValidationException($validator);
         }
         $this->adminUser = User::create([

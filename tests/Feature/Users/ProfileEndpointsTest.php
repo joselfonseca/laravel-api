@@ -5,6 +5,7 @@ namespace Tests\Feature\Users;
 use Tests\TestCase;
 use App\Entities\User;
 use Laravel\Passport\Passport;
+use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ProfileEndpointsTest extends TestCase
@@ -90,6 +91,45 @@ class ProfileEndpointsTest extends TestCase
             'email' => $user->email
         ]);
         $response->assertStatus(422);
+    }
+
+    function test_it_updates_logged_in_user_password()
+    {
+        $user = User::first();
+        Passport::actingAs($user);
+        $response = $this->json('PUT', '/api/me/password', [
+            'current_password' => 'secret1234',
+            'password' => '123456789qq',
+            'password_confirmation' => '123456789qq'
+        ]);
+        $response->assertStatus(200);
+        $this->assertTrue(app(Hasher::class)->check('123456789qq', $user->fresh()->password));
+    }
+
+    function test_it_validates_input_to_update_logged_in_user_password_giving_wrong_current_pass()
+    {
+        $user = User::first();
+        Passport::actingAs($user);
+        $response = $this->json('PUT', '/api/me/password', [
+            'current_password' => 'secret1234345',
+            'password' => '123456789qq',
+            'password_confirmation' => '123456789qq'
+        ]);
+        $response->assertStatus(422);
+        $this->assertFalse(app(Hasher::class)->check('123456789qq', $user->fresh()->password));
+    }
+
+    function test_it_validates_input_to_update_logged_in_user_password()
+    {
+        $user = User::first();
+        Passport::actingAs($user);
+        $response = $this->json('PUT', '/api/me/password', [
+            'current_password' => 'secret1234',
+            'password' => '12345',
+            'password_confirmation' => '123456789qq'
+        ]);
+        $response->assertStatus(422);
+        $this->assertFalse(app(Hasher::class)->check('123456789qq', $user->fresh()->password));
     }
 
 }

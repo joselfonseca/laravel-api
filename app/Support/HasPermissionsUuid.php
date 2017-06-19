@@ -30,5 +30,4 @@ trait HasPermissionsUuid
 
         return $permissions;
     }
-
 }

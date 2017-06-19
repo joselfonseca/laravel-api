@@ -20,5 +20,4 @@ trait HasRolesUuid
 
         return $role;
     }
-
 }
