@@ -39,13 +39,18 @@ class User extends Authenticatable
     ];
 
     /**
-     * Set the user's password
-     *
-     * @param  string  $value
-     * @return void
+     * @param array $attributes
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function setPasswordAttribute($value)
+    public static function create(array $attributes = [])
     {
-        $this->attributes['password'] = bcrypt($value);
+
+        if(array_key_exists('password', $attributes)) {
+            $attributes['password'] = bcrypt($attributes['password']);
+        }
+
+        $model = static::query()->create($attributes);
+
+        return $model;
     }
 }
