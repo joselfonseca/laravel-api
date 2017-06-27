@@ -70,11 +70,7 @@ Then run `php artisan passport:install`
 
 Run `php artisan app:install` and fill out the information of the admin user.
 
-Run `yarn install` to install node dependencies
-
-Run `yarn dev` to compile the CSS and JS
-
-You should be done with the basic configuration.
+You should be done with the basic installation and configuration.
 
 ## Tests
 

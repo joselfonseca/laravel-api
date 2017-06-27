@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Services\Installation\AppInstallationService;
 use Illuminate\Console\Command;
+use App\Services\Installation\AppInstallationService;
 
 class InstallApp extends Command
 {
