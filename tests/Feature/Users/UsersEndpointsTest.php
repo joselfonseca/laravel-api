@@ -22,7 +22,6 @@ class UsersEndpointsTest extends TestCase
     function test_it_responds_unauthenticated_for_list_users()
     {
         $response = $this->json('GET','api/users');
-        dd(json_decode($response->getContent()));
         $response->assertStatus(401);
         $response->assertJson([
             'message' => 'Unauthenticated.',
