@@ -1,4 +1,4 @@
-FROM joselfonsecadt/php7.0:1.1.0
+FROM joselfonsecadt/nginx-php7.0:latest
 
 MAINTAINER Jose Fonseca <jose@ditecnologia.com>
 
