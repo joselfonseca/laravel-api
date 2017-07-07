@@ -22,13 +22,6 @@ To install the project you can use composer
 composer create-project joselfonseca/laravel-api new-api
 ```
 
-You may receive an error about the key files after the installation, that is OK. To fix it run the following in the project's root
-
-```
-touch storage/oauth-private.key
-touch storage/oauth-public.key
-```
-
 Then run `composer install` again and the error should be gone.
 
 Modify the .env file to suit your needs
