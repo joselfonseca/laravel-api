@@ -102,8 +102,8 @@ class RolesController extends Controller
      */
     public function destroy(Request $request, $uuid)
     {
-        $user = $this->model->byUuid($uuid)->firstOrFail();
-        $user->delete();
+        $role = $this->model->byUuid($uuid)->firstOrFail();
+        $role->delete();
         return $this->response->noContent();
     }
 }
