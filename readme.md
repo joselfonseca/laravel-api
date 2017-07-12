@@ -4,7 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/joselfonseca/laravel-api/downloads.svg)](https://packagist.org/packages/joselfonseca/laravel-api) 
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Laravel API starter Kit will provide you with the tools for making API's that everyone will love, API Authentication is already provided with passport. We brought the power of the [Tactician Command bus](http://tactician.thephpleague.com/) to laravel in a simple package [https://github.com/joselfonseca/laravel-tactician](https://github.com/joselfonseca/laravel-tactician) created and maintained by [Jose Fonseca](https://github.com/joselfonseca). 
+Laravel API starter Kit will provide you with the tools for making API's that everyone will love, API Authentication is already provided with passport. 
 
 Here is a list of the packages installed:
 
@@ -12,7 +12,6 @@ Here is a list of the packages installed:
 - [Laravel Passport](https://laravel.com/docs/5.4/passport)
 - [Laravel Permission](https://github.com/spatie/laravel-permission)
 - [Laravel Uuid](https://github.com/webpatser/laravel-uuid)
-- [Laravel Tactician Command Bus](https://github.com/joselfonseca/laravel-tactician)
 
 ## Installation
 
