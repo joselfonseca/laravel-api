@@ -15,8 +15,7 @@
     "require": {
         "php": ">=7.0.0",
         "laravel/framework": "5.4.*",
-        "laravel/passport": "^2.0",
-        "joselfonseca/laravel-tactician": "0.3.*",
+        "laravel/passport": "^3.0",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
         "dingo/api": "1.0.*@dev",

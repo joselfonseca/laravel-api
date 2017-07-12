@@ -2,8 +2,8 @@
 
 namespace App\Services\Installation;
 
-use Joselfonseca\LaravelTactician\CommandBusInterface;
-use Joselfonseca\LaravelTactician\Middleware\DatabaseTransactions;
+use Illuminate\Pipeline\Pipeline;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class AppInstallationService
@@ -12,25 +12,19 @@ use Joselfonseca\LaravelTactician\Middleware\DatabaseTransactions;
 class AppInstallationService implements AppInstallationServiceContract
 {
 
-    /**
-     * @var CommandBusInterface
-     */
-    protected $bus;
+    protected $pipeline;
 
     /**
      * @var array
      */
     protected $middleware = [
-        DatabaseTransactions::class
+        InstallAppHandler::class
     ];
 
-    /**
-     * AppInstallationService constructor.
-     * @param CommandBusInterface $bus
-     */
-    public function __construct(CommandBusInterface $bus)
+
+    public function __construct(Pipeline $pipeline)
     {
-        $this->bus = $bus;
+        $this->pipeline = $pipeline;
     }
 
 
@@ -40,7 +34,12 @@ class AppInstallationService implements AppInstallationServiceContract
      */
     public function installApp(array $installationData = [])
     {
-        $this->bus->addHandler(InstallAppCommand::class, InstallAppHandler::class);
-        return $this->bus->dispatch(InstallAppCommand::class, $installationData, $this->middleware);
+        return DB::transaction(function() use ($installationData) {
+            $this->pipeline->send((object) $installationData)
+                ->through($this->middleware)
+                ->then(function($installation) {
+                    return $installation;
+                });
+        });
     }
 }

@@ -5,8 +5,8 @@ namespace App\Services\Installation;
 use App\Entities\Role;
 use App\Entities\User;
 use App\Entities\Permission;
-use App\Services\Installation\Events\ApplicationWasInstalled;
 use Illuminate\Validation\ValidationException;
+use App\Services\Installation\Events\ApplicationWasInstalled;
 
 /**
  * Class InstallAppHandler
@@ -57,19 +57,20 @@ class InstallAppHandler
         $this->permissions = collect($this->permissions);
     }
 
+
     /**
-     * @param InstallAppCommand $command
+     * @param $installationData
      * @return $this
      */
-    public function handle(InstallAppCommand $command)
+    public function handle($installationData)
     {
         $this->createRoles()
             ->createPermissions()
-            ->createAdminUser((array) $command)
+            ->createAdminUser((array) $installationData)
             ->assignAdminRoleToAdminUser()
             ->assignAllPermissionsToAdminRole();
         event(new ApplicationWasInstalled($this->adminUser, $this->roles, $this->permissions));
-        return $this;
+        return $installationData;
     }
 
     /**
