@@ -5,9 +5,7 @@ namespace App\Services\Installation\Events;
 use App\Entities\User;
 
 /**
- * Class ApplicationWasInstalled
- *
- * @package App\Services\Installation\Events
+ * Class ApplicationWasInstalled.
  */
 class ApplicationWasInstalled
 {

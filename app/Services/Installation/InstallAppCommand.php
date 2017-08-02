@@ -3,9 +3,7 @@
 namespace App\Services\Installation;
 
 /**
- * Class InstallAppCommand
- *
- * @package App\Services\Installation
+ * Class InstallAppCommand.
  */
 class InstallAppCommand
 {
@@ -38,10 +36,10 @@ class InstallAppCommand
      * @param $password_confirmation
      */
     public function __construct(
-        $name = "Administrator",
-        $email = "admin@admin.com",
-        $password = "secret1234",
-        $password_confirmation = "secret1234"
+        $name = 'Administrator',
+        $email = 'admin@admin.com',
+        $password = 'secret1234',
+        $password_confirmation = 'secret1234'
     ) {
         $this->name = $name;
         $this->email = $email;

@@ -9,9 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Transformers\Users\RoleTransformer;
 
 /**
- * Class RolesController
- *
- * @package App\Http\Controllers\Api\Users
+ * Class RolesController.
  */
 class RolesController extends Controller
 {

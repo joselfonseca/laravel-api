@@ -5,9 +5,7 @@ namespace App\Support;
 use Uuid;
 
 /**
- * Class UuidScopeTrait
- *
- * @package App\Support
+ * Class UuidScopeTrait.
  */
 trait UuidScopeTrait
 {

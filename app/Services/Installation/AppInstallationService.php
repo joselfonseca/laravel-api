@@ -6,9 +6,7 @@ use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Class AppInstallationService
- *
- * @package App\Services\Installation
+ * Class AppInstallationService.
  */
 class AppInstallationService implements AppInstallationServiceContract
 {

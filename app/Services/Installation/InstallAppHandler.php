@@ -9,9 +9,7 @@ use Illuminate\Validation\ValidationException;
 use App\Services\Installation\Events\ApplicationWasInstalled;
 
 /**
- * Class InstallAppHandler
- *
- * @package App\Services\Installation
+ * Class InstallAppHandler.
  */
 class InstallAppHandler
 {

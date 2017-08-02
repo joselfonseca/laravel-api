@@ -5,14 +5,12 @@ namespace App\Support;
 use App\Entities\Permission;
 
 /**
- * Class HasPermissionsUuid
- *
- * @package App\Support
+ * Class HasPermissionsUuid.
  */
 trait HasPermissionsUuid
 {
     /**
-     * Added support to use a UUID to find the Permission
+     * Added support to use a UUID to find the Permission.
      *
      * @param string|array|Permission|\Illuminate\Support\Collection $permissions
      *

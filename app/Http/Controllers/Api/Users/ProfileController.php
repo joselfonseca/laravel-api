@@ -4,16 +4,14 @@ namespace App\Http\Controllers\Api\Users;
 
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Hashing\Hasher;
 use Dingo\Api\Exception\ResourceException;
 use App\Transformers\Users\UserTransformer;
 
 /**
- * Class ProfileController
- *
- * @package App\Http\Controllers\Api\Users
+ * Class ProfileController.
  */
 class ProfileController extends Controller
 {
@@ -38,7 +36,7 @@ class ProfileController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
         ];
-        if ($request->method() == "PATCH") {
+        if ($request->method() == 'PATCH') {
             $rules = [
                 'name' => 'sometimes|required',
                 'email' => 'sometimes|required|email|unique:users,email,'.$user->id,
