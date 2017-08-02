@@ -28,12 +28,15 @@ class ResetDemoApp extends Command
         parent::__construct();
     }
 
+    /**
+     * Reset the demo app.
+     */
     public function handle()
     {
         $service = app(AppInstallationService::class);
         $this->info('cleaning up');
         $this->call('migrate:refresh', [
-            'force'
+            'force' => true
         ]);
         $this->call('passport:install');
         $this->info('Installing the app');
@@ -44,7 +47,9 @@ class ResetDemoApp extends Command
             'password_confirmation' => 'secret123456789',
         ]);
         $this->info('Seed the database');
-        $this->call('db:seed');
+        $this->call('db:seed', [
+            'force' => true
+        ]);
         $this->info('Done');
     }
 }
