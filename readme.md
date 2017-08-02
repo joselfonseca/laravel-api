@@ -1,6 +1,7 @@
 ## Laravel API Starter Kit
 
 [![Build Status](https://travis-ci.org/joselfonseca/laravel-api.svg)](https://travis-ci.org/joselfonseca/laravel-api)
+[![StyleCI](https://styleci.io/repos/52485545/shield?branch=master)](https://styleci.io/repos/52485545)
 [![Total Downloads](https://poser.pugx.org/joselfonseca/laravel-api/downloads.svg)](https://packagist.org/packages/joselfonseca/laravel-api) 
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
