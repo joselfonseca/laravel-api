@@ -32,7 +32,10 @@ class ResetDemoApp extends Command
     {
         $service = app(AppInstallationService::class);
         $this->info('cleaning up');
-        $this->call('migrate:refresh');
+        $this->call('migrate:refresh', [
+            'force'
+        ]);
+        $this->call('passport:install');
         $this->info('Installing the app');
         $service->installApp([
             'name' => 'Api Demo Admin',
