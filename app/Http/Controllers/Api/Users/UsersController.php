@@ -9,9 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Transformers\Users\UserTransformer;
 
 /**
- * Class UsersController
+ * Class UsersController.
  *
- * @package App\Http\Controllers\Users
  * @author Jose Fonseca <jose@ditecnologia.com>
  */
 class UsersController extends Controller
@@ -39,7 +38,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Returns the Users resource with the roles relation
+     * Returns the Users resource with the roles relation.
      *
      * @param Request $request
      * @return mixed
@@ -96,7 +95,7 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
         ];
-        if ($request->method() == "PATCH") {
+        if ($request->method() == 'PATCH') {
             $rules = [
                 'name' => 'sometimes|required',
                 'email' => 'sometimes|required|email|unique:users,email,'.$user->id,

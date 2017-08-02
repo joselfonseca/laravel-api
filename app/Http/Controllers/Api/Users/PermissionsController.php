@@ -9,9 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Transformers\Users\PermissionTransformer;
 
 /**
- * Class PermissionsController
- *
- * @package App\Http\Controllers\Api\Users
+ * Class PermissionsController.
  */
 class PermissionsController extends Controller
 {
@@ -43,6 +41,7 @@ class PermissionsController extends Controller
         if ($request->has('limit')) {
             $paginator->appends('limit', $request->get('limit'));
         }
+
         return $this->response->paginator($paginator, new PermissionTransformer());
     }
 }

@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 /**
- * Class ApiDocsController
- *
- * @package App\Http\Controllers
+ * Class ApiDocsController.
  */
 class ApiDocsController extends Controller
 {

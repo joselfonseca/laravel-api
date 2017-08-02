@@ -6,9 +6,7 @@ use App\Entities\Permission;
 use League\Fractal\TransformerAbstract;
 
 /**
- * Class PermissionTransformer
- *
- * @package App\Transformers\Users
+ * Class PermissionTransformer.
  */
 class PermissionTransformer extends TransformerAbstract
 {

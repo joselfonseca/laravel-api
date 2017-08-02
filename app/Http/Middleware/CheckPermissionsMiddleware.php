@@ -13,7 +13,7 @@ class CheckPermissionsMiddleware
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure $next
-     * @param String $permission
+     * @param string $permission
      * @return mixed
      */
     public function handle($request, Closure $next, $permission)

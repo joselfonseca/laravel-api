@@ -6,9 +6,7 @@ use Illuminate\Console\Command;
 use App\Services\Installation\AppInstallationService;
 
 /**
- * Class ResetDemoApp
- *
- * @package App\Console\Commands
+ * Class ResetDemoApp.
  */
 class ResetDemoApp extends Command
 {
@@ -30,9 +28,6 @@ class ResetDemoApp extends Command
         parent::__construct();
     }
 
-    /**
-     *
-     */
     public function handle()
     {
         $service = app(AppInstallationService::class);

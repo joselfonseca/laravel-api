@@ -6,9 +6,7 @@ use App\Entities\Role;
 use League\Fractal\TransformerAbstract;
 
 /**
- * Class RolTransformer
- *
- * @package App\Transformers\Users
+ * Class RolTransformer.
  */
 class RoleTransformer extends TransformerAbstract
 {

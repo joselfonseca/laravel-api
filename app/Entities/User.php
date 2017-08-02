@@ -11,9 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Class User
- *
- * @package App\Entities
+ * Class User.
  */
 class User extends Authenticatable
 {

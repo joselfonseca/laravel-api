@@ -55,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
 
     /**
      * Define the "api" routes for the application.
-     * Since we are using Dingo, the web middleware group will not apply
+     * Since we are using Dingo, the web middleware group will not apply.
      *
      * These routes are typically stateless.
      *

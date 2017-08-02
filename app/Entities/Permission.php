@@ -5,9 +5,7 @@ namespace App\Entities;
 use App\Support\UuidScopeTrait;
 
 /**
- * Class Permission
- *
- * @package App\Entities
+ * Class Permission.
  */
 class Permission extends \Spatie\Permission\Models\Permission
 {
