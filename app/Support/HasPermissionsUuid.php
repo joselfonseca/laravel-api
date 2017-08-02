@@ -6,11 +6,11 @@ use App\Entities\Permission;
 
 /**
  * Class HasPermissionsUuid
+ *
  * @package App\Support
  */
 trait HasPermissionsUuid
 {
-
     /**
      * Added support to use a UUID to find the Permission
      *

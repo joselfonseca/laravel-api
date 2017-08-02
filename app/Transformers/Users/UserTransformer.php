@@ -7,11 +7,11 @@ use League\Fractal\TransformerAbstract;
 
 /**
  * Class UserTransformer
+ *
  * @package App\Transformers
  */
 class UserTransformer extends TransformerAbstract
 {
-
     /**
      * @var array
      */
@@ -28,7 +28,7 @@ class UserTransformer extends TransformerAbstract
             'name' => $model->name,
             'email' => $model->email,
             'created_at' => $model->created_at->toIso8601String(),
-            'updated_at' => $model->updated_at->toIso8601String()
+            'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
 

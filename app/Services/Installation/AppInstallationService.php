@@ -7,26 +7,24 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * Class AppInstallationService
+ *
  * @package App\Services\Installation
  */
 class AppInstallationService implements AppInstallationServiceContract
 {
-
     protected $pipeline;
 
     /**
      * @var array
      */
     protected $middleware = [
-        InstallAppHandler::class
+        InstallAppHandler::class,
     ];
-
 
     public function __construct(Pipeline $pipeline)
     {
         $this->pipeline = $pipeline;
     }
-
 
     /**
      * @param array $installationData
@@ -34,12 +32,10 @@ class AppInstallationService implements AppInstallationServiceContract
      */
     public function installApp(array $installationData = [])
     {
-        return DB::transaction(function() use ($installationData) {
-            $this->pipeline->send((object) $installationData)
-                ->through($this->middleware)
-                ->then(function($installation) {
-                    return $installation;
-                });
+        return DB::transaction(function () use ($installationData) {
+            $this->pipeline->send((object) $installationData)->through($this->middleware)->then(function ($installation) {
+                return $installation;
+            });
         });
     }
 }

@@ -10,16 +10,16 @@ use App\Services\Installation\Events\ApplicationWasInstalled;
 
 /**
  * Class InstallAppHandler
+ *
  * @package App\Services\Installation
  */
 class InstallAppHandler
 {
-
     /**
      * @var array|\Illuminate\Support\Collection
      */
     public $roles = [
-        [ 'name' => 'Administrator']
+        ['name' => 'Administrator'],
     ];
 
     /**
@@ -39,8 +39,8 @@ class InstallAppHandler
             ['name' => 'Update roles'],
         ],
         'permissions' => [
-            ['name' => 'List permissions']
-        ]
+            ['name' => 'List permissions'],
+        ],
     ];
 
     /**
@@ -57,19 +57,15 @@ class InstallAppHandler
         $this->permissions = collect($this->permissions);
     }
 
-
     /**
      * @param $installationData
      * @return $this
      */
     public function handle($installationData)
     {
-        $this->createRoles()
-            ->createPermissions()
-            ->createAdminUser((array) $installationData)
-            ->assignAdminRoleToAdminUser()
-            ->assignAllPermissionsToAdminRole();
+        $this->createRoles()->createPermissions()->createAdminUser((array) $installationData)->assignAdminRoleToAdminUser()->assignAllPermissionsToAdminRole();
         event(new ApplicationWasInstalled($this->adminUser, $this->roles, $this->permissions));
+
         return $installationData;
     }
 
@@ -81,6 +77,7 @@ class InstallAppHandler
         $this->roles = $this->roles->map(function ($role) {
             return Role::create($role);
         });
+
         return $this;
     }
 
@@ -94,6 +91,7 @@ class InstallAppHandler
                 return Permission::create($permission);
             });
         });
+
         return $this;
     }
 
@@ -107,7 +105,7 @@ class InstallAppHandler
         $validator = validator($attributes, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:8|confirmed',
         ]);
         if ($validator->fails()) {
             throw new ValidationException($validator);
@@ -115,8 +113,9 @@ class InstallAppHandler
         $this->adminUser = User::create([
             'name' => $attributes['name'],
             'email' => $attributes['email'],
-            'password' => $attributes['password']
+            'password' => $attributes['password'],
         ]);
+
         return $this;
     }
 
@@ -126,6 +125,7 @@ class InstallAppHandler
     public function assignAdminRoleToAdminUser()
     {
         $this->adminUser->assignRole('Administrator');
+
         return $this;
     }
 
@@ -138,6 +138,7 @@ class InstallAppHandler
         $this->permissions->flatten()->each(function ($permission) use ($role) {
             $role->givePermissionTo($permission);
         });
+
         return $this;
     }
 }

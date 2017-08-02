@@ -48,7 +48,7 @@ class InstallApp extends Command
             'name' => $name,
             'email' => $email,
             'password' => $password,
-            'password_confirmation' => $password
+            'password_confirmation' => $password,
         ]);
         $this->info('All Done');
     }

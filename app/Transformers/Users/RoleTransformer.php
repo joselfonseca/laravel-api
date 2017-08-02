@@ -7,11 +7,11 @@ use League\Fractal\TransformerAbstract;
 
 /**
  * Class RolTransformer
+ *
  * @package App\Transformers\Users
  */
 class RoleTransformer extends TransformerAbstract
 {
-
     /**
      * @var array
      */

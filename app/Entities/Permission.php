@@ -6,11 +6,11 @@ use App\Support\UuidScopeTrait;
 
 /**
  * Class Permission
+ *
  * @package App\Entities
  */
 class Permission extends \Spatie\Permission\Models\Permission
 {
-
     use UuidScopeTrait;
 
     /**

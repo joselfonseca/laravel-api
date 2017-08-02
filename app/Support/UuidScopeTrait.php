@@ -6,11 +6,11 @@ use Uuid;
 
 /**
  * Class UuidScopeTrait
+ *
  * @package App\Support
  */
 trait UuidScopeTrait
 {
-
     /**
      * @param $query
      * @param $uuid

@@ -17,13 +17,13 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         InstallApp::class,
         // this is just for the demo, you can remove this on your application
-        ResetDemoApp::class
+        ResetDemoApp::class,
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param  \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)

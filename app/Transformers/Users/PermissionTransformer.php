@@ -7,11 +7,11 @@ use League\Fractal\TransformerAbstract;
 
 /**
  * Class PermissionTransformer
+ *
  * @package App\Transformers\Users
  */
 class PermissionTransformer extends TransformerAbstract
 {
-
     /**
      * @param Permission $model
      * @return array

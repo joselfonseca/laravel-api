@@ -16,8 +16,8 @@ class Controller extends BaseController
     /**
      * Create the response for when a request fails validation.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  array  $errors
+     * @param  \Illuminate\Http\Request $request
+     * @param  array $errors
      * @return \Symfony\Component\HttpFoundation\Response
      */
     protected function buildFailedValidationResponse(Request $request, array $errors)
@@ -26,8 +26,6 @@ class Controller extends BaseController
             throw new ResourceException("Validation Error", $errors);
         }
 
-        return redirect()->to($this->getRedirectUrl())
-            ->withInput($request->input())
-            ->withErrors($errors, $this->errorBag());
+        return redirect()->to($this->getRedirectUrl())->withInput($request->input())->withErrors($errors, $this->errorBag());
     }
 }

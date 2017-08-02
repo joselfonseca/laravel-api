@@ -12,11 +12,11 @@ use App\Transformers\Users\UserTransformer;
 
 /**
  * Class ProfileController
+ *
  * @package App\Http\Controllers\Api\Users
  */
 class ProfileController extends Controller
 {
-
     use Helpers;
 
     /**
@@ -47,6 +47,7 @@ class ProfileController extends Controller
         $this->validate($request, $rules);
         // Except password as we don't want to let the users change a password from this endpoint
         $user->update($request->except('_token', 'password'));
+
         return $this->response->item($user->fresh(), new UserTransformer());
     }
 
@@ -59,16 +60,17 @@ class ProfileController extends Controller
         $user = Auth::user();
         $this->validate($request, [
             'current_password' => 'required',
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:8|confirmed',
         ]);
         // verify the old password given is valid
-        if (!app(Hasher::class)->check($request->get('current_password'), $user->password)) {
+        if (! app(Hasher::class)->check($request->get('current_password'), $user->password)) {
             throw new ResourceException('Validation Issue', [
-                'old_password' => 'The current password is incorrect'
+                'old_password' => 'The current password is incorrect',
             ]);
         }
         $user->password = bcrypt($request->get('password'));
         $user->save();
+
         return $this->response->item($user->fresh(), new UserTransformer());
     }
 }

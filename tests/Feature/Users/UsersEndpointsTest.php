@@ -49,6 +49,30 @@ class UsersEndpointsTest extends TestCase
         $this->assertArrayHasKey('data', $jsonResponse['data'][0]['roles']);
     }
 
+    function test_it_list_users_with_custom_limit()
+    {
+        factory(\App\Entities\User::class, 30)->create();
+        Passport::actingAs(User::first());
+        $response = $this->json('GET', 'api/users?limit=10');
+        $response->assertHeader('Content-Type', 'application/json');
+        $response->assertStatus(200);
+        $jsonResponse = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('data', $jsonResponse);
+        $this->assertArrayHasKey('meta', $jsonResponse);
+        $this->assertArrayHasKey('pagination', $jsonResponse['meta']);
+        $this->assertEquals(31, $jsonResponse['meta']['pagination']['total']);
+        $this->assertEquals(10, $jsonResponse['meta']['pagination']['count']);
+        $this->assertCount(10, $jsonResponse['data']);
+        $this->assertArrayHasKey('id', $jsonResponse['data'][0]);
+        $this->assertArrayHasKey('name', $jsonResponse['data'][0]);
+        $this->assertArrayHasKey('email', $jsonResponse['data'][0]);
+        $this->assertArrayHasKey('data', $jsonResponse['data'][0]['roles']);
+        $queryString = explode('?', $jsonResponse['meta']['pagination']['links']['next']);
+        parse_str($queryString[1], $result);
+        $this->assertArrayHasKey('limit', $result);
+        $this->assertEquals('10', $result['limit']);
+    }
+
     function test_it_validates_permission_for_listing_users()
     {
         factory(\App\Entities\User::class, 30)->create();

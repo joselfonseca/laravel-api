@@ -10,12 +10,12 @@ use App\Transformers\Users\UserTransformer;
 
 /**
  * Class UsersController
+ *
  * @package App\Http\Controllers\Users
  * @author Jose Fonseca <jose@ditecnologia.com>
  */
 class UsersController extends Controller
 {
-
     use Helpers;
 
     /**
@@ -25,6 +25,7 @@ class UsersController extends Controller
 
     /**
      * UsersController constructor.
+     *
      * @param User $model
      */
     public function __construct(User $model)
@@ -37,19 +38,21 @@ class UsersController extends Controller
         $this->middleware('permission:Delete users')->only('destroy');
     }
 
-
     /**
      * Returns the Users resource with the roles relation
+     *
      * @param Request $request
      * @return mixed
      */
     public function index(Request $request)
     {
-        $paginator = $this->model->with('roles.permissions')
-            ->paginate($request->get('limit', config('app.pagination_limit')));
+        $paginator = $this->model->with('roles.permissions')->paginate($request->get('limit', config('app.pagination_limit')));
+        if ($request->has('limit')) {
+            $paginator->appends('limit', $request->get('limit'));
+        }
+
         return $this->response->paginator($paginator, new UserTransformer());
     }
-
 
     /**
      * @param $id
@@ -58,9 +61,9 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = $this->model->with('roles.permissions')->byUuid($id)->firstOrFail();
+
         return $this->response->item($user, new UserTransformer());
     }
-
 
     /**
      * @param Request $request
@@ -71,15 +74,15 @@ class UsersController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:8|confirmed',
         ]);
         $user = $this->model->create($request->all());
         if ($request->has('roles')) {
             $user->syncRoles($request['roles']);
         }
+
         return $this->response->created(url('api/users/'.$user->uuid));
     }
-
 
     /**
      * @param Request $request
@@ -105,6 +108,7 @@ class UsersController extends Controller
         if ($request->has('roles')) {
             $user->syncRoles($request['roles']);
         }
+
         return $this->response->item($user->fresh(), new UserTransformer());
     }
 
@@ -117,6 +121,7 @@ class UsersController extends Controller
     {
         $user = $this->model->byUuid($uuid)->firstOrFail();
         $user->delete();
+
         return $this->response->noContent();
     }
 }

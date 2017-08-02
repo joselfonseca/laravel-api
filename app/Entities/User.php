@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User
+ *
  * @package App\Entities
  */
 class User extends Authenticatable
@@ -26,7 +27,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'uuid', 'email', 'password',
+        'name',
+        'uuid',
+        'email',
+        'password',
     ];
 
     /**
@@ -35,7 +39,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**

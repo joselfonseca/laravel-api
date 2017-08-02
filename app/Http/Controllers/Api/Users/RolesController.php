@@ -10,6 +10,7 @@ use App\Transformers\Users\RoleTransformer;
 
 /**
  * Class RolesController
+ *
  * @package App\Http\Controllers\Api\Users
  */
 class RolesController extends Controller
@@ -21,9 +22,9 @@ class RolesController extends Controller
      */
     protected $model;
 
-
     /**
      * RolesController constructor.
+     *
      * @param Role $model
      */
     public function __construct(Role $model)
@@ -36,18 +37,19 @@ class RolesController extends Controller
         $this->middleware('permission:Delete roles')->only('destroy');
     }
 
-
     /**
      * @param Request $request
      * @return mixed
      */
     public function index(Request $request)
     {
-        $paginator = $this->model->with('permissions')
-            ->paginate($request->get('limit', config('app.pagination_limit')));
+        $paginator = $this->model->with('permissions')->paginate($request->get('limit', config('app.pagination_limit')));
+        if ($request->has('limit')) {
+            $paginator->appends('limit', $request->get('limit'));
+        }
+
         return $this->response->paginator($paginator, new RoleTransformer());
     }
-
 
     /**
      * @param $id
@@ -56,9 +58,9 @@ class RolesController extends Controller
     public function show($id)
     {
         $role = $this->model->with('permissions')->byUuid($id)->firstOrFail();
+
         return $this->response->item($role, new RoleTransformer());
     }
-
 
     /**
      * @param Request $request
@@ -67,15 +69,15 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required',
         ]);
         $role = $this->model->create($request->all());
         if ($request->has('permissions')) {
             $role->syncPermissions($request['permissions']);
         }
+
         return $this->response->created(url('api/roles/'.$role->uuid));
     }
-
 
     /**
      * @param Request $request
@@ -86,12 +88,13 @@ class RolesController extends Controller
     {
         $role = $this->model->byUuid($uuid)->firstOrFail();
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required',
         ]);
         $role->update($request->except('_token'));
         if ($request->has('permissions')) {
             $role->syncPermissions($request['permissions']);
         }
+
         return $this->response->item($role->fresh(), new RoleTransformer());
     }
 
@@ -104,6 +107,7 @@ class RolesController extends Controller
     {
         $role = $this->model->byUuid($uuid)->firstOrFail();
         $role->delete();
+
         return $this->response->noContent();
     }
 }

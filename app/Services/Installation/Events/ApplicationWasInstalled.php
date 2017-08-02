@@ -6,11 +6,11 @@ use App\Entities\User;
 
 /**
  * Class ApplicationWasInstalled
+ *
  * @package App\Services\Installation\Events
  */
 class ApplicationWasInstalled
 {
-
     /**
      * @var
      */
@@ -26,9 +26,9 @@ class ApplicationWasInstalled
      */
     public $permissions;
 
-
     /**
      * ApplicationWasInstalled constructor.
+     *
      * @param User $adminUser
      * @param $roles
      * @param $permissions

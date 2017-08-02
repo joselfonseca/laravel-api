@@ -39,6 +39,29 @@ class RolesEndpointsTest extends TestCase
         ]);
     }
 
+    function test_it_list_paginated_roles()
+    {
+        factory(Role::class, 30)->create();
+        Passport::actingAs(User::first());
+        $response = $this->json('GET', 'api/roles?limit=10');
+        $response->assertStatus(200);
+        $response->assertJson([
+            'data' => [
+                ['name' => 'Administrator']
+            ],
+            'meta' => [
+                'pagination' => [
+
+                ]
+            ]
+        ]);
+        $jsonResponse = json_decode($response->getContent(), true);
+        $queryString = explode('?', $jsonResponse['meta']['pagination']['links']['next']);
+        parse_str($queryString[1], $result);
+        $this->assertArrayHasKey('limit', $result);
+        $this->assertEquals('10', $result['limit']);
+    }
+
     function test_it_prevents_unauthorized_roles_listing()
     {
         $user = factory(User::class)->create();

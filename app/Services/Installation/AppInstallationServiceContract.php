@@ -4,6 +4,7 @@ namespace App\Services\Installation;
 
 /**
  * Class AppInstallationService
+ *
  * @package App\Services\Installation
  */
 interface AppInstallationServiceContract

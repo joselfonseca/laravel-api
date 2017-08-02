@@ -10,11 +10,11 @@ use App\Transformers\Users\PermissionTransformer;
 
 /**
  * Class PermissionsController
+ *
  * @package App\Http\Controllers\Api\Users
  */
 class PermissionsController extends Controller
 {
-
     use Helpers;
 
     /**
@@ -22,9 +22,9 @@ class PermissionsController extends Controller
      */
     protected $model;
 
-
     /**
      * PermissionsController constructor.
+     *
      * @param Permission $model
      */
     public function __construct(Permission $model)
@@ -33,13 +33,16 @@ class PermissionsController extends Controller
         $this->middleware('permission:List permissions')->only('index');
     }
 
-
     /**
      * @param Request $request
      * @return \Dingo\Api\Http\Response
      */
     public function index(Request $request)
     {
-        return $this->response->paginator($this->model->paginate($request->get('limit', config('app.pagination_limit'))), new PermissionTransformer());
+        $paginator = $this->model->paginate($request->get('limit', config('app.pagination_limit')));
+        if ($request->has('limit')) {
+            $paginator->appends('limit', $request->get('limit'));
+        }
+        return $this->response->paginator($paginator, new PermissionTransformer());
     }
 }

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ErrorHandlerServiceProvider extends ServiceProvider
 {
-
     use Helpers;
 
     /**

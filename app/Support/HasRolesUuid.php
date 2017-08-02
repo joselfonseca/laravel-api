@@ -6,7 +6,6 @@ use App\Entities\Role;
 
 trait HasRolesUuid
 {
-
     /**
      * @param $role
      *

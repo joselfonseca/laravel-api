@@ -7,22 +7,20 @@ use App\Services\Installation\AppInstallationService;
 
 /**
  * Class ResetDemoApp
+ *
  * @package App\Console\Commands
  */
 class ResetDemoApp extends Command
 {
-
     /**
      * @var string
      */
     protected $signature = 'demo:reset';
 
-
     /**
      * @var string
      */
     protected $description = 'Reset the application state for the demo site.';
-
 
     /**
      * ResetDemoApp constructor.
@@ -31,7 +29,6 @@ class ResetDemoApp extends Command
     {
         parent::__construct();
     }
-
 
     /**
      *
@@ -46,7 +43,7 @@ class ResetDemoApp extends Command
             'name' => 'Api Demo Admin',
             'email' => 'admin@admin.com',
             'password' => 'secret123456789',
-            'password_confirmation' => 'secret123456789'
+            'password_confirmation' => 'secret123456789',
         ]);
         $this->info('Seed the database');
         $this->call('db:seed');
