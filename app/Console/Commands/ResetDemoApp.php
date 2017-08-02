@@ -35,9 +35,7 @@ class ResetDemoApp extends Command
     {
         $service = app(AppInstallationService::class);
         $this->info('cleaning up');
-        $this->call('migrate:refresh', [
-            'force' => true
-        ]);
+        $this->call('migrate:refresh --force');
         $this->call('passport:install');
         $this->info('Installing the app');
         $service->installApp([
@@ -47,9 +45,7 @@ class ResetDemoApp extends Command
             'password_confirmation' => 'secret123456789',
         ]);
         $this->info('Seed the database');
-        $this->call('db:seed', [
-            'force' => true
-        ]);
+        $this->call('db:seed --force');
         $this->info('Done');
     }
 }
