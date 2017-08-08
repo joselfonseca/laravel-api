@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Support\ServiceProvider;
+use App\Exceptions\BodyTooLargeException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -34,6 +35,9 @@ class ErrorHandlerServiceProvider extends ServiceProvider
         });
         app('Dingo\Api\Exception\Handler')->register(function (ModelNotFoundException $exception) {
             return $this->response->errorNotFound('404 Not Found');
+        });
+        app('Dingo\Api\Exception\Handler')->register(function (BodyTooLargeException $exception) {
+            return $this->response->error("The body is too large", 413);
         });
     }
 }

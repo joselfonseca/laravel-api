@@ -37,6 +37,10 @@ $api->version('v1', function($api){
                 $api->put('/password', 'Api\Users\ProfileController@updatePassword');
             });
 
+            $api->group(['prefix' => 'assets'], function($api) {
+                $api->post('/', 'Api\Assets\UploadFileController@store');
+            });
+
         });
 
     });
