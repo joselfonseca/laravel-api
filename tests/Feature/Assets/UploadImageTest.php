@@ -60,7 +60,6 @@ class UploadImageTest extends TestCase
         ]);
         $response = $this->call('POST', 'api/assets', [], [], [], $server, $file);
         $this->assertEquals(413, $response->getStatusCode());
-        dd($response->getContent());
     }
 
     function test_it_validates_mime_type()
