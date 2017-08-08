@@ -15,9 +15,7 @@ use App\Transformers\Assets\AssetTransformer;
 use Dingo\Api\Exception\StoreResourceFailedException;
 
 /**
- * Class UploadFileController
- *
- * @package App\Http\Controllers\Api\Assets
+ * Class UploadFileController.
  */
 class UploadFileController extends Controller
 {
@@ -155,14 +153,14 @@ class UploadFileController extends Controller
         try {
             $response = $this->client->get($url);
             if ($response->getStatusCode() != 200) {
-                throw new StoreResourceFailedException("Validation Error", [
-                    'url' => "The url seems unreachable",
+                throw new StoreResourceFailedException('Validation Error', [
+                    'url' => 'The url seems unreachable',
                 ]);
             }
 
             return $response;
         } catch (TransferException $e) {
-            throw new StoreResourceFailedException("Validation Error", [
+            throw new StoreResourceFailedException('Validation Error', [
                 'url' => 'The url seems to be unreachable: '.$e->getCode(),
             ]);
         }
@@ -174,7 +172,7 @@ class UploadFileController extends Controller
     protected function validateMime($mime)
     {
         if (! array_key_exists($mime, $this->validMimes)) {
-            throw new StoreResourceFailedException("Validation Error", [
+            throw new StoreResourceFailedException('Validation Error', [
                 'Content-Type' => 'The Content Type sent is not valid',
             ]);
         }

@@ -6,9 +6,7 @@ use App\Entities\Assets\Asset;
 use League\Fractal\TransformerAbstract;
 
 /**
- * Class AssetTransformer
- *
- * @package App\Transformers\Assets
+ * Class AssetTransformer.
  */
 class AssetTransformer extends TransformerAbstract
 {
@@ -26,6 +24,4 @@ class AssetTransformer extends TransformerAbstract
             'created_at' => $model->created_at->toIso8601String(),
         ];
     }
-
-
 }
