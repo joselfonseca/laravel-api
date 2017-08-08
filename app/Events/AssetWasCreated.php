@@ -5,9 +5,7 @@ namespace App\Events;
 use App\Entities\Assets\Asset;
 
 /**
- * Class AssetWasCreated
- *
- * @package App\Events
+ * Class AssetWasCreated.
  */
 class AssetWasCreated
 {

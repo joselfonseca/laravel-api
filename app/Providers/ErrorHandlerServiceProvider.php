@@ -37,7 +37,7 @@ class ErrorHandlerServiceProvider extends ServiceProvider
             return $this->response->errorNotFound('404 Not Found');
         });
         app('Dingo\Api\Exception\Handler')->register(function (BodyTooLargeException $exception) {
-            return $this->response->error("The body is too large", 413);
+            return $this->response->error('The body is too large', 413);
         });
     }
 }

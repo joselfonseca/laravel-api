@@ -6,9 +6,7 @@ use App\Support\UuidScopeTrait;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Asset
- *
- * @package App\Entities\Assets
+ * Class Asset.
  */
 class Asset extends Model
 {
