@@ -14,5 +14,5 @@ class Permission extends \Spatie\Permission\Models\Permission
     /**
      * @var array
      */
-    protected $fillable = ['name', 'uuid'];
+    protected $fillable = ['name', 'uuid', 'guard_name'];
 }
