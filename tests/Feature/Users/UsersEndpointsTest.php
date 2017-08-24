@@ -264,8 +264,8 @@ class UsersEndpointsTest extends TestCase
         $response->assertStatus(201);
         $user = User::where('email', 'john@example.com')->first();
         $roles->each(function($role) use ($user) {
-            $this->assertDatabaseHas('user_has_roles', [
-                'user_id' => $user->id,
+            $this->assertDatabaseHas('model_has_roles', [
+                'model_id' => $user->id,
                 'role_id' => $role->id
             ]);
         });
@@ -282,8 +282,8 @@ class UsersEndpointsTest extends TestCase
         ]);
         $response->assertStatus(200);
         $roles->each(function($role) use ($user) {
-            $this->assertDatabaseHas('user_has_roles', [
-                'user_id' => $user->id,
+            $this->assertDatabaseHas('model_has_roles', [
+                'model_id' => $user->id,
                 'role_id' => $role->id
             ]);
         });
@@ -301,8 +301,8 @@ class UsersEndpointsTest extends TestCase
         ]);
         $response->assertStatus(200);
         $roles->each(function($role) use ($user) {
-            $this->assertDatabaseMissing('user_has_roles', [
-                'user_id' => $user->id,
+            $this->assertDatabaseMissing('model_has_roles', [
+                'model_id' => $user->id,
                 'role_id' => $role->id
             ]);
         });
