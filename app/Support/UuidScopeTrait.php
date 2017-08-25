@@ -27,7 +27,9 @@ trait UuidScopeTrait
         parent::boot();
 
         static::creating(function ($model) {
-            $model->uuid = Uuid::generate()->string;
+            if (empty($model->uuid)) {
+                $model->uuid = Uuid::generate()->string;
+            }
         });
     }
 }
