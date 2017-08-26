@@ -51,4 +51,14 @@ class RoleTest extends TestCase
         });
     }
 
+    function test_it_can_fill_uuid_at_creation()
+    {
+        $uuid = '84e28c10-8991-11e7-ad89-056674746d73';
+
+        $roleNotFilled = factory(Role::class)->create();
+        $this->assertNotEquals($uuid, $roleNotFilled->uuid);
+
+        $roleFilled = factory(Role::class)->create(['uuid' => $uuid]);
+        $this->assertEquals($uuid, $roleFilled->uuid);
+    }
 }
