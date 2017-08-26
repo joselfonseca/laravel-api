@@ -2,7 +2,8 @@
 
 namespace App\Support;
 
-use App\Entities\Permission;
+use Spatie\Permission\Contracts\Permission;
+use App\Entities\Permission as PermissionEntity;
 
 /**
  * Class HasPermissionsUuid.
@@ -16,14 +17,14 @@ trait HasPermissionsUuid
      *
      * @return Permission
      */
-    protected function getStoredPermission($permissions)
+    protected function getStoredPermission($permissions): Permission
     {
         if (is_string($permissions)) {
-            return app(Permission::class)->where('name', $permissions)->orWhere('uuid', $permissions)->first();
+            return app(PermissionEntity::class)->where('name', $permissions)->orWhere('uuid', $permissions)->first();
         }
 
         if (is_array($permissions)) {
-            return app(Permission::class)->whereIn('name', $permissions)->orWhereIn('uuid', $permissions)->get();
+            return app(PermissionEntity::class)->whereIn('name', $permissions)->orWhereIn('uuid', $permissions)->get();
         }
 
         return $permissions;

@@ -14,12 +14,12 @@
     ],
     "require": {
         "php": ">=7.0.0",
+        "dingo/api": "1.0.*@dev",
         "laravel/framework": "5.4.*",
         "laravel/passport": "^3.0",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
-        "dingo/api": "1.0.*@dev",
-        "spatie/laravel-permission": "^1.7",
+        "spatie/laravel-permission": "^2.4",
         "webpatser/laravel-uuid": "^2.0"
     },
     "require-dev": {

@@ -2,7 +2,8 @@
 
 namespace App\Support;
 
-use App\Entities\Role;
+use App\Entities\Role as RoleEntity;
+use Spatie\Permission\Contracts\Role;
 
 trait HasRolesUuid
 {
@@ -11,10 +12,10 @@ trait HasRolesUuid
      *
      * @return Role
      */
-    protected function getStoredRole($role)
+    protected function getStoredRole($role): Role
     {
         if (is_string($role)) {
-            return app(Role::class)->where('name', $role)->orWhere('uuid', $role)->first();
+            return app(RoleEntity::class)->where('name', $role)->orWhere('uuid', $role)->first();
         }
 
         return $role;
