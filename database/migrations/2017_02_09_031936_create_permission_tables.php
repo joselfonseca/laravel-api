@@ -19,7 +19,7 @@ class CreatePermissionTables extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('guard_name');
-            $table->uuid('uuid')->index();
+            $table->uuid('uuid')->index()->unique();
             $table->timestamps();
         });
 
@@ -27,7 +27,7 @@ class CreatePermissionTables extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('guard_name');
-            $table->uuid('uuid')->index();
+            $table->uuid('uuid')->index()->unique();
             $table->timestamps();
         });
 
