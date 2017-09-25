@@ -7,6 +7,7 @@ use App\Entities\User;
 use App\Entities\Role;
 use App\Entities\Permission;
 use Laravel\Passport\Passport;
+use Spatie\Permission\PermissionRegistrar;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class RolesEndpointsTest extends TestCase
@@ -18,6 +19,7 @@ class RolesEndpointsTest extends TestCase
     {
         parent::setUp();
         $this->installApp();
+        $this->app->make(PermissionRegistrar::class)->registerPermissions();
     }
 
 

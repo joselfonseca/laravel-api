@@ -6,6 +6,7 @@ use Tests\TestCase;
 use App\Entities\User;
 use Laravel\Passport\Passport;
 use Illuminate\Contracts\Hashing\Hasher;
+use Spatie\Permission\PermissionRegistrar;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ProfileEndpointsTest extends TestCase
@@ -17,6 +18,7 @@ class ProfileEndpointsTest extends TestCase
     {
         parent::setUp();
         $this->installApp();
+        $this->app->make(PermissionRegistrar::class)->registerPermissions();
     }
 
     function test_it_gets_user_profile()

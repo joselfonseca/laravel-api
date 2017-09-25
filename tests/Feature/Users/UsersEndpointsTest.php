@@ -6,6 +6,7 @@ use App\Entities\Role;
 use Tests\TestCase;
 use App\Entities\User;
 use Laravel\Passport\Passport;
+use Spatie\Permission\PermissionRegistrar;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UsersEndpointsTest extends TestCase
@@ -17,6 +18,7 @@ class UsersEndpointsTest extends TestCase
     {
         parent::setUp();
         $this->installApp();
+        $this->app->make(PermissionRegistrar::class)->registerPermissions();
     }
 
     function test_it_responds_unauthenticated_for_list_users()

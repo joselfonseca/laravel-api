@@ -2,10 +2,11 @@
 
 namespace Tests\Feature\Users;
 
-use App\Entities\Permission;
 use Tests\TestCase;
 use App\Entities\User;
+use App\Entities\Permission;
 use Laravel\Passport\Passport;
+use Spatie\Permission\PermissionRegistrar;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class PermissionsEndpointsTest extends TestCase
@@ -18,6 +19,7 @@ class PermissionsEndpointsTest extends TestCase
     {
         parent::setUp();
         $this->installApp();
+        $this->app->make(PermissionRegistrar::class)->registerPermissions();
     }
 
     function test_it_can_list_permissions()

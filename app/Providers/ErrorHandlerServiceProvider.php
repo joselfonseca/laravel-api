@@ -5,7 +5,9 @@ namespace App\Providers;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Support\ServiceProvider;
 use App\Exceptions\BodyTooLargeException;
+use Dingo\Api\Exception\ResourceException;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ErrorHandlerServiceProvider extends ServiceProvider
@@ -38,6 +40,13 @@ class ErrorHandlerServiceProvider extends ServiceProvider
         });
         app('Dingo\Api\Exception\Handler')->register(function (BodyTooLargeException $exception) {
             return $this->response->error('The body is too large', 413);
+        });
+        app('Dingo\Api\Exception\Handler')->register(function (ValidationException $exception) {
+            if (request()->expectsJson()) {
+                throw new ResourceException('Validation Error', $exception->errors());
+            }
+
+            return redirect()->back()->withInput(request()->input())->withErrors($exception->errors());
         });
     }
 }
