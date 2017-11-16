@@ -2,6 +2,7 @@
 
 namespace App\Services\Installation;
 
+use Closure;
 use App\Entities\Role;
 use App\Entities\User;
 use App\Entities\Permission;
@@ -57,14 +58,15 @@ class InstallAppHandler
 
     /**
      * @param $installationData
-     * @return $this
+     * @param \Closure $next
+     * @return mixed
      */
-    public function handle($installationData)
+    public function handle($installationData, Closure $next)
     {
         $this->createRoles()->createPermissions()->createAdminUser((array) $installationData)->assignAdminRoleToAdminUser()->assignAllPermissionsToAdminRole();
         event(new ApplicationWasInstalled($this->adminUser, $this->roles, $this->permissions));
 
-        return $installationData;
+        return $next($installationData);
     }
 
     /**
