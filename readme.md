@@ -71,7 +71,7 @@ Navigate to the project root and run `vendor/bin/phpunit` after installing all t
 
 ## Demo
 
-You can visit the demo in the following link [http://demo.laravelapi.com/](http://demo.laravelapi.com/)
+You can visit the demo in the following link [https://demo.laravelapi.com/](https://demo.laravelapi.com/)
 
 ## License
 
