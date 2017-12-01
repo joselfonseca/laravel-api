@@ -6,6 +6,7 @@ node_modules/
 .env
 vendor/
 storage/logs/laravel.log
-framework/cache/
-framework/sessions/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
 
