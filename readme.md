@@ -69,10 +69,6 @@ You should be done with the basic installation and configuration.
 
 Navigate to the project root and run `vendor/bin/phpunit` after installing all the composer dependencies and after the .env file was created.
 
-## Demo
-
-You can visit the demo in the following link [https://demo.laravelapi.com/](https://demo.laravelapi.com/)
-
 ## License
 
 The Laravel API Starter kit is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
