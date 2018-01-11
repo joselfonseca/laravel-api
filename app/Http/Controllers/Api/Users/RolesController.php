@@ -59,6 +59,7 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         $model = $this->service->create($request->all());
+
         return $this->response->created(url('api/roles/'.$model->uuid));
     }
 
@@ -70,6 +71,7 @@ class RolesController extends Controller
     public function update(Request $request, $id)
     {
         $model = $this->service->update($id, $request->all());
+
         return $this->response->array($this->service->transform($model));
     }
 
@@ -80,6 +82,7 @@ class RolesController extends Controller
     public function destroy($id)
     {
         $this->service->delete($id);
+
         return $this->response->noContent();
     }
 }

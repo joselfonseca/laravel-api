@@ -4,25 +4,23 @@ namespace App\Services;
 
 use App\Entities\Role;
 use App\Transformers\RoleTransformer;
-use League\Fractal\TransformerAbstract;
 use App\Contracts\RolesServiceContract;
+use League\Fractal\TransformerAbstract;
 use Dingo\Api\Exception\ResourceException;
 use League\Fractal\Serializer\DataArraySerializer;
 use Joselfonseca\LaravelApiTools\Contracts\FractalAble;
-use Joselfonseca\LaravelApiTools\Traits\FilterableTrait;
 use Joselfonseca\LaravelApiTools\Contracts\ValidateAble;
+use Joselfonseca\LaravelApiTools\Traits\FilterableTrait;
 use Joselfonseca\LaravelApiTools\Traits\FractalAbleTrait;
 use Joselfonseca\LaravelApiTools\Traits\ValidateAbleTrait;
 use Joselfonseca\LaravelApiTools\Traits\OrderQueryResultHelper;
 use Joselfonseca\LaravelApiTools\Traits\ProcessMultipleParameterHelper;
 
 /**
- * Class RolesService
- * @package App\Services
+ * Class RolesService.
  */
 class RolesService implements FractalAble, ValidateAble, RolesServiceContract
 {
-
     use FractalAbleTrait,
         ValidateAbleTrait,
         FilterableTrait,
@@ -33,14 +31,14 @@ class RolesService implements FractalAble, ValidateAble, RolesServiceContract
      * @var array
      */
     protected $validationCreateRules = [
-        'name' => 'required'
+        'name' => 'required',
     ];
 
     /**
      * @var array
      */
     protected $validationUpdateRules = [
-        'name' => 'required'
+        'name' => 'required',
     ];
 
     /**
@@ -53,7 +51,7 @@ class RolesService implements FractalAble, ValidateAble, RolesServiceContract
     /**
      * @var string
      */
-    protected $resourceKey = "roles";
+    protected $resourceKey = 'roles';
 
     /**
      * @var Role
@@ -101,11 +99,13 @@ class RolesService implements FractalAble, ValidateAble, RolesServiceContract
         $this->applyFilters($model, $attributes);
         $this->processOrderingRules($attributes);
         $this->applyOrderingRules($model);
-        if (!empty($limit)) {
+        if (! empty($limit)) {
             $paginator = $model->paginate($limit);
             $paginator->appends('limit', $limit);
+
             return $paginator;
         }
+
         return $model->get();
     }
 
@@ -128,6 +128,7 @@ class RolesService implements FractalAble, ValidateAble, RolesServiceContract
         $this->runValidator($attributes, $this->validationCreateRules, $this->validationMessages);
         $model = $this->model->create($attributes);
         $this->validateAndSyncPermissions($model, $attributes);
+
         return $model;
     }
 
@@ -144,6 +145,7 @@ class RolesService implements FractalAble, ValidateAble, RolesServiceContract
         $model->fill($attributes);
         $model->save();
         $this->validateAndSyncPermissions($model, $attributes);
+
         return $model->fresh();
     }
 
@@ -162,6 +164,7 @@ class RolesService implements FractalAble, ValidateAble, RolesServiceContract
     {
         $model = $this->find($id);
         $model->delete();
+
         return true;
     }
 

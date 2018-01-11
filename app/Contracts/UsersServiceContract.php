@@ -6,12 +6,10 @@ use App\Entities\User;
 use Dingo\Api\Exception\ResourceException;
 
 /**
- * Class UsersServiceContract
- * @package App\Contracts
+ * Class UsersServiceContract.
  */
 interface UsersServiceContract
 {
-
     /**
      * @param array $attributes
      * @param int $limit

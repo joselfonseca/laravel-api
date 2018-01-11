@@ -18,12 +18,10 @@ use Joselfonseca\LaravelApiTools\Traits\OrderQueryResultHelper;
 use Joselfonseca\LaravelApiTools\Traits\ProcessMultipleParameterHelper;
 
 /**
- * Class UsersService
- * @package App\Services
+ * Class UsersService.
  */
 class UsersService implements FractalAble, ValidateAble, UsersServiceContract
 {
-
     use FractalAbleTrait,
         ValidateAbleTrait,
         FilterableTrait,
@@ -43,7 +41,7 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
      * @var array
      */
     protected $validationUpdateRules = [
-        'name' => 'required'
+        'name' => 'required',
     ];
 
     /**
@@ -56,7 +54,7 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
     /**
      * @var string
      */
-    protected $resourceKey = "users";
+    protected $resourceKey = 'users';
 
     /**
      * @var User
@@ -104,11 +102,13 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
         $this->applyFilters($model, $attributes);
         $this->processOrderingRules($attributes);
         $this->applyOrderingRules($model);
-        if (!empty($limit)) {
+        if (! empty($limit)) {
             $paginator = $model->paginate($limit);
             $paginator->appends('limit', $limit);
+
             return $paginator;
         }
+
         return $model->get();
     }
 
@@ -131,6 +131,7 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
         $this->runValidator($attributes, $this->validationCreateRules, $this->validationMessages);
         $model = $this->model->create($attributes);
         $this->validateAndUpdateRoles($model, $attributes);
+
         return $model;
     }
 
@@ -154,6 +155,7 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
         $model->fill($attributes);
         $model->save();
         $this->validateAndUpdateRoles($model, $attributes);
+
         return $model->fresh();
     }
 
@@ -176,6 +178,7 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
     {
         $model = $this->find($id);
         $model->delete();
+
         return true;
     }
 
@@ -198,6 +201,7 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
         }
         $user->password = $attributes['password'];
         $user->save();
+
         return $user->fresh();
     }
 
