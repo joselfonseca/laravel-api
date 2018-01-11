@@ -145,8 +145,8 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
     {
         $model = $this->find($id);
         $this->validationUpdateRules['email'] = 'required|email|unique:users,email,'.$model->id;
-        if($partial) {
-            $this->validationUpdateRules = collect($this->validationUpdateRules)->map(function($value){
+        if ($partial) {
+            $this->validationUpdateRules = collect($this->validationUpdateRules)->map(function ($value) {
                 return 'sometimes|'.$value;
             })->toArray();
         }
@@ -163,7 +163,7 @@ class UsersService implements FractalAble, ValidateAble, UsersServiceContract
      */
     protected function validateAndUpdateRoles($model, $attributes)
     {
-        if(array_key_exists('roles', $attributes)) {
+        if (array_key_exists('roles', $attributes)) {
             $model->syncRoles($attributes['roles']);
         }
     }

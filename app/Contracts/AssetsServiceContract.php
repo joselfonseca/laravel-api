@@ -13,10 +13,10 @@ interface AssetsServiceContract
 {
 
     /**
-	 * @param array $attributes
-	 * @param int $limit
-	 * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection|static[]
-	 */
+     * @param array $attributes
+     * @param int $limit
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection|static[]
+     */
     public function get(array $attributes = [], $limit = 20);
 
     /**
@@ -57,5 +57,4 @@ interface AssetsServiceContract
      * @return mixed
      */
     public function uploadFromDirectFile($attributes = []);
-
 }

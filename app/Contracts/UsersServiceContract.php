@@ -53,5 +53,4 @@ interface UsersServiceContract
      * @return mixed
      */
     public function updatePassword($id, array $attributes = []);
-
 }

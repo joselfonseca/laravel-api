@@ -13,10 +13,10 @@ interface RolesServiceContract
 {
 
     /**
-	 * @param array $attributes
-	 * @param int $limit
-	 * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection|static[]
-	 */
+     * @param array $attributes
+     * @param int $limit
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection|static[]
+     */
     public function get(array $attributes = [], $limit = 20);
 
     /**
@@ -45,5 +45,4 @@ interface RolesServiceContract
      * @return bool
      */
     public function delete($id);
-
 }

@@ -45,7 +45,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $partial = false;
-        if($request->method() == 'PATCH') {
+        if ($request->method() == 'PATCH') {
             $partial = true;
         }
         $user = $this->service->update(Auth::user()->id, $request->except('password'), $partial);

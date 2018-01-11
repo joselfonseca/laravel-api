@@ -30,10 +30,10 @@ class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
 {
 
     use FractalAbleTrait,
-    	ValidateAbleTrait,
-    	FilterableTrait,
-    	OrderQueryResultHelper,
-    	ProcessMultipleParameterHelper;
+        ValidateAbleTrait,
+        FilterableTrait,
+        OrderQueryResultHelper,
+        ProcessMultipleParameterHelper;
 
     /**
      * @var array
@@ -113,27 +113,27 @@ class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
     }
 
     /**
-	 * @return string
-	 */
-	public function setSerializer()
-	{
-		return DataArraySerializer::class;
-	}
+     * @return string
+     */
+    public function setSerializer()
+    {
+        return DataArraySerializer::class;
+    }
 
     /**
-	 * @param array $attributes
-	 * @param int $limit
-	 * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection|static[]
-	 */
+     * @param array $attributes
+     * @param int $limit
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection|static[]
+     */
     public function get(array $attributes = [], $limit = 20)
     {
         $model = $this->model->with($this->includes);
         $this->applyFilters($model, $attributes);
         $this->processOrderingRules($attributes);
-		$this->applyOrderingRules($model);
+        $this->applyOrderingRules($model);
         if (!empty($limit)) {
-        	$paginator = $model->paginate($limit);
-			$paginator->appends('limit', $limit);
+            $paginator = $model->paginate($limit);
+            $paginator->appends('limit', $limit);
             return $paginator;
         }
         return $model->get();
@@ -291,12 +291,12 @@ class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
     }
 
     /**
-	 * @return array
-	 */
-	public function getFilterableFields()
-	{
-		return [
+     * @return array
+     */
+    public function getFilterableFields()
+    {
+        return [
 
-		];
-	}
+        ];
+    }
 }
