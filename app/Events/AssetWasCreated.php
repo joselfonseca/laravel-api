@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Entities\Assets\Asset;
+use App\Entities\Asset;
 
 /**
  * Class AssetWasCreated.
@@ -10,14 +10,14 @@ use App\Entities\Assets\Asset;
 class AssetWasCreated
 {
     /**
-     * @var \App\Entities\Assets\Asset
+     * @var \App\Entities\Asset
      */
     public $asset;
 
     /**
      * AssetWasCreated constructor.
      *
-     * @param \App\Entities\Assets\Asset $asset
+     * @param \App\Entities\Asset $asset
      */
     public function __construct(Asset $asset)
     {

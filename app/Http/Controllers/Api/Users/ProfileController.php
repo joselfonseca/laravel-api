@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\Hashing\Hasher;
-use Dingo\Api\Exception\ResourceException;
-use App\Transformers\Users\UserTransformer;
+use App\Contracts\UsersServiceContract;
 
 /**
  * Class ProfileController.
@@ -18,11 +16,26 @@ class ProfileController extends Controller
     use Helpers;
 
     /**
+     * @var \App\Contracts\UsersServiceContract
+     */
+    protected $service;
+
+    /**
+     * ProfileController constructor.
+     *
+     * @param \App\Contracts\UsersServiceContract $service
+     */
+    public function __construct(UsersServiceContract $service)
+    {
+        $this->service = $service;
+    }
+
+    /**
      * @return \Dingo\Api\Http\Response
      */
     public function index()
     {
-        return $this->response->item(Auth::user(), new UserTransformer());
+        return $this->response->array($this->service->transform($this->service->find(Auth::user()->id)));
     }
 
     /**
@@ -31,22 +44,12 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-        $user = Auth::user();
-        $rules = [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user->id,
-        ];
-        if ($request->method() == 'PATCH') {
-            $rules = [
-                'name' => 'sometimes|required',
-                'email' => 'sometimes|required|email|unique:users,email,'.$user->id,
-            ];
+        $partial = false;
+        if($request->method() == 'PATCH') {
+            $partial = true;
         }
-        $this->validate($request, $rules);
-        // Except password as we don't want to let the users change a password from this endpoint
-        $user->update($request->except('_token', 'password'));
-
-        return $this->response->item($user->fresh(), new UserTransformer());
+        $user = $this->service->update(Auth::user()->id, $request->except('password'), $partial);
+        return $this->response->array($this->service->transform($user));
     }
 
     /**
@@ -55,20 +58,7 @@ class ProfileController extends Controller
      */
     public function updatePassword(Request $request)
     {
-        $user = Auth::user();
-        $this->validate($request, [
-            'current_password' => 'required',
-            'password' => 'required|min:8|confirmed',
-        ]);
-        // verify the old password given is valid
-        if (! app(Hasher::class)->check($request->get('current_password'), $user->password)) {
-            throw new ResourceException('Validation Issue', [
-                'old_password' => 'The current password is incorrect',
-            ]);
-        }
-        $user->password = bcrypt($request->get('password'));
-        $user->save();
-
-        return $this->response->item($user->fresh(), new UserTransformer());
+        $user = $this->service->updatePassword(Auth::user()->id, $request->all());
+        return $this->response->array($this->service->transform($user));
     }
 }

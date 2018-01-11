@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api\Users;
 
-use App\Entities\Role;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
-use App\Transformers\Users\RoleTransformer;
+use App\Contracts\RolesServiceContract;
 
 /**
  * Class RolesController.
@@ -16,18 +15,18 @@ class RolesController extends Controller
     use Helpers;
 
     /**
-     * @var
+     * @var \App\Contracts\RolesServiceContract
      */
-    protected $model;
+    protected $service;
 
     /**
      * RolesController constructor.
      *
-     * @param Role $model
+     * @param \App\Contracts\RolesServiceContract $service
      */
-    public function __construct(Role $model)
+    public function __construct(RolesServiceContract $service)
     {
-        $this->model = $model;
+        $this->service = $service;
         $this->middleware('permission:List roles')->only('index');
         $this->middleware('permission:List roles')->only('show');
         $this->middleware('permission:Create roles')->only('store');
@@ -41,12 +40,7 @@ class RolesController extends Controller
      */
     public function index(Request $request)
     {
-        $paginator = $this->model->with('permissions')->paginate($request->get('limit', config('app.pagination_limit')));
-        if ($request->has('limit')) {
-            $paginator->appends('limit', $request->get('limit'));
-        }
-
-        return $this->response->paginator($paginator, new RoleTransformer());
+        return $this->response->array($this->service->transform($this->service->get($request->toArray(), $request->get('limit', config('app.pagination_limit')))));
     }
 
     /**
@@ -55,9 +49,7 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        $role = $this->model->with('permissions')->byUuid($id)->firstOrFail();
-
-        return $this->response->item($role, new RoleTransformer());
+        return $this->response->array($this->service->transform($this->service->find($id)));
     }
 
     /**
@@ -66,46 +58,28 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
-        $role = $this->model->create($request->all());
-        if ($request->has('permissions')) {
-            $role->syncPermissions($request['permissions']);
-        }
-
-        return $this->response->created(url('api/roles/'.$role->uuid));
+        $model = $this->service->create($request->all());
+        return $this->response->created(url('api/roles/'.$model->uuid));
     }
 
     /**
      * @param Request $request
-     * @param $uuid
+     * @param $id
      * @return mixed
      */
-    public function update(Request $request, $uuid)
+    public function update(Request $request, $id)
     {
-        $role = $this->model->byUuid($uuid)->firstOrFail();
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
-        $role->update($request->except('_token'));
-        if ($request->has('permissions')) {
-            $role->syncPermissions($request['permissions']);
-        }
-
-        return $this->response->item($role->fresh(), new RoleTransformer());
+        $model = $this->service->update($id, $request->all());
+        return $this->response->array($this->service->transform($model));
     }
 
     /**
-     * @param Request $request
-     * @param $uuid
+     * @param $id
      * @return mixed
      */
-    public function destroy(Request $request, $uuid)
+    public function destroy($id)
     {
-        $role = $this->model->byUuid($uuid)->firstOrFail();
-        $role->delete();
-
+        $this->service->delete($id);
         return $this->response->noContent();
     }
 }

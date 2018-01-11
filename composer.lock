@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "febd1a1792855fbd299e540e9b6b0fa2",
-    "content-hash": "cee793ee49bf401d76a71b5a45e95220",
+    "hash": "93ba6311e7651e034a4c1072ae2a98cf",
+    "content-hash": "d6f05e868a0e773f3f71b70acc547e8e",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -901,6 +901,51 @@
                 }
             ],
             "time": "2015-04-20 18:58:01"
+        },
+        {
+            "name": "joselfonseca/laravel-api-tools",
+            "version": "3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joselfonseca/laravel-api-tools.git",
+                "reference": "c14e3dfb5d140f2ae30870863195349e2988d581"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joselfonseca/laravel-api-tools/zipball/c14e3dfb5d140f2ae30870863195349e2988d581",
+                "reference": "c14e3dfb5d140f2ae30870863195349e2988d581",
+                "shasum": ""
+            },
+            "require": {
+                "dingo/api": "2.0.0-alpha1",
+                "php": ">=7.0",
+                "spatie/laravel-fractal": "5.3.*",
+                "webpatser/laravel-uuid": "^2.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/database": "^3.5",
+                "orchestra/testbench": "3.5.*",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Joselfonseca\\LaravelApiTools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jose Luis Fonseca",
+                    "email": "jose@ditecnologia.com"
+                }
+            ],
+            "description": "Some tools for Laravel API development, nothing really new, just wrappers and helper stuff",
+            "time": "2017-12-13 18:38:50"
         },
         {
             "name": "laravel/framework",
@@ -2400,6 +2445,125 @@
                 "uuid"
             ],
             "time": "2017-09-22 20:46:04"
+        },
+        {
+            "name": "spatie/fractalistic",
+            "version": "2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/fractalistic.git",
+                "reference": "f9e7fc7a5bbd3ef3dcc611612d656e0aad8b961e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/fractalistic/zipball/f9e7fc7a5bbd3ef3dcc611612d656e0aad8b961e",
+                "reference": "f9e7fc7a5bbd3ef3dcc611612d656e0aad8b961e",
+                "shasum": ""
+            },
+            "require": {
+                "league/fractal": "^0.17.0",
+                "php": "^5.6|^7.0"
+            },
+            "require-dev": {
+                "illuminate/pagination": "~5.3.0|~5.4.0",
+                "phpunit/phpunit": "^5.7.21"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Fractalistic\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A developer friendly wrapper around Fractal",
+            "homepage": "https://github.com/spatie/fractalistic",
+            "keywords": [
+                "api",
+                "fractal",
+                "fractalistic",
+                "spatie",
+                "transform"
+            ],
+            "time": "2017-09-08 08:26:54"
+        },
+        {
+            "name": "spatie/laravel-fractal",
+            "version": "5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-fractal.git",
+                "reference": "f395eb645cd454b209bc628f974ed137d16e03da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-fractal/zipball/f395eb645cd454b209bc628f974ed137d16e03da",
+                "reference": "f395eb645cd454b209bc628f974ed137d16e03da",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "~5.5.0",
+                "illuminate/support": "~5.5.0",
+                "php": "^7.0",
+                "spatie/fractalistic": "^2.5"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.5.0",
+                "phpunit/phpunit": "^6.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Fractal\\FractalServiceProvider"
+                    ],
+                    "aliases": {
+                        "Fractal": "Spatie\\Fractal\\FractalFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Fractal\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An easy to use Fractal integration for Laravel applications",
+            "homepage": "https://github.com/spatie/laravel-fractal",
+            "keywords": [
+                "api",
+                "fractal",
+                "laravel",
+                "laravel-fractal",
+                "lumen",
+                "spatie",
+                "transform"
+            ],
+            "time": "2017-11-28 16:33:26"
         },
         {
             "name": "spatie/laravel-permission",
@@ -5135,7 +5299,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0.0"
+        "php": ">=7.1.0"
     },
     "platform-dev": []
 }

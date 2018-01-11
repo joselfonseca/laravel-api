@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Entities\Assets;
+namespace App\Entities;
 
-use App\Support\UuidScopeTrait;
 use Illuminate\Database\Eloquent\Model;
+use Joselfonseca\LaravelApiTools\Traits\UuidScopeTrait;
 
 /**
  * Class Asset.
@@ -15,5 +15,5 @@ class Asset extends Model
     /**
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $fillable = ['user_id', 'uuid', 'type', 'path', 'mime'];
 }

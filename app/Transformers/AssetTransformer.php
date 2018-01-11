@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Transformers\Assets;
+namespace App\Transformers;
 
-use App\Entities\Assets\Asset;
+use App\Entities\Asset;
 use League\Fractal\TransformerAbstract;
 
 /**
@@ -11,7 +11,7 @@ use League\Fractal\TransformerAbstract;
 class AssetTransformer extends TransformerAbstract
 {
     /**
-     * @param \App\Entities\Assets\Asset $model
+     * @param \App\Entities\Asset $model
      * @return array
      */
     public function transform(Asset $model)

@@ -3,11 +3,11 @@
 namespace App\Entities;
 
 use App\Support\HasRolesUuid;
-use App\Support\UuidScopeTrait;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Joselfonseca\LaravelApiTools\Traits\UuidScopeTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -51,17 +51,10 @@ class User extends Authenticatable
     ];
 
     /**
-     * @param array $attributes
-     * @return \Illuminate\Database\Eloquent\Model
+     * @param $value
      */
-    public static function create(array $attributes = [])
+    public function setPasswordAttribute($value)
     {
-        if (array_key_exists('password', $attributes)) {
-            $attributes['password'] = bcrypt($attributes['password']);
-        }
-
-        $model = static::query()->create($attributes);
-
-        return $model;
+        $this->attributes['password'] = bcrypt($value);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Entities;
 
-use App\Support\UuidScopeTrait;
 use App\Support\HasPermissionsUuid;
+use Joselfonseca\LaravelApiTools\Traits\UuidScopeTrait;
 
 /**
  * Class Role.

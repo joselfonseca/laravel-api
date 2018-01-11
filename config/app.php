@@ -178,6 +178,7 @@ return [
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+        Joselfonseca\LaravelApiTools\Providers\LaravelApiToolsServiceProvider::class,
 
         /*
          * Application Service Providers...

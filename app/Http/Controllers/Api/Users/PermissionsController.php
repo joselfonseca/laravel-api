@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api\Users;
 
-use App\Entities\Permission;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
-use App\Transformers\Users\PermissionTransformer;
+use App\Contracts\PermissionsServiceContract;
 
 /**
  * Class PermissionsController.
@@ -18,16 +17,16 @@ class PermissionsController extends Controller
     /**
      * @var
      */
-    protected $model;
+    protected $service;
 
     /**
      * PermissionsController constructor.
      *
-     * @param Permission $model
+     * @param \App\Contracts\PermissionsServiceContract $service
      */
-    public function __construct(Permission $model)
+    public function __construct(PermissionsServiceContract $service)
     {
-        $this->model = $model;
+        $this->service = $service;
         $this->middleware('permission:List permissions')->only('index');
     }
 
@@ -37,11 +36,6 @@ class PermissionsController extends Controller
      */
     public function index(Request $request)
     {
-        $paginator = $this->model->paginate($request->get('limit', config('app.pagination_limit')));
-        if ($request->has('limit')) {
-            $paginator->appends('limit', $request->get('limit'));
-        }
-
-        return $this->response->paginator($paginator, new PermissionTransformer());
+        return $this->response->array($this->service->transform($this->service->get($request->all(), $request->get('limit', config('app.pagination_limit')))));
     }
 }

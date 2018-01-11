@@ -16,6 +16,7 @@
         "php": ">=7.1.0",
         "dingo/api": "2.0.0-alpha1",
         "fideloper/proxy": "~3.3",
+        "joselfonseca/laravel-api-tools": "^3.1",
         "laravel/framework": "5.5.*",
         "laravel/passport": "^4.0",
         "laravel/tinker": "~1.0",
@@ -39,7 +40,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Joselfonseca\\LaravelApiTools\\": "packages/laravel-api-tools/src"
         }
     },
     "extra": {

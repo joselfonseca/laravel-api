@@ -1,41 +1,40 @@
 <?php
 
-namespace App\Transformers\Users;
+namespace App\Transformers;
 
-use App\Entities\User;
+use App\Entities\Role;
 use League\Fractal\TransformerAbstract;
 
 /**
- * Class UserTransformer.
+ * Class RolTransformer.
  */
-class UserTransformer extends TransformerAbstract
+class RoleTransformer extends TransformerAbstract
 {
     /**
      * @var array
      */
-    protected $defaultIncludes = ['roles'];
+    protected $defaultIncludes = ['permissions'];
 
     /**
-     * @param User $model
+     * @param Role $model
      * @return array
      */
-    public function transform(User $model)
+    public function transform(Role $model)
     {
         return [
             'id' => $model->uuid,
             'name' => $model->name,
-            'email' => $model->email,
             'created_at' => $model->created_at->toIso8601String(),
             'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
 
     /**
-     * @param User $model
+     * @param Role $model
      * @return \League\Fractal\Resource\Collection
      */
-    public function includeRoles(User $model)
+    public function includePermissions(Role $model)
     {
-        return $this->collection($model->roles, new RoleTransformer());
+        return $this->collection($model->permissions, new PermissionTransformer());
     }
 }
