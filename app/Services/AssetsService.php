@@ -15,20 +15,18 @@ use GuzzleHttp\Exception\TransferException;
 use League\Fractal\Serializer\DataArraySerializer;
 use Dingo\Api\Exception\StoreResourceFailedException;
 use Joselfonseca\LaravelApiTools\Contracts\FractalAble;
-use Joselfonseca\LaravelApiTools\Traits\FilterableTrait;
 use Joselfonseca\LaravelApiTools\Contracts\ValidateAble;
+use Joselfonseca\LaravelApiTools\Traits\FilterableTrait;
 use Joselfonseca\LaravelApiTools\Traits\FractalAbleTrait;
 use Joselfonseca\LaravelApiTools\Traits\ValidateAbleTrait;
 use Joselfonseca\LaravelApiTools\Traits\OrderQueryResultHelper;
 use Joselfonseca\LaravelApiTools\Traits\ProcessMultipleParameterHelper;
 
 /**
- * Class AssetsService
- * @package App\Services
+ * Class AssetsService.
  */
 class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
 {
-
     use FractalAbleTrait,
         ValidateAbleTrait,
         FilterableTrait,
@@ -82,7 +80,7 @@ class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
     /**
      * @var string
      */
-    protected $resourceKey = "assets";
+    protected $resourceKey = 'assets';
 
     /**
      * @var Asset
@@ -131,11 +129,13 @@ class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
         $this->applyFilters($model, $attributes);
         $this->processOrderingRules($attributes);
         $this->applyOrderingRules($model);
-        if (!empty($limit)) {
+        if (! empty($limit)) {
             $paginator = $model->paginate($limit);
             $paginator->appends('limit', $limit);
+
             return $paginator;
         }
+
         return $model->get();
     }
 
@@ -158,6 +158,7 @@ class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
         $this->runValidator($attributes, $this->validationCreateRules, $this->validationMessages);
         $model = $this->model->create($attributes);
         event(new AssetWasCreated($model));
+
         return $model;
     }
 
@@ -173,6 +174,7 @@ class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
         $this->runValidator($attributes, $this->validationUpdateRules, $this->validationMessages);
         $model->fill($attributes);
         $model->save();
+
         return $model->fresh();
     }
 
@@ -184,6 +186,7 @@ class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
     {
         $model = $this->find($id);
         $model->delete();
+
         return true;
     }
 
@@ -197,7 +200,7 @@ class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
         $this->runValidator($attributes, [
             'mime' => 'required',
             'Content-Length' => 'required',
-            'content' => 'required'
+            'content' => 'required',
         ], $this->validationMessages);
         $this->validateMime($attributes['mime']);
         $attributes['type'] = $this->validMimes[$attributes['mime']]['type'];
@@ -216,7 +219,7 @@ class AssetsService implements FractalAble, ValidateAble, AssetsServiceContract
     {
         $this->runValidator($attributes, [
             'url' => 'required',
-            'user' => 'required'
+            'user' => 'required',
         ], $this->validationMessages);
         $response = $this->callFileUrl($attributes['url']);
         $attributes['mime'] = $response->getHeader('content-type')[0];

@@ -6,12 +6,10 @@ use App\Entities\Asset;
 use Dingo\Api\Exception\ResourceException;
 
 /**
- * Class AssetsServiceContract
- * @package App\Contracts
+ * Class AssetsServiceContract.
  */
 interface AssetsServiceContract
 {
-
     /**
      * @param array $attributes
      * @param int $limit

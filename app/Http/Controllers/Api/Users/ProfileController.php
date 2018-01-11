@@ -49,6 +49,7 @@ class ProfileController extends Controller
             $partial = true;
         }
         $user = $this->service->update(Auth::user()->id, $request->except('password'), $partial);
+
         return $this->response->array($this->service->transform($user));
     }
 
@@ -59,6 +60,7 @@ class ProfileController extends Controller
     public function updatePassword(Request $request)
     {
         $user = $this->service->updatePassword(Auth::user()->id, $request->all());
+
         return $this->response->array($this->service->transform($user));
     }
 }

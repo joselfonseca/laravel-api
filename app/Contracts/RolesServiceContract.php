@@ -6,12 +6,10 @@ use App\Entities\Role;
 use Dingo\Api\Exception\ResourceException;
 
 /**
- * Class RolesServiceContract
- * @package App\Contracts
+ * Class RolesServiceContract.
  */
 interface RolesServiceContract
 {
-
     /**
      * @param array $attributes
      * @param int $limit

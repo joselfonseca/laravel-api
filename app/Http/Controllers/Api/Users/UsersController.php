@@ -45,6 +45,7 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $collection = $this->service->get($request->all(), $request->get('limit', config('app.pagination_limit')));
+
         return $this->response->array($this->service->transform($collection));
     }
 
@@ -64,6 +65,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $user = $this->service->create($request->all());
+
         return $this->response->created(url('api/users/'.$user->uuid));
     }
 
@@ -79,6 +81,7 @@ class UsersController extends Controller
             $partial = true;
         }
         $user = $this->service->update($id, $request->except('_token', 'password'), $partial);
+
         return $this->response->array($this->service->transform($user));
     }
 
@@ -89,6 +92,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $this->service->delete($id);
+
         return $this->response->noContent();
     }
 }

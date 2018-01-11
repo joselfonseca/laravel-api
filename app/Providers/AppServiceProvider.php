@@ -6,16 +6,14 @@ use App\Services\RolesService;
 use App\Services\UsersService;
 use App\Services\AssetsService;
 use App\Services\PermissionsService;
-use App\Contracts\UsersServiceContract;
 use App\Contracts\RolesServiceContract;
+use App\Contracts\UsersServiceContract;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\AssetsServiceContract;
 use App\Contracts\PermissionsServiceContract;
 
 /**
- * Class AppServiceProvider
- *
- * @package App\Providers
+ * Class AppServiceProvider.
  */
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         UsersServiceContract::class => UsersService::class,
         RolesServiceContract::class => RolesService::class,
         AssetsServiceContract::class => AssetsService::class,
-        PermissionsServiceContract::class => PermissionsService::class
+        PermissionsServiceContract::class => PermissionsService::class,
     ];
 
     /**

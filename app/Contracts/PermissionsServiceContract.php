@@ -6,12 +6,10 @@ use App\Entities\Permission;
 use Dingo\Api\Exception\ResourceException;
 
 /**
- * Class PermissionsServiceContract
- * @package App\Contracts
+ * Class PermissionsServiceContract.
  */
 interface PermissionsServiceContract
 {
-
     /**
      * @param array $attributes
      * @param int $limit

@@ -14,14 +14,12 @@ class UploadFileController extends Controller
 {
     use Helpers;
 
-
     protected $service;
 
     /**
      * @var \App\Entities\Asset
      */
     protected $model;
-
 
     public function __construct(AssetsServiceContract $service)
     {
@@ -47,6 +45,7 @@ class UploadFileController extends Controller
                 'user' => $request->user(),
             ]);
         }
+
         return $this->response->created(url('api/assets/'.$asset->uuid), $this->service->transform($asset));
     }
 }

@@ -3,26 +3,24 @@
 namespace App\Services;
 
 use App\Entities\Permission;
-use App\Contracts\PermissionsServiceContract;
-use App\Transformers\PermissionTransformer;
 use League\Fractal\TransformerAbstract;
 use Dingo\Api\Exception\ResourceException;
+use App\Transformers\PermissionTransformer;
+use App\Contracts\PermissionsServiceContract;
 use League\Fractal\Serializer\DataArraySerializer;
 use Joselfonseca\LaravelApiTools\Contracts\FractalAble;
-use Joselfonseca\LaravelApiTools\Traits\FilterableTrait;
 use Joselfonseca\LaravelApiTools\Contracts\ValidateAble;
+use Joselfonseca\LaravelApiTools\Traits\FilterableTrait;
 use Joselfonseca\LaravelApiTools\Traits\FractalAbleTrait;
 use Joselfonseca\LaravelApiTools\Traits\ValidateAbleTrait;
 use Joselfonseca\LaravelApiTools\Traits\OrderQueryResultHelper;
 use Joselfonseca\LaravelApiTools\Traits\ProcessMultipleParameterHelper;
 
 /**
- * Class PermissionsService
- * @package App\Services
+ * Class PermissionsService.
  */
 class PermissionsService implements FractalAble, ValidateAble, PermissionsServiceContract
 {
-
     use FractalAbleTrait,
         ValidateAbleTrait,
         FilterableTrait,
@@ -53,7 +51,7 @@ class PermissionsService implements FractalAble, ValidateAble, PermissionsServic
     /**
      * @var string
      */
-    protected $resourceKey = "permissions";
+    protected $resourceKey = 'permissions';
 
     /**
      * @var Permission
@@ -101,11 +99,13 @@ class PermissionsService implements FractalAble, ValidateAble, PermissionsServic
         $this->applyFilters($model, $attributes);
         $this->processOrderingRules($attributes);
         $this->applyOrderingRules($model);
-        if (!empty($limit)) {
+        if (! empty($limit)) {
             $paginator = $model->paginate($limit);
             $paginator->appends('limit', $limit);
+
             return $paginator;
         }
+
         return $model->get();
     }
 
@@ -127,6 +127,7 @@ class PermissionsService implements FractalAble, ValidateAble, PermissionsServic
     {
         $this->runValidator($attributes, $this->validationCreateRules, $this->validationMessages);
         $model = $this->model->create($attributes);
+
         return $model;
     }
 
@@ -142,6 +143,7 @@ class PermissionsService implements FractalAble, ValidateAble, PermissionsServic
         $this->runValidator($attributes, $this->validationUpdateRules, $this->validationMessages);
         $model->fill($attributes);
         $model->save();
+
         return $model->fresh();
     }
 
@@ -153,6 +155,7 @@ class PermissionsService implements FractalAble, ValidateAble, PermissionsServic
     {
         $model = $this->find($id);
         $model->delete();
+
         return true;
     }
 
