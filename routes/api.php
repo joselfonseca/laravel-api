@@ -7,6 +7,7 @@ $api->version('v1', function($api){
     $api->group(['middleware' => ['throttle:60,1', 'bindings'], 'namespace' => 'App\Http\Controllers'], function($api) {
 
         $api->get('ping', 'Api\PingController@index');
+        $api->get('assets/{id}/render', 'Api\Assets\RenderFileController@show');
 
         $api->group(['middleware' => ['auth:api'], ], function ($api) {
 
