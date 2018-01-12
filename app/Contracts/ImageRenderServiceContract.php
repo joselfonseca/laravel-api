@@ -3,9 +3,7 @@
 namespace App\Contracts;
 
 /**
- * Class ImageRenderService
- *
- * @package App\Services
+ * Class ImageRenderService.
  */
 interface ImageRenderServiceContract
 {

@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Contracts\ImageRenderServiceContract;
 
 /**
- * Class RenderFileController
- *
- * @package App\Http\Controllers\Api\Assets
+ * Class RenderFileController.
  */
 class RenderFileController extends Controller
 {
@@ -35,5 +33,4 @@ class RenderFileController extends Controller
     {
         return $this->service->render($id);
     }
-
 }

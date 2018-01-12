@@ -5,8 +5,8 @@ namespace App\Providers;
 use App\Services\RolesService;
 use App\Services\UsersService;
 use App\Services\AssetsService;
-use App\Services\PermissionsService;
 use App\Services\ImageRenderService;
+use App\Services\PermissionsService;
 use App\Contracts\RolesServiceContract;
 use App\Contracts\UsersServiceContract;
 use Illuminate\Support\ServiceProvider;
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         RolesServiceContract::class => RolesService::class,
         AssetsServiceContract::class => AssetsService::class,
         PermissionsServiceContract::class => PermissionsService::class,
-        ImageRenderServiceContract::class => ImageRenderService::class
+        ImageRenderServiceContract::class => ImageRenderService::class,
     ];
 
     /**

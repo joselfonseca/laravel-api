@@ -23,8 +23,8 @@ class AssetTransformer extends TransformerAbstract
             'mime' => $model->mime,
             'created_at' => $model->created_at->toIso8601String(),
             'links' => [
-                'render' => url('api/assets/'.$model->uuid.'/render')
-            ]
+                'render' => url('api/assets/'.$model->uuid.'/render'),
+            ],
         ];
     }
 }

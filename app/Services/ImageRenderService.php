@@ -9,9 +9,7 @@ use App\Contracts\ImageRenderServiceContract;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
- * Class ImageRenderService
- *
- * @package App\Services
+ * Class ImageRenderService.
  */
 class ImageRenderService implements ImageRenderServiceContract
 {
@@ -36,10 +34,11 @@ class ImageRenderService implements ImageRenderServiceContract
      */
     public function render($id)
     {
-        try{
+        try {
             $file = $this->assetService->find($id);
+
             return $this->renderImage($file);
-        }catch (ModelNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
             return $this->renderPlaceholder();
         }
     }
@@ -50,9 +49,10 @@ class ImageRenderService implements ImageRenderServiceContract
      */
     protected function renderImage($file)
     {
-        $image = Image::cache(function($image) use ($file) {
+        $image = Image::cache(function ($image) use ($file) {
             $image->make(Storage::get($file->path));
         }, 10, true);
+
         return $image->response();
     }
 
@@ -62,7 +62,7 @@ class ImageRenderService implements ImageRenderServiceContract
     protected function renderPlaceholder()
     {
         $img = Image::canvas(800, 600, '#ff0000');
+
         return $img->response('jpg');
     }
-
 }
