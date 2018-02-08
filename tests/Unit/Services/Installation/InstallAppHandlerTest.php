@@ -2,15 +2,15 @@
 
 namespace Tests\Unit\Services\Installation;
 
-use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
 class InstallAppHandlerTest extends TestCase
 {
 
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     function makeHandler()
     {

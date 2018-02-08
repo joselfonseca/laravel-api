@@ -2,17 +2,17 @@
 
 namespace Tests\Feature;
 
-use App\Entities\Role;
 use Tests\TestCase;
+use App\Entities\Role;
 use App\Entities\User;
 use Laravel\Passport\Passport;
 use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UsersEndpointsTest extends TestCase
 {
 
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     function setUp()
     {

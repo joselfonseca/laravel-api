@@ -3,12 +3,12 @@
 namespace Tests\Unit\Services\Installation;
 
 use Tests\TestCase;
-use \Illuminate\Foundation\Testing\DatabaseMigrations;
+use \Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AppInstallationServiceTest extends TestCase
 {
 
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     protected function makeService()
     {

@@ -7,12 +7,12 @@ use App\Entities\User;
 use Laravel\Passport\Passport;
 use App\Events\AssetWasCreated;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UploadImageTest extends TestCase
 {
 
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
 
     function test_it_uploads_an_image_from_direct_file()

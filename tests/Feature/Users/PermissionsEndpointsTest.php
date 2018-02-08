@@ -7,12 +7,12 @@ use App\Entities\User;
 use App\Entities\Permission;
 use Laravel\Passport\Passport;
 use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PermissionsEndpointsTest extends TestCase
 {
 
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
 
     function setUp()

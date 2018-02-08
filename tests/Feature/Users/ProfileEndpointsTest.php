@@ -7,12 +7,12 @@ use App\Entities\User;
 use Laravel\Passport\Passport;
 use Illuminate\Contracts\Hashing\Hasher;
 use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProfileEndpointsTest extends TestCase
 {
 
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     function setUp()
     {

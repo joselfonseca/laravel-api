@@ -5,12 +5,12 @@ namespace Tests\Unit\Entities;
 use Tests\TestCase;
 use App\Entities\Role;
 use App\Entities\Permission;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RoleTest extends TestCase
 {
 
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     function test_it_syncs_permissions_by_object_collection()
     {
