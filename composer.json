@@ -19,7 +19,7 @@
         "laravel/framework": "5.6.*",
         "laravel/passport": "^5.0",
         "laravel/tinker": "~1.0",
-        "spatie/laravel-permission": "^2.6"
+        "spatie/laravel-permission": "^2.9"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
