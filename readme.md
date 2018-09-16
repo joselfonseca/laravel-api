@@ -10,9 +10,8 @@ Laravel API starter Kit will provide you with the tools for making API's that ev
 Here is a list of the packages installed:
 
 - [Dingo API](https://github.com/dingo/api)
-- [Laravel Passport](https://laravel.com/docs/5.4/passport)
+- [Laravel Passport](https://laravel.com/docs/5.7/passport)
 - [Laravel Permission](https://github.com/spatie/laravel-permission)
-- [Laravel Uuid](https://github.com/webpatser/laravel-uuid)
 
 ## Installation
 
