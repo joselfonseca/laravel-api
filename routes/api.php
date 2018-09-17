@@ -8,7 +8,7 @@ $api->version('v1', function($api){
 
         $api->get('ping', 'Api\PingController@index');
 
-        $api->get('assets/{uuid}/{width?}/{height?}', 'Api\Assets\RenderFileController@show');
+        $api->get('assets/{uuid}/render', 'Api\Assets\RenderFileController@show');
 
         $api->group(['middleware' => ['auth:api'], ], function ($api) {
 
