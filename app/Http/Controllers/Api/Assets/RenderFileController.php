@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
- * Class RenderFileController
+ * Class RenderFileController.
  */
 class RenderFileController extends Controller
 {
@@ -38,6 +38,7 @@ class RenderFileController extends Controller
     {
         try {
             $model = $this->model->byUuid($uuid)->firstOrFail();
+
             return $this->renderFile($model, $request->get('width', null), $request->get('height', null));
         } catch (ModelNotFoundException $e) {
             return $this->renderPlaceholder($request->get('width', null), $request->get('height', null));
@@ -53,6 +54,7 @@ class RenderFileController extends Controller
     public function renderFile($model, $width, $height)
     {
         $image = $this->makeFromPath($width, $height, $model->path);
+
         return $image->response();
     }
 
@@ -63,11 +65,13 @@ class RenderFileController extends Controller
      */
     public function renderPlaceholder($width, $height)
     {
-        $image = Image::cache(function ($image) use ($width, $height){
+        $image = Image::cache(function ($image) use ($width, $height) {
             $img = $image->canvas(800, 800, '#FFFFFF');
             $this->resize($img, $width, $height);
+
             return $img;
         }, 10, true);
+
         return $image->response();
     }
 
@@ -79,9 +83,10 @@ class RenderFileController extends Controller
      */
     protected function makeFromPath($width, $height, $path)
     {
-        return Image::cache(function ($image) use ($path, $width, $height){
+        return Image::cache(function ($image) use ($path, $width, $height) {
             $img = $image->make(Storage::get($path));
             $this->resize($img, $width, $height);
+
             return $img;
         }, 10, true);
     }
@@ -105,6 +110,7 @@ class RenderFileController extends Controller
                 $constraint->aspectRatio();
             });
         }
+
         return $img;
     }
 }
