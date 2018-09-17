@@ -8,6 +8,8 @@ $api->version('v1', function($api){
 
         $api->get('ping', 'Api\PingController@index');
 
+        $api->get('assets/{uuid}/{width?}/{height?}', 'Api\Assets\RenderFileController@show');
+
         $api->group(['middleware' => ['auth:api'], ], function ($api) {
 
             $api->group(['prefix' => 'users'], function ($api) {
