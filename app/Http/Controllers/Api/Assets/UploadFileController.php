@@ -72,6 +72,14 @@ class UploadFileController extends Controller
                 'url' => $request->get('url'),
                 'user' => $request->user(),
             ]);
+        } elseif ($request->hasFile('file')) {
+            $file = $request->file('file')->getRealPath();
+            $asset = $this->uploadFromDirectFile([
+                'mime' => $request->file('file')->getClientMimeType(),
+                'content' => file_get_contents($file),
+                'Content-Length' => $request->header('Content-Length'),
+                'user' => $request->user(),
+            ]);
         } else {
             $body = ! (base64_decode($request->getContent())) ? $request->getContent() : base64_decode($request->getContent());
             $asset = $this->uploadFromDirectFile([
