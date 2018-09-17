@@ -11,8 +11,6 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
  * Class RenderFileController
- *
- * @package App\Http\Controllers\Api\Assets
  */
 class RenderFileController extends Controller
 {
@@ -65,7 +63,7 @@ class RenderFileController extends Controller
      */
     public function renderPlaceholder($width, $height)
     {
-        $image = Image::cache(function($image) use ($width, $height){
+        $image = Image::cache(function ($image) use ($width, $height){
             $img = $image->canvas(800, 800, '#FFFFFF');
             $this->resize($img, $width, $height);
             return $img;
@@ -81,7 +79,7 @@ class RenderFileController extends Controller
      */
     protected function makeFromPath($width, $height, $path)
     {
-        return Image::cache(function($image) use ($path, $width, $height){
+        return Image::cache(function ($image) use ($path, $width, $height){
             $img = $image->make(Storage::get($path));
             $this->resize($img, $width, $height);
             return $img;
