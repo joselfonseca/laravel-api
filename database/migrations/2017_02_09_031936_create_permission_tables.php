@@ -16,7 +16,7 @@ class CreatePermissionTables extends Migration
         $foreignKeys = config('permission.foreign_keys');
 
         Schema::create($tableNames['permissions'], function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('guard_name');
             $table->uuid('uuid')->index()->unique();
@@ -24,7 +24,7 @@ class CreatePermissionTables extends Migration
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('guard_name');
             $table->uuid('uuid')->index()->unique();
@@ -32,7 +32,7 @@ class CreatePermissionTables extends Migration
         });
 
         Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames, $foreignKeys) {
-            $table->integer('permission_id')->unsigned();
+            $table->bigInteger('permission_id')->unsigned();
             $table->morphs('model');
 
             $table->foreign('permission_id')
@@ -44,7 +44,7 @@ class CreatePermissionTables extends Migration
         });
 
         Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames, $foreignKeys) {
-            $table->integer('role_id')->unsigned();
+            $table->bigInteger('role_id')->unsigned();
             $table->morphs('model');
 
             $table->foreign('role_id')
@@ -56,8 +56,8 @@ class CreatePermissionTables extends Migration
         });
 
         Schema::create($tableNames['role_has_permissions'], function (Blueprint $table) use ($tableNames) {
-            $table->integer('permission_id')->unsigned();
-            $table->integer('role_id')->unsigned();
+            $table->bigInteger('permission_id')->unsigned();
+            $table->bigInteger('role_id')->unsigned();
 
             $table->foreign('permission_id')
                 ->references('id')

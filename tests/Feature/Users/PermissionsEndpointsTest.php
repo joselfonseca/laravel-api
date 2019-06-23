@@ -15,7 +15,7 @@ class PermissionsEndpointsTest extends TestCase
     use RefreshDatabase;
 
 
-    function setUp()
+    function setUp() : void
     {
         parent::setUp();
         $this->installApp();

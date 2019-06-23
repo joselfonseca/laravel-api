@@ -45,7 +45,7 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        $paginator = $this->model->with('roles.permissions')->paginate($request->get('limit', config('app.pagination_limit')));
+        $paginator = $this->model->with('roles.permissions')->paginate($request->get('limit', config('app.pagination_limit', 20)));
         if ($request->has('limit')) {
             $paginator->appends('limit', $request->get('limit'));
         }

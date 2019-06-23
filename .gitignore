@@ -10,3 +10,5 @@ Homestead.json
 /packages
 /storage/oauth-private.key
 /storage/oauth-public.key
+.idea/
+.DS_Store
