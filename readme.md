@@ -12,6 +12,7 @@ Here is a list of the packages installed:
 - [Dingo API](https://github.com/dingo/api)
 - [Laravel Passport](https://laravel.com/docs/5.7/passport)
 - [Laravel Permission](https://github.com/spatie/laravel-permission)
+- [Intervention Image](http://image.intervention.io/)
 
 ## Installation
 
