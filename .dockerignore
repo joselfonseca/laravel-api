@@ -4,5 +4,4 @@ node_modules/
 .gitignore
 .DS_Store
 .env
-vendor/
 storage/logs/laravel.log
