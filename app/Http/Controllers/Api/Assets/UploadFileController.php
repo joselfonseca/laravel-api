@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Assets;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Entities\Assets\Asset;
 use Dingo\Api\Routing\Helpers;
@@ -146,7 +147,7 @@ class UploadFileController extends Controller
      */
     protected function storeInFileSystem(array $attributes)
     {
-        $path = md5(str_random(16).date('U')).'.'.$this->validMimes[$attributes['mime']]['extension'];
+        $path = md5(Str::random(16).date('U')).'.'.$this->validMimes[$attributes['mime']]['extension'];
         Storage::put($path, $attributes['content']);
 
         return $path;
