@@ -82,7 +82,7 @@ class UploadFileController extends Controller
                 'user' => $request->user(),
             ]);
         } else {
-            $body = !(base64_decode($request->getContent())) ? $request->getContent() : base64_decode($request->getContent());
+            $body = ! (base64_decode($request->getContent())) ? $request->getContent() : base64_decode($request->getContent());
             $asset = $this->uploadFromDirectFile([
                 'mime' => $request->header('Content-Type'),
                 'content' => $body,
@@ -135,7 +135,7 @@ class UploadFileController extends Controller
             'type' => $this->validMimes[$attributes['mime']]['type'],
             'path' => $path,
             'mime' => $attributes['mime'],
-            'user_id' => !empty($attributes['user']) ? $attributes['user']->id : null,
+            'user_id' => ! empty($attributes['user']) ? $attributes['user']->id : null,
         ]);
 
         return $file;
@@ -147,7 +147,7 @@ class UploadFileController extends Controller
      */
     protected function storeInFileSystem(array $attributes)
     {
-        $path = md5(Str::random(16) . date('U')) . '.' . $this->validMimes[$attributes['mime']]['extension'];
+        $path = md5(Str::random(16).date('U')).'.'.$this->validMimes[$attributes['mime']]['extension'];
         Storage::put($path, $attributes['content']);
 
         return $path;
@@ -170,7 +170,7 @@ class UploadFileController extends Controller
             return $response;
         } catch (TransferException $e) {
             throw new StoreResourceFailedException('Validation Error', [
-                'url' => 'The url seems to be unreachable: ' . $e->getCode(),
+                'url' => 'The url seems to be unreachable: '.$e->getCode(),
             ]);
         }
     }
@@ -180,7 +180,7 @@ class UploadFileController extends Controller
      */
     protected function validateMime($mime)
     {
-        if (!array_key_exists($mime, $this->validMimes)) {
+        if (! array_key_exists($mime, $this->validMimes)) {
             throw new StoreResourceFailedException('Validation Error', [
                 'Content-Type' => 'The Content Type sent is not valid',
             ]);
