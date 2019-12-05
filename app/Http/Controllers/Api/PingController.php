@@ -24,6 +24,7 @@ class PingController extends Controller
         return $this->response->array([
             'status' => 'ok',
             'timestamp' => \Carbon\Carbon::now(),
+            'host' => request()->ip()
         ]);
     }
 }

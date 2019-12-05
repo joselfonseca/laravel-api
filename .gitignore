@@ -12,3 +12,4 @@ Homestead.json
 /storage/oauth-public.key
 .idea/
 .DS_Store
+.phpunit.result.cache
