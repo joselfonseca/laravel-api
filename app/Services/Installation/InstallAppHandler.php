@@ -2,12 +2,12 @@
 
 namespace App\Services\Installation;
 
-use Closure;
+use App\Entities\Permission;
 use App\Entities\Role;
 use App\Entities\User;
-use App\Entities\Permission;
-use Illuminate\Validation\ValidationException;
 use App\Services\Installation\Events\ApplicationWasInstalled;
+use Closure;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Class InstallAppHandler.

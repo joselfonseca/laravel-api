@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api\Users;
 
 use App\Entities\User;
-use Illuminate\Http\Request;
-use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
 use App\Transformers\Users\UserTransformer;
+use Dingo\Api\Routing\Helpers;
+use Illuminate\Http\Request;
 
 /**
  * Class UsersController.
