@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\Assets;
 
-use Illuminate\Http\Request;
 use App\Entities\Assets\Asset;
 use App\Http\Controllers\Controller;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 /**
  * Class RenderFileController.

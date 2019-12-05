@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\Users;
 
-use Illuminate\Http\Request;
-use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\Hashing\Hasher;
-use Dingo\Api\Exception\ResourceException;
 use App\Transformers\Users\UserTransformer;
+use Dingo\Api\Exception\ResourceException;
+use Dingo\Api\Routing\Helpers;
+use Illuminate\Contracts\Hashing\Hasher;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ProfileController.

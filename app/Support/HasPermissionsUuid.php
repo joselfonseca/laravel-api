@@ -2,8 +2,8 @@
 
 namespace App\Support;
 
-use Spatie\Permission\Contracts\Permission;
 use App\Entities\Permission as PermissionEntity;
+use Spatie\Permission\Contracts\Permission;
 
 /**
  * Class HasPermissionsUuid.
