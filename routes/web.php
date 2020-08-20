@@ -1,4 +1,5 @@
 <?php
 
-Route::get('/', 'ApiDocsController@index');
+use Illuminate\Support\Facades\Route;
 
+Route::get('/', 'ApiDocsController@index');
