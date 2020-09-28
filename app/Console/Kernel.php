@@ -3,7 +3,6 @@
 namespace App\Console;
 
 use App\Console\Commands\InstallApp;
-use App\Console\Commands\ResetDemoApp;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,13 +15,12 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         InstallApp::class,
-        // this is just for the demo, you can remove this on your application
-        ResetDemoApp::class,
     ];
 
     /**
      * Define the application's command schedule.
      *
+     * @codeCoverageIgnore
      * @param  \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
