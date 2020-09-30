@@ -4,7 +4,7 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function($api){
 
-    $api->group(['middleware' => ['throttle:60,1', 'bindings'], 'namespace' => 'App\Http\Controllers'], function($api) {
+    $api->group(['middleware' => ['throttle:60,1', \Illuminate\Routing\Middleware\SubstituteBindings::class], 'namespace' => 'App\Http\Controllers'], function($api) {
 
         $api->get('ping', 'Api\PingController@index');
 

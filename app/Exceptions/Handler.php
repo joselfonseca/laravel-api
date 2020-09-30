@@ -41,6 +41,7 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
+     * @codeCoverageIgnore
      * @param  \Illuminate\Http\Request $request
      * @param  \Exception $exception
      * @return \Illuminate\Http\Response
@@ -48,21 +49,5 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         return parent::render($request, $exception);
-    }
-
-    /**
-     * Convert an authentication exception into an unauthenticated response.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Illuminate\Auth\AuthenticationException $exception
-     * @return \Illuminate\Http\Response
-     */
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-        if ($request->expectsJson()) {
-            return response()->json(['message' => 'Unauthenticated.'], 401);
-        }
-
-        return redirect()->guest('login');
     }
 }

@@ -42,11 +42,7 @@ class ErrorHandlerServiceProvider extends ServiceProvider
             return $this->response->error('The body is too large', 413);
         });
         app('Dingo\Api\Exception\Handler')->register(function (ValidationException $exception) {
-            if (request()->expectsJson()) {
-                throw new ResourceException('Validation Error', $exception->errors());
-            }
-
-            return redirect()->back()->withInput(request()->input())->withErrors($exception->errors());
+            throw new ResourceException('Validation Error', $exception->errors());
         });
     }
 }
