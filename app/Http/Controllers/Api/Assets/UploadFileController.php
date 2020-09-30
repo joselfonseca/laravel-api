@@ -156,18 +156,12 @@ class UploadFileController extends Controller
     /**
      * @param $url
      * @return \Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     protected function callFileUrl($url)
     {
         try {
-            $response = $this->client->get($url);
-            if ($response->getStatusCode() != 200) {
-                throw new StoreResourceFailedException('Validation Error', [
-                    'url' => 'The url seems unreachable',
-                ]);
-            }
-
-            return $response;
+            return $this->client->get($url);
         } catch (TransferException $e) {
             throw new StoreResourceFailedException('Validation Error', [
                 'url' => 'The url seems to be unreachable: '.$e->getCode(),

@@ -140,4 +140,17 @@ class UploadImageTest extends TestCase
         $this->assertArrayHasKey('Content-Type', $jsonResponse['errors']);
 
     }
+
+    function test_it_validates_url()
+    {
+        Passport::actingAs(
+            factory(User::class)->create()
+        );
+        $response = $this->json('POST', 'api/assets', [
+            'url' => 'http://somedomain.com/350x150'
+        ]);
+        $jsonResponse = json_decode($response->getContent(), true);
+        $this->assertEquals(422, $response->getStatusCode());
+        $this->assertArrayHasKey('Content-Type', $jsonResponse['errors']);
+    }
 }
