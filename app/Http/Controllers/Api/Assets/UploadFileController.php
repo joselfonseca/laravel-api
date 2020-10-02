@@ -188,10 +188,7 @@ class UploadFileController extends Controller
      */
     protected function validateBodySize($contentLength, $content)
     {
-        if ($contentLength > config('files.maxsize', 1000000)) {
-            throw new BodyTooLargeException();
-        }
-        if (mb_strlen($content) > config('files.maxsize', 1000000)) {
+        if ($contentLength > config('files.maxsize', 1000000) || mb_strlen($content) > config('files.maxsize', 1000000)) {
             throw new BodyTooLargeException();
         }
     }

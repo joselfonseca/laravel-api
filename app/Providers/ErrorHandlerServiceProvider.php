@@ -6,7 +6,6 @@ use App\Exceptions\BodyTooLargeException;
 use Dingo\Api\Exception\ResourceException;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\ValidationException;
 
@@ -34,9 +33,6 @@ class ErrorHandlerServiceProvider extends ServiceProvider
         // register the error handler for the authentication exception.
         app('Dingo\Api\Exception\Handler')->register(function (AuthenticationException $exception) {
             return $this->response->errorUnauthorized('Unauthenticated.');
-        });
-        app('Dingo\Api\Exception\Handler')->register(function (ModelNotFoundException $exception) {
-            return $this->response->errorNotFound('404 Not Found');
         });
         app('Dingo\Api\Exception\Handler')->register(function (BodyTooLargeException $exception) {
             return $this->response->error('The body is too large', 413);

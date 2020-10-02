@@ -23,4 +23,14 @@ class PingTest extends TestCase
         $response->assertStatus(200);
         $response->assertJson(['status' => 'ok']);
     }
+
+    /**
+     *
+     */
+    public function test_it_returns_404()
+    {
+        $response = $this->json('GET', 'api/non-existing-resource');
+        $response->assertStatus(404);
+        $response->assertJson(['message' => '404 Not Found', 'status_code' => 404]);
+    }
 }
