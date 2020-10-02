@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 /**
  * @codeCoverageIgnore
  * Class RedirectIfAuthenticated
- * @package App\Http\Middleware
  */
 class RedirectIfAuthenticated
 {
@@ -33,4 +32,5 @@ class RedirectIfAuthenticated
 
         return $next($request);
     }
+
 }

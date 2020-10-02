@@ -6,7 +6,6 @@ use App\Exceptions\BodyTooLargeException;
 use Dingo\Api\Exception\ResourceException;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\ValidationException;
 
