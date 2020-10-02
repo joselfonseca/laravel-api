@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Assets;
 
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 use App\Entities\User;
 use Laravel\Passport\Passport;
@@ -152,5 +153,22 @@ class UploadImageTest extends TestCase
         $jsonResponse = json_decode($response->getContent(), true);
         $this->assertEquals(422, $response->getStatusCode());
         $this->assertArrayHasKey('Content-Type', $jsonResponse['errors']);
+    }
+
+    function test_it_validates_size_using_multipart_file()
+    {
+        Storage::fake();
+        Passport::actingAs(
+            factory(User::class)->create()
+        );
+        config()->set('files.maxsize', 10);
+        $file = UploadedFile::fake()->image('avatar.jpg')->size(1000);
+        $response = $this->post('api/assets', [
+            'file' => $file
+        ]);
+        $jsonResponse = json_decode($response->getContent(), true);
+        $this->assertEquals(413, $response->getStatusCode());
+        $this->assertArrayHasKey('message', $jsonResponse);
+        $this->assertEquals('The body is too large', $jsonResponse['message']);
     }
 }

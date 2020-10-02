@@ -311,4 +311,14 @@ class UsersEndpointsTest extends TestCase
         $this->assertCount(0, $user->fresh()->roles);
     }
 
+    function test_it_responds_404_if_user_not_found()
+    {
+        Passport::actingAs(User::first());
+        $roles = factory(Role::class, 2)->create();
+        $user = factory(User::class)->create()->syncRoles($roles);
+        $this->assertCount(2, $user->roles);
+        $response = $this->get('api/users/some-id-that-is-not-here');
+        $response->assertStatus(404);
+    }
+
 }

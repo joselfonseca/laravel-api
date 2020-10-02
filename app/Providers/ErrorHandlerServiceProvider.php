@@ -35,9 +35,6 @@ class ErrorHandlerServiceProvider extends ServiceProvider
         app('Dingo\Api\Exception\Handler')->register(function (AuthenticationException $exception) {
             return $this->response->errorUnauthorized('Unauthenticated.');
         });
-        app('Dingo\Api\Exception\Handler')->register(function (ModelNotFoundException $exception) {
-            return $this->response->errorNotFound('404 Not Found');
-        });
         app('Dingo\Api\Exception\Handler')->register(function (BodyTooLargeException $exception) {
             return $this->response->error('The body is too large', 413);
         });
