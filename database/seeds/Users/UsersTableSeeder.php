@@ -11,10 +11,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Entities\User::class, 1500)->create()->each(function($user) {
+        factory(\App\Models\User::class, 1500)->create()->each(function($user) {
             $user->assignRole('Guest');
         });
-        factory(\App\Entities\User::class, 1500)->create()->each(function($user) {
+        factory(\App\Models\User::class, 1500)->create()->each(function($user) {
             $user->assignRole('Member');
         });
     }

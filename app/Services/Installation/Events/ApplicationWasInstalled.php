@@ -2,7 +2,7 @@
 
 namespace App\Services\Installation\Events;
 
-use App\Entities\User;
+use App\Models\User;
 
 /**
  * Class ApplicationWasInstalled.
@@ -27,7 +27,7 @@ class ApplicationWasInstalled
     /**
      * ApplicationWasInstalled constructor.
      *
-     * @param User $adminUser
+     * @param \App\Models\User $adminUser
      * @param $roles
      * @param $permissions
      */

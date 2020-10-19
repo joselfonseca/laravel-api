@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Users;
 
-use Tests\TestCase;
-use App\Entities\User;
-use Laravel\Passport\Passport;
+use App\Models\User;
 use Illuminate\Contracts\Hashing\Hasher;
-use Spatie\Permission\PermissionRegistrar;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Spatie\Permission\PermissionRegistrar;
+use Tests\TestCase;
 
 class ProfileEndpointsTest extends TestCase
 {

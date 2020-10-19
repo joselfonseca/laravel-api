@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\Users;
 
-use App\Entities\Permission;
 use App\Http\Controllers\Controller;
+use App\Models\Permission;
 use App\Transformers\Users\PermissionTransformer;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class PermissionsController extends Controller
     /**
      * PermissionsController constructor.
      *
-     * @param Permission $model
+     * @param \App\Models\Permission $model
      */
     public function __construct(Permission $model)
     {

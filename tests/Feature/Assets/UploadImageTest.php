@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Assets;
 
-use Illuminate\Http\UploadedFile;
-use Tests\TestCase;
-use App\Entities\User;
-use Laravel\Passport\Passport;
 use App\Events\AssetWasCreated;
-use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class UploadImageTest extends TestCase
 {

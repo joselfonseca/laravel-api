@@ -2,7 +2,7 @@
 
 namespace App\Transformers\Users;
 
-use App\Entities\User;
+use App\Models\User;
 use League\Fractal\TransformerAbstract;
 
 /**
@@ -16,7 +16,7 @@ class UserTransformer extends TransformerAbstract
     protected $defaultIncludes = ['roles'];
 
     /**
-     * @param User $model
+     * @param \App\Model\User $model
      * @return array
      */
     public function transform(User $model)
@@ -31,7 +31,7 @@ class UserTransformer extends TransformerAbstract
     }
 
     /**
-     * @param User $model
+     * @param \App\Model\User $model
      * @return \League\Fractal\Resource\Collection
      */
     public function includeRoles(User $model)

@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Users;
 
-use Tests\TestCase;
-use App\Entities\User;
-use App\Entities\Permission;
+use App\Models\Permission;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class PermissionsEndpointsTest extends TestCase
 {
