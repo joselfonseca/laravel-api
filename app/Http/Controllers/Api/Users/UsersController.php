@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\Users;
 
-use App\Entities\User;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Transformers\Users\UserTransformer;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
@@ -18,14 +18,14 @@ class UsersController extends Controller
     use Helpers;
 
     /**
-     * @var User
+     * @var \App\Model\\App\Models\User
      */
     protected $model;
 
     /**
      * UsersController constructor.
      *
-     * @param User $model
+     * @param \App\Model\User $model
      */
     public function __construct(User $model)
     {

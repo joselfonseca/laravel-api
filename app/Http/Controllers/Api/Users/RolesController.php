@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\Users;
 
-use App\Entities\Role;
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Transformers\Users\RoleTransformer;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class RolesController extends Controller
     /**
      * RolesController constructor.
      *
-     * @param Role $model
+     * @param \App\Models\Role $model
      */
     public function __construct(Role $model)
     {

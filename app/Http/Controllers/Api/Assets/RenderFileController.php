@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\Assets;
 
-use App\Entities\Assets\Asset;
 use App\Http\Controllers\Controller;
+use App\Models\Asset;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,14 +15,14 @@ use Intervention\Image\Facades\Image;
 class RenderFileController extends Controller
 {
     /**
-     * @var \App\Entities\Assets\Asset
+     * @var \App\Models\Asset
      */
     protected $model;
 
     /**
      * RenderFileController constructor.
      *
-     * @param \App\Entities\Assets\Asset $model
+     * @param \App\Models\Asset $model
      */
     public function __construct(Asset $model)
     {

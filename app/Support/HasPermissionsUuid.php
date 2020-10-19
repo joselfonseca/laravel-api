@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-use App\Entities\Permission as PermissionEntity;
+use App\Models\Permission as PermissionEntity;
 use Spatie\Permission\Contracts\Permission;
 
 /**

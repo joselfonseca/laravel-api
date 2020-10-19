@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Entities\User::class, function (Faker\Generator $faker) {
+$factory->define(\App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -26,14 +26,14 @@ $factory->define(App\Entities\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Entities\Role::class, function (Faker\Generator $faker) {
+$factory->define(\App\Models\Role::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'uuid' => $faker->uuid
     ];
 });
 
-$factory->define(App\Entities\Permission::class, function (Faker\Generator $faker) {
+$factory->define(\App\Models\Permission::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'uuid' => $faker->uuid

@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-use App\Entities\Role as RoleEntity;
+use App\Models\Role as RoleEntity;
 use Spatie\Permission\Contracts\Role;
 
 trait HasRolesUuid

@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Users;
 
-use Tests\TestCase;
-use App\Entities\Role;
-use App\Entities\User;
+use App\Models\Role;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class UsersEndpointsTest extends TestCase
 {
@@ -33,7 +33,7 @@ class UsersEndpointsTest extends TestCase
 
     function test_it_list_users()
     {
-        factory(\App\Entities\User::class, 30)->create();
+        factory(\App\Models\User::class, 30)->create();
         Passport::actingAs(User::first());
         $response = $this->json('GET', 'api/users');
         $response->assertHeader('Content-Type', 'application/json');
@@ -53,7 +53,7 @@ class UsersEndpointsTest extends TestCase
 
     function test_it_list_users_with_custom_limit()
     {
-        factory(\App\Entities\User::class, 30)->create();
+        factory(\App\Models\User::class, 30)->create();
         Passport::actingAs(User::first());
         $response = $this->json('GET', 'api/users?limit=10');
         $response->assertHeader('Content-Type', 'application/json');
@@ -77,8 +77,8 @@ class UsersEndpointsTest extends TestCase
 
     function test_it_validates_permission_for_listing_users()
     {
-        factory(\App\Entities\User::class, 30)->create();
-        $user = factory(\App\Entities\User::class)->create([
+        factory(\App\Models\User::class, 30)->create();
+        $user = factory(\App\Models\User::class)->create([
             'email' => 'me@example.com'
         ]);
         Passport::actingAs($user);
@@ -135,7 +135,7 @@ class UsersEndpointsTest extends TestCase
     function test_it_can_partially_update_a_user()
     {
         Passport::actingAs(User::first());
-        $user = factory(\App\Entities\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $response = $this->json('PATCH', 'api/users/'.$user->uuid, [
             'name' => 'Jose Fonseca'
         ]);
@@ -149,7 +149,7 @@ class UsersEndpointsTest extends TestCase
     function test_it_can_update_a_user()
     {
         Passport::actingAs(User::first());
-        $user = factory(\App\Entities\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $response = $this->json('PUT', 'api/users/'.$user->uuid, [
             'name' => 'Jose Fonseca',
             'email' => $user->email
@@ -164,7 +164,7 @@ class UsersEndpointsTest extends TestCase
     function test_it_can_update_a_user_with_different_email()
     {
         Passport::actingAs(User::first());
-        $user = factory(\App\Entities\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $response = $this->json('PUT', 'api/users/'.$user->uuid, [
             'name' => 'Jose Fonseca',
             'email' => 'jose.fonseca@somedomain.com'
@@ -180,7 +180,7 @@ class UsersEndpointsTest extends TestCase
     function test_it_validates_input_to_update_a_user()
     {
         Passport::actingAs(User::first());
-        $user = factory(\App\Entities\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $response = $this->json('PATCH', 'api/users/'.$user->uuid, [
             'name' => ''
         ]);
@@ -190,8 +190,8 @@ class UsersEndpointsTest extends TestCase
     function test_it_validates_taken_email()
     {
         Passport::actingAs(User::first());
-        $user1 = factory(\App\Entities\User::class)->create();
-        factory(\App\Entities\User::class)->create(['email' => 'some@email.com']);
+        $user1 = factory(\App\Models\User::class)->create();
+        factory(\App\Models\User::class)->create(['email' => 'some@email.com']);
         $response = $this->json('PATCH', 'api/users/'.$user1->uuid, [
             'email' => 'some@email.com'
         ]);
@@ -201,8 +201,8 @@ class UsersEndpointsTest extends TestCase
     function test_it_validates_taken_email_full_entity()
     {
         Passport::actingAs(User::first());
-        $user1 = factory(\App\Entities\User::class)->create();
-        factory(\App\Entities\User::class)->create(['email' => 'some@email.com']);
+        $user1 = factory(\App\Models\User::class)->create();
+        factory(\App\Models\User::class)->create(['email' => 'some@email.com']);
         $response = $this->json('PUT', 'api/users/'.$user1->uuid, [
             'name' => 'New Name',
             'email' => 'some@email.com'
@@ -213,7 +213,7 @@ class UsersEndpointsTest extends TestCase
     function test_it_validates_input_to_update_a_user_full_entity()
     {
         Passport::actingAs(User::first());
-        $user = factory(\App\Entities\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $response = $this->json('PUT', 'api/users/'.$user->uuid, [
             'name' => 'Some Name',
             'email' => ''
@@ -224,7 +224,7 @@ class UsersEndpointsTest extends TestCase
     function test_it_can_delete_a_user()
     {
         Passport::actingAs(User::first());
-        $user = factory(\App\Entities\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $response = $this->json('DELETE', 'api/users/'.$user->uuid, [
         ]);
         $response->assertStatus(204);
@@ -240,10 +240,10 @@ class UsersEndpointsTest extends TestCase
 
     function test_it_protects_the_user_from_being_deleted_by_user_with_no_permission()
     {
-        $user = factory(\App\Entities\User::class)->create([
+        $user = factory(\App\Models\User::class)->create([
             'email' => 'me@example.com'
         ]);
-        $user2 = factory(\App\Entities\User::class)->create([
+        $user2 = factory(\App\Models\User::class)->create([
             'email' => 'me2@example.com'
         ]);
         Passport::actingAs($user);

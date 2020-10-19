@@ -2,7 +2,7 @@
 
 namespace App\Transformers\Users;
 
-use App\Entities\Role;
+use App\Models\Role;
 use League\Fractal\TransformerAbstract;
 
 /**
@@ -16,7 +16,7 @@ class RoleTransformer extends TransformerAbstract
     protected $defaultIncludes = ['permissions'];
 
     /**
-     * @param Role $model
+     * @param \App\Models\Role $model
      * @return array
      */
     public function transform(Role $model)

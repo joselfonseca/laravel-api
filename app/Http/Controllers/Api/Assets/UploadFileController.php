@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\Assets;
 
-use App\Entities\Assets\Asset;
 use App\Events\AssetWasCreated;
 use App\Exceptions\BodyTooLargeException;
 use App\Http\Controllers\Controller;
@@ -46,7 +45,7 @@ class UploadFileController extends Controller
     protected $client;
 
     /**
-     * @var \App\Entities\Assets\Asset
+     * @var \App\Models\Asset
      */
     protected $model;
 
@@ -54,9 +53,9 @@ class UploadFileController extends Controller
      * UploadFileController constructor.
      *
      * @param \GuzzleHttp\Client $client
-     * @param \App\Entities\Assets\Asset $model
+     * @param \App\Models\Asset $model
      */
-    public function __construct(Client $client, Asset $model)
+    public function __construct(Client $client, \App\Models\Asset $model)
     {
         $this->client = $client;
         $this->model = $model;

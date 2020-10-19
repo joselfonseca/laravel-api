@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Services\Installation;
 
-use Tests\TestCase;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Validation\ValidationException;
+use Tests\TestCase;
 
 
 class InstallAppHandlerTest extends TestCase
@@ -57,7 +57,7 @@ class InstallAppHandlerTest extends TestCase
             'name' => 'Jose Fonseca',
             'email' => 'jose@example.com',
         ]);
-        $user = \App\Entities\User::where('email', 'jose@example.com')->first();
+        $user = \App\Models\User::where('email', 'jose@example.com')->first();
         $this->assertNotNull($user->uuid);
     }
 

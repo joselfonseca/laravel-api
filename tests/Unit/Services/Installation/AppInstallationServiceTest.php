@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Services\Installation;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use \Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AppInstallationServiceTest extends TestCase
 {
@@ -28,7 +28,7 @@ class AppInstallationServiceTest extends TestCase
             'name' => 'Jose Fonseca',
             'email' => 'jose@example.com',
         ]);
-        $user = \App\Entities\User::where('name', 'Jose Fonseca')->first();
+        $user = \App\Models\User::where('name', 'Jose Fonseca')->first();
         $this->assertTrue($user->hasRole('Administrator'));
         $this->assertTrue($user->hasPermissionTo('Update roles'));
     }

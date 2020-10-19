@@ -2,9 +2,9 @@
 
 namespace App\Services\Installation;
 
-use App\Entities\Permission;
-use App\Entities\Role;
-use App\Entities\User;
+use App\Models\Permission;
+use App\Models\Role;
+use App\Models\User;
 use App\Services\Installation\Events\ApplicationWasInstalled;
 use Closure;
 use Illuminate\Validation\ValidationException;

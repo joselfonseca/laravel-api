@@ -2,7 +2,6 @@
 
 namespace App\Transformers\Assets;
 
-use App\Entities\Assets\Asset;
 use League\Fractal\TransformerAbstract;
 
 /**
@@ -11,10 +10,10 @@ use League\Fractal\TransformerAbstract;
 class AssetTransformer extends TransformerAbstract
 {
     /**
-     * @param \App\Entities\Assets\Asset $model
+     * @param \App\Models\Asset $model
      * @return array
      */
-    public function transform(Asset $model)
+    public function transform(\App\Models\Asset $model)
     {
         return [
             'id' => $model->uuid,
