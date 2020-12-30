@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Auth;
  */
 class ProfileController extends Controller
 {
-
     /**
      * @return \Dingo\Api\Http\Response
      */

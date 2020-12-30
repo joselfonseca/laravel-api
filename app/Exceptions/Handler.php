@@ -53,35 +53,36 @@ class Handler extends ExceptionHandler
         if ($exception instanceof AuthenticationException && $request->wantsJson()) {
             return response()->json([
                 'message' => 'Unauthenticated.',
-                'status_code' => 401
+                'status_code' => 401,
             ], 401);
         }
         if ($exception instanceof BodyTooLargeException && $request->wantsJson()) {
             return response()->json([
                 'message' => 'The body is too large',
-                'status_code' => 413
+                'status_code' => 413,
             ], 413);
         }
         if ($exception instanceof ValidationException && $request->wantsJson()) {
             return response()->json([
                 'message' => $exception->getMessage(),
                 'status_code' => 422,
-                'errors' => $exception->errors()
+                'errors' => $exception->errors(),
             ], 422);
         }
         if ($exception instanceof StoreResourceFailedException && $request->wantsJson()) {
             return response()->json([
                 'message' => $exception->getMessage(),
                 'status_code' => 422,
-                'errors' => $exception->errors
+                'errors' => $exception->errors,
             ], 422);
         }
         if ($exception instanceof NotFoundHttpException && $request->wantsJson()) {
             return response()->json([
                 'message' => '404 Not Found',
-                'status_code' => 404
+                'status_code' => 404,
             ], 404);
         }
+
         return parent::render($request, $exception);
     }
 }

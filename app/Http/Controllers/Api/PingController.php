@@ -11,7 +11,6 @@ use App\Http\Controllers\Controller;
  */
 class PingController extends Controller
 {
-
     /**
      * Responds with a status for heath check.
      *

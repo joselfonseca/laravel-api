@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Assets;
 
 use App\Events\AssetWasCreated;
 use App\Exceptions\BodyTooLargeException;
+use App\Exceptions\StoreResourceFailedException;
 use App\Http\Controllers\Controller;
 use App\Transformers\Assets\AssetTransformer;
 use GuzzleHttp\Client;
@@ -11,14 +12,12 @@ use GuzzleHttp\Exception\TransferException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use App\Exceptions\StoreResourceFailedException;
 
 /**
  * Class UploadFileController.
  */
 class UploadFileController extends Controller
 {
-
     /**
      * @var array
      */
