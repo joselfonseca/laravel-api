@@ -35,10 +35,13 @@ class UsersController extends Controller
     }
 
     /**
-     * Returns the Users resource with the roles relation.
+     * List users
      *
-     * @param Request $request
-     * @return mixed
+     * Returns the Users resource with the roles relation.
+     * @group Users
+     * @transformerCollection App\Transformers\Users\UserTransformer
+     * @transformerModel App\Models\User
+     * @transformerPaginator League\Fractal\Pagination\IlluminatePaginatorAdapter 20
      */
     public function index(Request $request)
     {
@@ -51,8 +54,13 @@ class UsersController extends Controller
     }
 
     /**
-     * @param $id
-     * @return mixed
+     * Get single user
+     *
+     * Returns the User resource by it's uuid
+     * @group Users
+     * @urlParam uuid string required The UUID of the user.
+     * @transformer App\Transformers\Users\UserTransformer
+     * @transformerModel App\Models\User
      */
     public function show($id)
     {

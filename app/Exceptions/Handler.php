@@ -50,33 +50,33 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($exception instanceof AuthenticationException && $request->wantsJson()) {
+        if ($exception instanceof AuthenticationException) {
             return response()->json([
                 'message' => 'Unauthenticated.',
                 'status_code' => 401,
             ], 401);
         }
-        if ($exception instanceof BodyTooLargeException && $request->wantsJson()) {
+        if ($exception instanceof BodyTooLargeException) {
             return response()->json([
                 'message' => 'The body is too large',
                 'status_code' => 413,
             ], 413);
         }
-        if ($exception instanceof ValidationException && $request->wantsJson()) {
+        if ($exception instanceof ValidationException) {
             return response()->json([
                 'message' => $exception->getMessage(),
                 'status_code' => 422,
                 'errors' => $exception->errors(),
             ], 422);
         }
-        if ($exception instanceof StoreResourceFailedException && $request->wantsJson()) {
+        if ($exception instanceof StoreResourceFailedException) {
             return response()->json([
                 'message' => $exception->getMessage(),
                 'status_code' => 422,
                 'errors' => $exception->errors,
             ], 422);
         }
-        if ($exception instanceof NotFoundHttpException && $request->wantsJson()) {
+        if ($exception instanceof NotFoundHttpException) {
             return response()->json([
                 'message' => '404 Not Found',
                 'status_code' => 404,
