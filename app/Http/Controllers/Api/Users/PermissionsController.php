@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Transformers\Users\PermissionTransformer;
-use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
 
 /**
@@ -13,7 +12,6 @@ use Illuminate\Http\Request;
  */
 class PermissionsController extends Controller
 {
-    use Helpers;
 
     /**
      * @var
@@ -42,6 +40,6 @@ class PermissionsController extends Controller
             $paginator->appends('limit', $request->get('limit'));
         }
 
-        return $this->response->paginator($paginator, new PermissionTransformer());
+        return fractal($paginator, new PermissionTransformer())->respond();
     }
 }

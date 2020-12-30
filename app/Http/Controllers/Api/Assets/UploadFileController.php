@@ -6,20 +6,18 @@ use App\Events\AssetWasCreated;
 use App\Exceptions\BodyTooLargeException;
 use App\Http\Controllers\Controller;
 use App\Transformers\Assets\AssetTransformer;
-use Dingo\Api\Exception\StoreResourceFailedException;
-use Dingo\Api\Routing\Helpers;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\TransferException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Exceptions\StoreResourceFailedException;
 
 /**
  * Class UploadFileController.
  */
 class UploadFileController extends Controller
 {
-    use Helpers;
 
     /**
      * @var array
@@ -92,7 +90,7 @@ class UploadFileController extends Controller
 
         event(new AssetWasCreated($asset));
 
-        return $this->response->item($asset, new AssetTransformer())->setStatusCode(201);
+        return fractal($asset, new AssetTransformer())->respond(201);
     }
 
     /**

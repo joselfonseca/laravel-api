@@ -57,7 +57,8 @@ class UploadImageTest extends TestCase
         $file = base64_encode(file_get_contents(base_path('tests/Resources/bigpic.jpg')));
         $server = $this->transformHeadersToServerVars([
             'Content-Type' => 'image/jpeg',
-            'Content-Length' => mb_strlen($file)
+            'Content-Length' => mb_strlen($file),
+            'Accept' => 'application/json'
         ]);
         $response = $this->call('POST', 'api/assets', [], [], [], $server, $file);
         $this->assertEquals(413, $response->getStatusCode());
@@ -73,7 +74,8 @@ class UploadImageTest extends TestCase
         );
         $server = $this->transformHeadersToServerVars([
             'Content-Type' => 'application/xml',
-            'Content-Length' => mb_strlen('some ramdon content')
+            'Content-Length' => mb_strlen('some ramdon content'),
+            'Accept' => 'application/json'
         ]);
         $response = $this->call('POST', 'api/assets', [], [], [], $server, 'some ramdon content');
         $this->assertEquals(422, $response->getStatusCode());
@@ -118,6 +120,8 @@ class UploadImageTest extends TestCase
         );
         $response = $this->json('POST', 'api/assets', [
             'url' => 'http://somedomain/350x150'
+        ], [
+            'Accept' => 'application/json'
         ]);
         $jsonResponse = json_decode($response->getContent(), true);
         $this->assertEquals(422, $response->getStatusCode());
@@ -135,6 +139,8 @@ class UploadImageTest extends TestCase
         );
         $response = $this->json('POST', 'api/assets', [
             'url' => 'http://google.com'
+        ], [
+            'Accept' => 'application/json'
         ]);
         $jsonResponse = json_decode($response->getContent(), true);
         $this->assertEquals(422, $response->getStatusCode());
@@ -165,6 +171,8 @@ class UploadImageTest extends TestCase
         $file = UploadedFile::fake()->image('avatar.jpg')->size(1000);
         $response = $this->post('api/assets', [
             'file' => $file
+        ], [
+            'Accept' => 'application/json'
         ]);
         $jsonResponse = json_decode($response->getContent(), true);
         $this->assertEquals(413, $response->getStatusCode());

@@ -22,6 +22,5 @@
     <server name="SESSION_DRIVER" value="array"/>
     <env name="DB_CONNECTION" value="sqlite"/>
     <env name="DB_DATABASE" value=":memory:"/>
-    <env name="API_VERSION" value="v1"/>
   </php>
 </phpunit>

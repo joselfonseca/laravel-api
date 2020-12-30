@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Users;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Transformers\Users\UserTransformer;
-use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
 
 /**
@@ -15,17 +14,16 @@ use Illuminate\Http\Request;
  */
 class UsersController extends Controller
 {
-    use Helpers;
 
     /**
-     * @var \App\Model\\App\Models\User
+     * @var \App\Models\User
      */
     protected $model;
 
     /**
      * UsersController constructor.
      *
-     * @param \App\Model\User $model
+     * @param \App\Models\User $model
      */
     public function __construct(User $model)
     {
@@ -50,7 +48,7 @@ class UsersController extends Controller
             $paginator->appends('limit', $request->get('limit'));
         }
 
-        return $this->response->paginator($paginator, new UserTransformer());
+        return fractal($paginator, new UserTransformer())->respond();
     }
 
     /**
@@ -61,7 +59,7 @@ class UsersController extends Controller
     {
         $user = $this->model->with('roles.permissions')->byUuid($id)->firstOrFail();
 
-        return $this->response->item($user, new UserTransformer());
+        return fractal($user, new UserTransformer())->respond();
     }
 
     /**
@@ -80,7 +78,7 @@ class UsersController extends Controller
             $user->syncRoles($request['roles']);
         }
 
-        return $this->response->created(url('api/users/'.$user->uuid));
+        return fractal($user, new UserTransformer())->respond(201);
     }
 
     /**
@@ -108,7 +106,7 @@ class UsersController extends Controller
             $user->syncRoles($request['roles']);
         }
 
-        return $this->response->item($user->fresh(), new UserTransformer());
+        return fractal($user->fresh(), new UserTransformer())->respond();
     }
 
     /**
@@ -121,6 +119,6 @@ class UsersController extends Controller
         $user = $this->model->byUuid($uuid)->firstOrFail();
         $user->delete();
 
-        return $this->response->noContent();
+        return response()->json(null, 204);
     }
 }

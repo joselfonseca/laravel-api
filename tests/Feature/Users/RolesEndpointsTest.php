@@ -79,7 +79,6 @@ class RolesEndpointsTest extends TestCase
             'name' => 'Guest'
         ]);
         $response->assertStatus(201);
-        $response->assertHeader('location');
         $this->assertDatabaseHas('roles', [
             'name' => 'Guest'
         ]);

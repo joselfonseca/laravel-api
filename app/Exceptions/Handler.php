@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 /**
@@ -47,6 +50,38 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if ($exception instanceof AuthenticationException && $request->wantsJson()) {
+            return response()->json([
+                'message' => 'Unauthenticated.',
+                'status_code' => 401
+            ], 401);
+        }
+        if ($exception instanceof BodyTooLargeException && $request->wantsJson()) {
+            return response()->json([
+                'message' => 'The body is too large',
+                'status_code' => 413
+            ], 413);
+        }
+        if ($exception instanceof ValidationException && $request->wantsJson()) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'status_code' => 422,
+                'errors' => $exception->errors()
+            ], 422);
+        }
+        if ($exception instanceof StoreResourceFailedException && $request->wantsJson()) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'status_code' => 422,
+                'errors' => $exception->errors
+            ], 422);
+        }
+        if ($exception instanceof NotFoundHttpException && $request->wantsJson()) {
+            return response()->json([
+                'message' => '404 Not Found',
+                'status_code' => 404
+            ], 404);
+        }
         return parent::render($request, $exception);
     }
 }

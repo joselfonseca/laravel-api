@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Transformers\Users\RoleTransformer;
-use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
 
 /**
@@ -13,7 +12,6 @@ use Illuminate\Http\Request;
  */
 class RolesController extends Controller
 {
-    use Helpers;
 
     /**
      * @var
@@ -46,7 +44,7 @@ class RolesController extends Controller
             $paginator->appends('limit', $request->get('limit'));
         }
 
-        return $this->response->paginator($paginator, new RoleTransformer());
+        return fractal($paginator, new RoleTransformer())->respond();
     }
 
     /**
@@ -57,7 +55,7 @@ class RolesController extends Controller
     {
         $role = $this->model->with('permissions')->byUuid($id)->firstOrFail();
 
-        return $this->response->item($role, new RoleTransformer());
+        return fractal($role, new RoleTransformer())->respond();
     }
 
     /**
@@ -74,7 +72,7 @@ class RolesController extends Controller
             $role->syncPermissions($request['permissions']);
         }
 
-        return $this->response->created(url('api/roles/'.$role->uuid));
+        return fractal($role, new RoleTransformer())->respond(201);
     }
 
     /**
@@ -93,7 +91,7 @@ class RolesController extends Controller
             $role->syncPermissions($request['permissions']);
         }
 
-        return $this->response->item($role->fresh(), new RoleTransformer());
+        return fractal($role->fresh(), new RoleTransformer())->respond();
     }
 
     /**
@@ -106,6 +104,6 @@ class RolesController extends Controller
         $role = $this->model->byUuid($uuid)->firstOrFail();
         $role->delete();
 
-        return $this->response->noContent();
+        return response()->json(null, 204);
     }
 }

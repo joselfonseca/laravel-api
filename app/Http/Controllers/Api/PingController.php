@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Dingo\Api\Routing\Helpers;
 
 /**
  * Class PingController.
@@ -12,7 +11,6 @@ use Dingo\Api\Routing\Helpers;
  */
 class PingController extends Controller
 {
-    use Helpers;
 
     /**
      * Responds with a status for heath check.
@@ -21,7 +19,7 @@ class PingController extends Controller
      */
     public function index()
     {
-        return $this->response->array([
+        return response()->json([
             'status' => 'ok',
             'timestamp' => \Carbon\Carbon::now(),
             'host' => request()->ip(),

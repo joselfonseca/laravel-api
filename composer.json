@@ -1,20 +1,19 @@
 {
     "name": "joselfonseca/laravel-api",
     "description": "Laravel API starter Kit will give you most of the boilerplate that you need for creating Laravel API's",
-    "keywords": ["framework", "laravel", "Api", "REST", "oAuth2", "Dingo API"],
+    "keywords": ["framework", "laravel", "Api", "REST", "oAuth2"],
     "license": "MIT",
     "type": "project",
     "authors": [
         {
             "name": "Jose Fonseca",
             "email": "jose@ditecnologia.com",
-            "homepage": "https://josefonseca.me",
+            "homepage": "https://joselfonseca.dev",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.3",
-        "dingo/api": "^3.0.2-rc1",
+        "php": ">=7.2.5",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -23,6 +22,7 @@
         "laravel/framework": "^8.0",
         "laravel/passport": "^10.0",
         "laravel/tinker": "^2.0",
+        "spatie/laravel-fractal": "^5.8",
         "spatie/laravel-permission": "^3.17"
     },
     "require-dev": {
