@@ -7,23 +7,10 @@ use App\Models\User;
 use App\Transformers\Users\UserTransformer;
 use Illuminate\Http\Request;
 
-/**
- * Class UsersController.
- *
- * @author Jose Fonseca <jose@ditecnologia.com>
- */
 class UsersController extends Controller
 {
-    /**
-     * @var \App\Models\User
-     */
     protected $model;
 
-    /**
-     * UsersController constructor.
-     *
-     * @param \App\Models\User $model
-     */
     public function __construct(User $model)
     {
         $this->model = $model;
@@ -34,15 +21,6 @@ class UsersController extends Controller
         $this->middleware('permission:Delete users')->only('destroy');
     }
 
-    /**
-     * List users
-     *
-     * Returns the Users resource with the roles relation.
-     * @group Users
-     * @transformerCollection App\Transformers\Users\UserTransformer
-     * @transformerModel App\Models\User
-     * @transformerPaginator League\Fractal\Pagination\IlluminatePaginatorAdapter 20
-     */
     public function index(Request $request)
     {
         $paginator = $this->model->with('roles.permissions')->paginate($request->get('limit', config('app.pagination_limit', 20)));
@@ -53,15 +31,6 @@ class UsersController extends Controller
         return fractal($paginator, new UserTransformer())->respond();
     }
 
-    /**
-     * Get single user
-     *
-     * Returns the User resource by it's uuid
-     * @group Users
-     * @urlParam uuid string required The UUID of the user.
-     * @transformer App\Transformers\Users\UserTransformer
-     * @transformerModel App\Models\User
-     */
     public function show($id)
     {
         $user = $this->model->with('roles.permissions')->byUuid($id)->firstOrFail();
@@ -69,10 +38,6 @@ class UsersController extends Controller
         return fractal($user, new UserTransformer())->respond();
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -88,11 +53,6 @@ class UsersController extends Controller
         return fractal($user, new UserTransformer())->respond(201);
     }
 
-    /**
-     * @param Request $request
-     * @param $uuid
-     * @return mixed
-     */
     public function update(Request $request, $uuid)
     {
         $user = $this->model->byUuid($uuid)->firstOrFail();
@@ -116,11 +76,6 @@ class UsersController extends Controller
         return fractal($user->fresh(), new UserTransformer())->respond();
     }
 
-    /**
-     * @param Request $request
-     * @param $uuid
-     * @return mixed
-     */
     public function destroy(Request $request, $uuid)
     {
         $user = $this->model->byUuid($uuid)->firstOrFail();

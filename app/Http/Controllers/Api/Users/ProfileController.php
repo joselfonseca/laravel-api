@@ -9,23 +9,14 @@ use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * Class ProfileController.
- */
 class ProfileController extends Controller
 {
-    /**
-     * @return \Dingo\Api\Http\Response
-     */
+
     public function index()
     {
         return fractal(Auth::user(), new UserTransformer())->respond();
     }
 
-    /**
-     * @param Request $request
-     * @return \Dingo\Api\Http\Response
-     */
     public function update(Request $request)
     {
         $user = Auth::user();
@@ -46,10 +37,6 @@ class ProfileController extends Controller
         return fractal($user->fresh(), new UserTransformer())->respond();
     }
 
-    /**
-     * @param Request $request
-     * @return \Dingo\Api\Http\Response
-     */
     public function updatePassword(Request $request)
     {
         $user = Auth::user();

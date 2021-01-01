@@ -69,6 +69,13 @@ You should be done with the basic installation and configuration.
 
 Navigate to the project root and run `vendor/bin/phpunit` after installing all the composer dependencies and after the .env file was created.
 
+## API documentation
+The project uses API blueprint as API spec and [Aglio](https://github.com/danielgtaylor/aglio) to render the API docs, please install aglio and [merge-apib](https://github.com/ValeriaVG/merge-apib) in your machine and then you can run the following command to compile and render the API docs 
+```bash
+composer api-docs
+```
+Also, an OpenAPI spec is given from the blueprint generated documentation in case is needed.
+
 ## License
 
 The Laravel API Starter kit is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

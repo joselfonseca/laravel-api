@@ -13,14 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-/**
- * Class UploadFileController.
- */
 class UploadFileController extends Controller
 {
-    /**
-     * @var array
-     */
     protected $validMimes = [
         'image/jpeg' => [
             'type' => 'image',
@@ -36,32 +30,16 @@ class UploadFileController extends Controller
         ],
     ];
 
-    /**
-     * @var \GuzzleHttp\Client
-     */
     protected $client;
 
-    /**
-     * @var \App\Models\Asset
-     */
     protected $model;
 
-    /**
-     * UploadFileController constructor.
-     *
-     * @param \GuzzleHttp\Client $client
-     * @param \App\Models\Asset $model
-     */
     public function __construct(Client $client, \App\Models\Asset $model)
     {
         $this->client = $client;
         $this->model = $model;
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @return $this
-     */
     public function store(Request $request)
     {
         if ($request->isJson()) {
@@ -92,10 +70,6 @@ class UploadFileController extends Controller
         return fractal($asset, new AssetTransformer())->respond(201);
     }
 
-    /**
-     * @param array $attributes
-     * @return mixed
-     */
     protected function uploadFromDirectFile($attributes = [])
     {
         $this->validateMime($attributes['mime']);
@@ -105,10 +79,6 @@ class UploadFileController extends Controller
         return $this->storeInDatabase($attributes, $path);
     }
 
-    /**
-     * @param array $attributes
-     * @return mixed
-     */
     protected function uploadFromUrl($attributes = [])
     {
         $response = $this->callFileUrl($attributes['url']);
@@ -120,11 +90,6 @@ class UploadFileController extends Controller
         return $this->storeInDatabase($attributes, $path);
     }
 
-    /**
-     * @param array $attributes
-     * @param $path
-     * @return mixed
-     */
     protected function storeInDatabase(array $attributes, $path)
     {
         $file = $this->model->create([
@@ -137,10 +102,6 @@ class UploadFileController extends Controller
         return $file;
     }
 
-    /**
-     * @param array $attributes
-     * @return string
-     */
     protected function storeInFileSystem(array $attributes)
     {
         $path = md5(Str::random(16).date('U')).'.'.$this->validMimes[$attributes['mime']]['extension'];
@@ -149,11 +110,6 @@ class UploadFileController extends Controller
         return $path;
     }
 
-    /**
-     * @param $url
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
     protected function callFileUrl($url)
     {
         try {
@@ -165,9 +121,6 @@ class UploadFileController extends Controller
         }
     }
 
-    /**
-     * @param $mime
-     */
     protected function validateMime($mime)
     {
         if (! array_key_exists($mime, $this->validMimes)) {
@@ -177,11 +130,6 @@ class UploadFileController extends Controller
         }
     }
 
-    /**
-     * @param $contentLength
-     * @param $content
-     * @throws \App\Exceptions\BodyTooLargeException
-     */
     protected function validateBodySize($contentLength, $content)
     {
         if ($contentLength > config('files.maxsize', 1000000) || mb_strlen($content) > config('files.maxsize', 1000000)) {
