@@ -18,6 +18,12 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/joselfonseca/shift-php-cs"
+        }
+    ],
     "require": {
         "php": ">=7.3",
         "fideloper/proxy": "^4.2",

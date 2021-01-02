@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f03e06d7f3ebd883f0e44d16913ebf5",
+    "content-hash": "b01e2c4b4a6b59e6db3c3be18e55eac0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6479,18 +6479,18 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/eduarguz/shift-php-cs.git",
-                "reference": "333088854ca766362ba007729b7c7bc9733ceb9b"
+                "url": "https://github.com/joselfonseca/shift-php-cs.git",
+                "reference": "c213a3acf884b6e6aee755d32305a2f8fe625cd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eduarguz/shift-php-cs/zipball/333088854ca766362ba007729b7c7bc9733ceb9b",
-                "reference": "333088854ca766362ba007729b7c7bc9733ceb9b",
+                "url": "https://api.github.com/repos/joselfonseca/shift-php-cs/zipball/c213a3acf884b6e6aee755d32305a2f8fe625cd4",
+                "reference": "c213a3acf884b6e6aee755d32305a2f8fe625cd4",
                 "shasum": ""
             },
             "require": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "php": "^7.0"
+                "php": ">=7.0"
             },
             "default-branch": true,
             "type": "library",
@@ -6499,7 +6499,6 @@
                     "./src/helpers.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6513,10 +6512,9 @@
             "description": "PHP CS Fixer - Laravel Coding Style Ruleset",
             "homepage": "https://github.com/eduarguz/shift-php-cs",
             "support": {
-                "issues": "https://github.com/eduarguz/shift-php-cs/issues",
-                "source": "https://github.com/eduarguz/shift-php-cs/tree/1.0.0"
+                "source": "https://github.com/joselfonseca/shift-php-cs/tree/master"
             },
-            "time": "2020-05-17T20:58:09+00:00"
+            "time": "2021-01-02T01:43:29+00:00"
         },
         {
             "name": "facade/flare-client-php",
