@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee4d40cf202352d3e61f89aa8fa150ec",
+    "content-hash": "2f03e06d7f3ebd883f0e44d16913ebf5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6476,7 +6476,7 @@
         },
         {
             "name": "eduarguz/shift-php-cs",
-            "version": "1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eduarguz/shift-php-cs.git",
@@ -6492,6 +6492,7 @@
                 "friendsofphp/php-cs-fixer": "^2.0",
                 "php": "^7.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -6513,7 +6514,7 @@
             "homepage": "https://github.com/eduarguz/shift-php-cs",
             "support": {
                 "issues": "https://github.com/eduarguz/shift-php-cs/issues",
-                "source": "https://github.com/eduarguz/shift-php-cs/tree/master"
+                "source": "https://github.com/eduarguz/shift-php-cs/tree/1.0.0"
             },
             "time": "2020-05-17T20:58:09+00:00"
         },
@@ -9292,7 +9293,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "eduarguz/shift-php-cs": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
