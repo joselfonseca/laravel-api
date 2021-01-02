@@ -13,13 +13,13 @@ class RenderFileTest extends TestCase
 {
     use RefreshDatabase;
 
-    function test_it_renders_image()
+    public function test_it_renders_image()
     {
         $file = base64_encode(file_get_contents(base_path('tests/Resources/pic.png')));
         Passport::actingAs(User::factory()->create());
         $server = $this->transformHeadersToServerVars([
             'Content-Type' => 'image/png',
-            'Content-Length' => mb_strlen($file)
+            'Content-Length' => mb_strlen($file),
         ]);
         $response = $this->call('POST', 'api/assets', [], [], [], $server, $file);
         $asset = json_decode($response->getContent());
@@ -30,7 +30,7 @@ class RenderFileTest extends TestCase
         $this->assertEquals('image/png', $headers->get('Content-Type'));
     }
 
-    function test_it_renders_placeholder_image()
+    public function test_it_renders_placeholder_image()
     {
         Passport::actingAs(User::factory()->create());
         $response = $this->get('api/assets/'.Str::uuid().'/render');
@@ -40,7 +40,7 @@ class RenderFileTest extends TestCase
         $this->assertEquals('image/jpeg', $headers->get('Content-Type'));
     }
 
-    function test_it_renders_placeholder_image_resized_to_width_100()
+    public function test_it_renders_placeholder_image_resized_to_width_100()
     {
         Passport::actingAs(User::factory()->create());
         $response = $this->get('api/assets/'.Str::uuid().'/render?width=100');
@@ -55,7 +55,7 @@ class RenderFileTest extends TestCase
         Storage::delete('created.jpeg');
     }
 
-    function test_it_renders_placeholder_image_resized_to_height_100()
+    public function test_it_renders_placeholder_image_resized_to_height_100()
     {
         Passport::actingAs(User::factory()->create());
         $response = $this->get('api/assets/'.Str::uuid().'/render?height=100');
@@ -70,7 +70,7 @@ class RenderFileTest extends TestCase
         Storage::delete('created.jpeg');
     }
 
-    function test_it_renders_placeholder_image_resized_to_width_and_height()
+    public function test_it_renders_placeholder_image_resized_to_width_and_height()
     {
         Passport::actingAs(User::factory()->create());
         $response = $this->get('api/assets/'.Str::uuid().'/render?height=100&width=300');

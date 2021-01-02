@@ -7,7 +7,6 @@ use Illuminate\Support\Carbon;
 
 class PingController extends Controller
 {
-
     public function index()
     {
         return response()->json([

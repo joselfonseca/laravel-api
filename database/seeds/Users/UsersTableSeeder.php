@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         $user = \App\Models\User::factory()->create([
             'name' => 'Jose Fonseca',
-            'email' => 'jose@example.com'
+            'email' => 'jose@example.com',
         ]);
         $user->assignRole('Administrator');
     }

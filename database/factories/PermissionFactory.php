@@ -23,7 +23,7 @@ class PermissionFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'uuid' => $this->faker->uuid
+            'uuid' => $this->faker->uuid,
         ];
     }
 }

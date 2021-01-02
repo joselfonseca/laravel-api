@@ -12,18 +12,16 @@ use Tests\TestCase;
 
 class RolesEndpointsTest extends TestCase
 {
-
     use RefreshDatabase;
 
-    function setUp() : void
+    public function setUp() : void
     {
         parent::setUp();
         $this->seed();
         $this->app->make(PermissionRegistrar::class)->registerPermissions();
     }
 
-
-    function test_it_list_roles()
+    public function test_it_list_roles()
     {
         Role::factory()->count(10)->create();
         Passport::actingAs(User::first());
@@ -31,17 +29,17 @@ class RolesEndpointsTest extends TestCase
         $response->assertStatus(200);
         $response->assertJson([
             'data' => [
-                ['name' => 'Administrator']
+                ['name' => 'Administrator'],
             ],
             'meta' => [
                 'pagination' => [
 
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
-    function test_it_list_paginated_roles()
+    public function test_it_list_paginated_roles()
     {
         Role::factory()->count(30)->create();
         Passport::actingAs(User::first());
@@ -49,13 +47,13 @@ class RolesEndpointsTest extends TestCase
         $response->assertStatus(200);
         $response->assertJson([
             'data' => [
-                ['name' => 'Administrator']
+                ['name' => 'Administrator'],
             ],
             'meta' => [
                 'pagination' => [
 
-                ]
-            ]
+                ],
+            ],
         ]);
         $jsonResponse = json_decode($response->getContent(), true);
         $queryString = explode('?', $jsonResponse['meta']['pagination']['links']['next']);
@@ -64,7 +62,7 @@ class RolesEndpointsTest extends TestCase
         $this->assertEquals('10', $result['limit']);
     }
 
-    function test_it_prevents_unauthorized_roles_listing()
+    public function test_it_prevents_unauthorized_roles_listing()
     {
         $user = User::factory()->create();
         Passport::actingAs($user);
@@ -72,19 +70,19 @@ class RolesEndpointsTest extends TestCase
         $response->assertStatus(403);
     }
 
-    function test_it_can_create_a_role()
+    public function test_it_can_create_a_role()
     {
         Passport::actingAs(User::first());
         $response = $this->json('POST', 'api/roles', [
-            'name' => 'Guest'
+            'name' => 'Guest',
         ]);
         $response->assertStatus(201);
         $this->assertDatabaseHas('roles', [
-            'name' => 'Guest'
+            'name' => 'Guest',
         ]);
     }
 
-    function test_it_validates_input_for_roles()
+    public function test_it_validates_input_for_roles()
     {
         Passport::actingAs(User::first());
         $response = $this->json('POST', 'api/roles', [
@@ -93,16 +91,16 @@ class RolesEndpointsTest extends TestCase
         $response->assertStatus(422);
     }
 
-    function test_it_validates_permissions_to_create_a_role()
+    public function test_it_validates_permissions_to_create_a_role()
     {
         Passport::actingAs(User::factory()->create());
         $response = $this->json('POST', 'api/roles', [
-            'name' => 'Guest'
+            'name' => 'Guest',
         ]);
         $response->assertStatus(403);
     }
 
-    function test_it_shows_role_info()
+    public function test_it_shows_role_info()
     {
         Passport::actingAs(User::first());
         $role = Role::first();
@@ -114,17 +112,17 @@ class RolesEndpointsTest extends TestCase
                 'name' => $role->name,
                 'permissions' => [
 
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
-    function test_it_updates_a_role()
+    public function test_it_updates_a_role()
     {
         Passport::actingAs(User::first());
         $role = Role::first();
         $response = $this->json('PUT', 'api/roles/'.$role->uuid, [
-            'name' => 'New Role Name'
+            'name' => 'New Role Name',
         ]);
         $response->assertStatus(200);
         $response->assertJson([
@@ -133,16 +131,16 @@ class RolesEndpointsTest extends TestCase
                 'name' => 'New Role Name',
                 'permissions' => [
 
-                ]
-            ]
+                ],
+            ],
         ]);
         $this->assertDatabaseHas('roles', [
             'id' => $role->id,
-            'name' => 'New Role Name'
+            'name' => 'New Role Name',
         ]);
     }
 
-    function test_it_validates_roles_input_for_update()
+    public function test_it_validates_roles_input_for_update()
     {
         Passport::actingAs(User::first());
         $role = Role::first();
@@ -152,7 +150,7 @@ class RolesEndpointsTest extends TestCase
         $response->assertStatus(422);
     }
 
-    function test_it_validates_permission_to_update_role()
+    public function test_it_validates_permission_to_update_role()
     {
         Passport::actingAs(User::factory()->create());
         $role = Role::first();
@@ -162,7 +160,7 @@ class RolesEndpointsTest extends TestCase
         $response->assertStatus(403);
     }
 
-    function test_it_can_delete_a_role()
+    public function test_it_can_delete_a_role()
     {
         Passport::actingAs(User::first());
         $role = Role::factory()->create();
@@ -171,11 +169,11 @@ class RolesEndpointsTest extends TestCase
         ]);
         $response->assertStatus(204);
         $this->assertDatabaseMissing('roles', [
-            'id' => $role->id
+            'id' => $role->id,
         ]);
     }
 
-    function test_it_validates_permission_to_delete_role()
+    public function test_it_validates_permission_to_delete_role()
     {
         Passport::actingAs(User::factory()->create());
         $role = Role::factory()->create();
@@ -184,50 +182,50 @@ class RolesEndpointsTest extends TestCase
         ]);
         $response->assertStatus(403);
         $this->assertDatabaseHas('roles', [
-            'id' => $role->id
+            'id' => $role->id,
         ]);
     }
 
-    function test_it_can_create_roles_with_permissions()
+    public function test_it_can_create_roles_with_permissions()
     {
         Passport::actingAs(User::first());
         $permissions = Permission::factory()->count(3)->create();
         $response = $this->json('POST', 'api/roles', [
             'name' => 'Guest',
-            'permissions' => $permissions->pluck('uuid')->toArray()
+            'permissions' => $permissions->pluck('uuid')->toArray(),
         ]);
         $response->assertStatus(201);
         $this->assertDatabaseHas('roles', [
-            'name' => 'Guest'
+            'name' => 'Guest',
         ]);
         $role = Role::where('name', 'Guest')->first();
-        $permissions->each(function($permission) use ($role) {
+        $permissions->each(function ($permission) use ($role) {
             $this->assertDatabaseHas('role_has_permissions', [
                 'role_id' => $role->id,
-                'permission_id' => $permission->id
+                'permission_id' => $permission->id,
             ]);
         });
     }
 
-    function test_it_can_remove_permissions_from_role_if_empty_array_is_sent()
+    public function test_it_can_remove_permissions_from_role_if_empty_array_is_sent()
     {
         Passport::actingAs(User::first());
         $permissions = Permission::factory()->count(3)->create();
         $role = Role::factory()->create()->syncPermissions($permissions);
         $response = $this->json('PUT', 'api/roles/'.$role->uuid, [
             'name' => 'Guest',
-            'permissions' => []
+            'permissions' => [],
         ]);
         $response->assertStatus(200);
-        $permissions->each(function($permission) use ($role) {
+        $permissions->each(function ($permission) use ($role) {
             $this->assertDatabaseMissing('role_has_permissions', [
                 'role_id' => $role->id,
-                'permission_id' => $permission->id
+                'permission_id' => $permission->id,
             ]);
         });
     }
 
-    function test_it_can_sync_permissions_for_created_role()
+    public function test_it_can_sync_permissions_for_created_role()
     {
         Passport::actingAs(User::first());
         $permissions = Permission::factory()->count(5)->create();
@@ -236,16 +234,15 @@ class RolesEndpointsTest extends TestCase
         $newPermissions = $permissions->take(2);
         $response = $this->json('PUT', 'api/roles/'.$role->uuid, [
             'name' => 'Guest',
-            'permissions' => $newPermissions->pluck('uuid')->toArray()
+            'permissions' => $newPermissions->pluck('uuid')->toArray(),
         ]);
         $response->assertStatus(200);
-        $newPermissions->each(function($permission) use ($role) {
+        $newPermissions->each(function ($permission) use ($role) {
             $this->assertDatabaseHas('role_has_permissions', [
                 'role_id' => $role->id,
-                'permission_id' => $permission->id
+                'permission_id' => $permission->id,
             ]);
         });
         $this->assertCount(2, $role->fresh()->permissions);
     }
-
 }

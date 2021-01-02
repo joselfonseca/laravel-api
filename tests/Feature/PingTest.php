@@ -2,21 +2,16 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\TestCase;
 
 /**
- * Class PingTest
- * @package Tests\Feature
+ * Class PingTest.
  */
 class PingTest extends TestCase
 {
-
-    /**
-     *
-     */
     public function test_it_returns_ping()
     {
         $response = $this->json('GET', 'api/ping');
@@ -24,9 +19,6 @@ class PingTest extends TestCase
         $response->assertJson(['status' => 'ok']);
     }
 
-    /**
-     *
-     */
     public function test_it_returns_404()
     {
         $response = $this->json('GET', 'api/non-existing-resource');

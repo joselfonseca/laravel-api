@@ -11,18 +11,16 @@ use Tests\TestCase;
 
 class PermissionsEndpointsTest extends TestCase
 {
-
     use RefreshDatabase;
 
-
-    function setUp() : void
+    public function setUp() : void
     {
         parent::setUp();
         $this->seed();
         $this->app->make(PermissionRegistrar::class)->registerPermissions();
     }
 
-    function test_it_can_list_permissions()
+    public function test_it_can_list_permissions()
     {
         Passport::actingAs(User::first());
         $response = $this->json('GET', 'api/permissions');
@@ -30,17 +28,17 @@ class PermissionsEndpointsTest extends TestCase
         $response->assertJson([
             'data' => [
                 ['name' => 'List users'],
-                ['name' => 'Create users']
+                ['name' => 'Create users'],
             ],
             'meta' => [
                 'pagination' => [
 
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
-    function test_it_can_list_paginated_permissions()
+    public function test_it_can_list_paginated_permissions()
     {
         Permission::factory()->count(30)->create();
         Passport::actingAs(User::first());
@@ -49,13 +47,13 @@ class PermissionsEndpointsTest extends TestCase
         $response->assertJson([
             'data' => [
                 ['name' => 'List users'],
-                ['name' => 'Create users']
+                ['name' => 'Create users'],
             ],
             'meta' => [
                 'pagination' => [
 
-                ]
-            ]
+                ],
+            ],
         ]);
         $jsonResponse = json_decode($response->getContent(), true);
         $queryString = explode('?', $jsonResponse['meta']['pagination']['links']['next']);
@@ -64,11 +62,10 @@ class PermissionsEndpointsTest extends TestCase
         $this->assertEquals('10', $result['limit']);
     }
 
-    function test_it_prevents_unauthorized_list_permissions()
+    public function test_it_prevents_unauthorized_list_permissions()
     {
         Passport::actingAs(User::factory()->create());
         $response = $this->json('GET', 'api/permissions');
         $response->assertStatus(403);
     }
-
 }

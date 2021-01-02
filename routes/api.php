@@ -4,8 +4,7 @@ Route::get('ping', 'Api\PingController@index');
 
 Route::get('assets/{uuid}/render', 'Api\Assets\RenderFileController@show');
 
-Route::group(['middleware' => ['auth:api'], ], function () {
-
+Route::group(['middleware' => ['auth:api']], function () {
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', 'Api\Users\UsersController@index');
         Route::post('/', 'Api\Users\UsersController@store');
@@ -26,15 +25,14 @@ Route::group(['middleware' => ['auth:api'], ], function () {
 
     Route::get('permissions', 'Api\Users\PermissionsController@index');
 
-    Route::group(['prefix' => 'me'], function() {
+    Route::group(['prefix' => 'me'], function () {
         Route::get('/', 'Api\Users\ProfileController@index');
         Route::put('/', 'Api\Users\ProfileController@update');
         Route::patch('/', 'Api\Users\ProfileController@update');
         Route::put('/password', 'Api\Users\ProfileController@updatePassword');
     });
 
-    Route::group(['prefix' => 'assets'], function() {
+    Route::group(['prefix' => 'assets'], function () {
         Route::post('/', 'Api\Assets\UploadFileController@store');
     });
-
 });

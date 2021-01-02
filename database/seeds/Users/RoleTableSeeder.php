@@ -33,6 +33,7 @@ class RoleTableSeeder extends Seeder
             ['name' => 'List permissions'],
         ],
     ];
+
     /**
      * Run the database seeds.
      *

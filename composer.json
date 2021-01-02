@@ -32,6 +32,7 @@
         "spatie/laravel-permission": "^3.17"
     },
     "require-dev": {
+        "eduarguz/shift-php-cs": "^1.0",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.2",
@@ -80,6 +81,9 @@
         "api-docs": [
             "apibmerge docs/api/blueprint docs/api/apiblueprint.apib",
             "aglio --theme-variables flatly --theme-template triple -i docs/api/blueprint/apidocs.apib -o resources/views/apidocs.blade.php"
+        ],
+        "cs": [
+            "vendor/bin/php-cs-fixer fix --config=.php_cs.dist -vvv --using-cache=no"
         ]
     }
 }
