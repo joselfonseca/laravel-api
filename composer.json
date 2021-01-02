@@ -1,7 +1,13 @@
 {
     "name": "joselfonseca/laravel-api",
     "description": "Laravel API starter Kit will give you most of the boilerplate that you need for creating Laravel API's",
-    "keywords": ["framework", "laravel", "Api", "REST", "oAuth2"],
+    "keywords": [
+        "framework",
+        "laravel",
+        "Api",
+        "REST",
+        "oAuth2"
+    ],
     "license": "MIT",
     "type": "project",
     "authors": [
@@ -28,7 +34,6 @@
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3"
