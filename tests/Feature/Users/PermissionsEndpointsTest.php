@@ -18,7 +18,7 @@ class PermissionsEndpointsTest extends TestCase
     function setUp() : void
     {
         parent::setUp();
-        $this->installApp();
+        $this->seed();
         $this->app->make(PermissionRegistrar::class)->registerPermissions();
     }
 
@@ -42,7 +42,7 @@ class PermissionsEndpointsTest extends TestCase
 
     function test_it_can_list_paginated_permissions()
     {
-        factory(Permission::class, 30)->create();
+        Permission::factory()->count(30)->create();
         Passport::actingAs(User::first());
         $response = $this->json('GET', 'api/permissions?limit=10');
         $response->assertStatus(200);
@@ -66,7 +66,7 @@ class PermissionsEndpointsTest extends TestCase
 
     function test_it_prevents_unauthorized_list_permissions()
     {
-        Passport::actingAs(factory(User::class)->create());
+        Passport::actingAs(User::factory()->create());
         $response = $this->json('GET', 'api/permissions');
         $response->assertStatus(403);
     }

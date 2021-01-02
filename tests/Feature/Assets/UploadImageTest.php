@@ -12,19 +12,13 @@ use Tests\TestCase;
 
 class UploadImageTest extends TestCase
 {
-
     use RefreshDatabase;
-
 
     function test_it_uploads_an_image_from_direct_file()
     {
-        $this->expectsEvents([
-            AssetWasCreated::class
-        ]);
+        $this->expectsEvents([AssetWasCreated::class]);
         $file = base64_encode(file_get_contents(base_path('tests/Resources/pic.png')));
-        Passport::actingAs(
-            factory(User::class)->create()
-        );
+        Passport::actingAs(User::factory()->create());
         $server = $this->transformHeadersToServerVars([
             'Content-Type' => 'image/png',
             'Content-Length' => mb_strlen($file)
@@ -48,12 +42,8 @@ class UploadImageTest extends TestCase
 
     function test_it_verifies_max_file_size()
     {
-        $this->doesntExpectEvents([
-            AssetWasCreated::class
-        ]);
-        Passport::actingAs(
-            factory(User::class)->create()
-        );
+        $this->doesntExpectEvents([AssetWasCreated::class]);
+        Passport::actingAs(User::factory()->create());
         $file = base64_encode(file_get_contents(base_path('tests/Resources/bigpic.jpg')));
         $server = $this->transformHeadersToServerVars([
             'Content-Type' => 'image/jpeg',
@@ -66,12 +56,8 @@ class UploadImageTest extends TestCase
 
     function test_it_validates_mime_type()
     {
-        $this->doesntExpectEvents([
-            AssetWasCreated::class
-        ]);
-        Passport::actingAs(
-            factory(User::class)->create()
-        );
+        $this->doesntExpectEvents([AssetWasCreated::class]);
+        Passport::actingAs(User::factory()->create());
         $server = $this->transformHeadersToServerVars([
             'Content-Type' => 'application/xml',
             'Content-Length' => mb_strlen('some ramdon content'),
@@ -85,12 +71,8 @@ class UploadImageTest extends TestCase
 
     function test_it_uploads_from_url()
     {
-        $this->expectsEvents([
-            AssetWasCreated::class
-        ]);
-        Passport::actingAs(
-            factory(User::class)->create()
-        );
+        $this->expectsEvents([AssetWasCreated::class]);
+        Passport::actingAs(User::factory()->create());
         $response = $this->json('POST', 'api/assets', [
             'url' => 'http://via.placeholder.com/350x150'
         ]);
@@ -112,12 +94,8 @@ class UploadImageTest extends TestCase
 
     function test_it_respond_validation_unreachable_error_in_url()
     {
-        $this->doesntExpectEvents([
-            AssetWasCreated::class
-        ]);
-        Passport::actingAs(
-            factory(User::class)->create()
-        );
+        $this->doesntExpectEvents([AssetWasCreated::class]);
+        Passport::actingAs(User::factory()->create());
         $response = $this->json('POST', 'api/assets', [
             'url' => 'http://somedomain/350x150'
         ], [
@@ -131,12 +109,8 @@ class UploadImageTest extends TestCase
 
     function test_it_validates_mime_on_url()
     {
-        $this->doesntExpectEvents([
-            AssetWasCreated::class
-        ]);
-        Passport::actingAs(
-            factory(User::class)->create()
-        );
+        $this->doesntExpectEvents([AssetWasCreated::class]);
+        Passport::actingAs(User::factory()->create());
         $response = $this->json('POST', 'api/assets', [
             'url' => 'http://google.com'
         ], [
@@ -150,9 +124,7 @@ class UploadImageTest extends TestCase
 
     function test_it_validates_url()
     {
-        Passport::actingAs(
-            factory(User::class)->create()
-        );
+        Passport::actingAs(User::factory()->create());
         $response = $this->json('POST', 'api/assets', [
             'url' => 'http://somedomain.com/350x150'
         ]);
@@ -164,9 +136,7 @@ class UploadImageTest extends TestCase
     function test_it_validates_size_using_multipart_file()
     {
         Storage::fake();
-        Passport::actingAs(
-            factory(User::class)->create()
-        );
+        Passport::actingAs(User::factory()->create());
         config()->set('files.maxsize', 10);
         $file = UploadedFile::fake()->image('avatar.jpg')->size(1000);
         $response = $this->post('api/assets', [

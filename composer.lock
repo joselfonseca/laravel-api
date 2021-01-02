@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c35165eb536e6b16fb3935058d70c0c4",
+    "content-hash": "d6ea1180dd9fc2c2e6c20d3cad8efa22",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6452,33 +6452,28 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.9.2",
+            "version": "v1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "84220cf137a9344acffb10374e781fed785ff307"
+                "reference": "ab3f5364d01f2c2c16113442fb987d26e4004913"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/84220cf137a9344acffb10374e781fed785ff307",
-                "reference": "84220cf137a9344acffb10374e781fed785ff307",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/ab3f5364d01f2c2c16113442fb987d26e4004913",
+                "reference": "ab3f5364d01f2c2c16113442fb987d26e4004913",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0"
+                "php": "^7.1 || ^8.0"
             },
             "conflict": {
-                "ergebnis/faker": "!=1.9.2",
-                "fzaninotto/faker": "!=1.9.2"
-            },
-            "replace": {
-                "ergebnis/faker": "1.9.2",
-                "fzaninotto/faker": "1.9.2"
+                "fzaninotto/faker": "*"
             },
             "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.4.1",
                 "ext-intl": "*",
-                "phpunit/phpunit": "^4.8.35 || ^5.7",
-                "squizlabs/php_codesniffer": "^2.9.2"
+                "phpunit/phpunit": "^7.5.20 || ^8.5.8 || ^9.4.2"
             },
             "type": "library",
             "autoload": {
@@ -6503,9 +6498,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.9.2"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.13.0"
             },
-            "time": "2020-12-11T14:32:13+00:00"
+            "time": "2020-12-18T16:50:48+00:00"
         },
         {
             "name": "filp/whoops",
@@ -6624,24 +6619,27 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
-            "name": "laravel/legacy-factories",
-            "version": "v1.1.0",
+            "name": "laravel/sail",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel/legacy-factories.git",
-                "reference": "5e3fe2fd5fda64e20ea5c74c831a7346294e902a"
+                "url": "https://github.com/laravel/sail.git",
+                "reference": "7457004969dd62fa727fbc596bb2accccb1409a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/legacy-factories/zipball/5e3fe2fd5fda64e20ea5c74c831a7346294e902a",
-                "reference": "5e3fe2fd5fda64e20ea5c74c831a7346294e902a",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/7457004969dd62fa727fbc596bb2accccb1409a5",
+                "reference": "7457004969dd62fa727fbc596bb2accccb1409a5",
                 "shasum": ""
             },
             "require": {
-                "illuminate/macroable": "^8.0",
-                "php": "^7.3|^8.0",
-                "symfony/finder": "^3.4|^4.0|^5.0"
+                "illuminate/contracts": "^8.0|^9.0",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.3|^8.0"
             },
+            "bin": [
+                "bin/sail"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -6649,16 +6647,13 @@
                 },
                 "laravel": {
                     "providers": [
-                        "Illuminate\\Database\\Eloquent\\LegacyFactoryServiceProvider"
+                        "Laravel\\Sail\\SailServiceProvider"
                     ]
                 }
             },
             "autoload": {
-                "files": [
-                    "helpers.php"
-                ],
                 "psr-4": {
-                    "Illuminate\\Database\\Eloquent\\": "src/"
+                    "Laravel\\Sail\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6671,13 +6666,16 @@
                     "email": "taylor@laravel.com"
                 }
             ],
-            "description": "The legacy version of the Laravel Eloquent factories.",
-            "homepage": "http://laravel.com",
+            "description": "Docker files for running a basic Laravel application.",
+            "keywords": [
+                "docker",
+                "laravel"
+            ],
             "support": {
-                "issues": "https://github.com/laravel/framework/issues",
-                "source": "https://github.com/laravel/framework"
+                "issues": "https://github.com/laravel/sail/issues",
+                "source": "https://github.com/laravel/sail"
             },
-            "time": "2020-10-27T14:25:32+00:00"
+            "time": "2020-12-22T17:36:59+00:00"
         },
         {
             "name": "mockery/mockery",

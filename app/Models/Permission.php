@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Support\UuidScopeTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Permission.
  */
 class Permission extends \Spatie\Permission\Models\Permission
 {
-    use UuidScopeTrait;
+    use UuidScopeTrait, HasFactory;
 
     /**
      * @var array

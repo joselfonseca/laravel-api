@@ -17,7 +17,7 @@ class ProfileEndpointsTest extends TestCase
     function setUp() : void
     {
         parent::setUp();
-        $this->installApp();
+        $this->seed();
         $this->app->make(PermissionRegistrar::class)->registerPermissions();
     }
 
@@ -88,7 +88,7 @@ class ProfileEndpointsTest extends TestCase
     function test_it_validates_input_for_email_on_update_profile()
     {
         Passport::actingAs(User::first());
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $response = $this->json('PATCH', '/api/me', [
             'email' => $user->email
         ]);
@@ -100,7 +100,7 @@ class ProfileEndpointsTest extends TestCase
         $user = User::first();
         Passport::actingAs($user);
         $response = $this->json('PUT', '/api/me/password', [
-            'current_password' => 'secret1234',
+            'current_password' => 'password',
             'password' => '123456789qq',
             'password_confirmation' => '123456789qq'
         ]);
