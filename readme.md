@@ -1,7 +1,5 @@
 ## Laravel API Starter Kit
 
-[![Build Status](https://travis-ci.org/joselfonseca/laravel-api.svg)](https://travis-ci.org/joselfonseca/laravel-api)
-[![StyleCI](https://styleci.io/repos/52485545/shield?branch=master)](https://styleci.io/repos/52485545)
 [![Total Downloads](https://poser.pugx.org/joselfonseca/laravel-api/downloads.svg)](https://packagist.org/packages/joselfonseca/laravel-api) 
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
@@ -9,8 +7,8 @@ Laravel API starter Kit will provide you with the tools for making API's that ev
 
 Here is a list of the packages installed:
 
-- [Dingo API](https://github.com/dingo/api)
-- [Laravel Passport](https://laravel.com/docs/5.7/passport)
+- [Laravel Passport](https://laravel.com/docs/8.x/passport)
+- [Laravel Fractal](https://github.com/spatie/laravel-fractal)
 - [Laravel Permission](https://github.com/spatie/laravel-permission)
 - [Intervention Image](http://image.intervention.io/)
 
@@ -22,36 +20,58 @@ To install the project you can use composer
 composer create-project joselfonseca/laravel-api new-api
 ```
 
-Then run `composer install` again and the error should be gone.
-
 Modify the .env file to suit your needs
 
 ```
+APP_NAME=Laravel
 APP_ENV=local
+APP_KEY=
 APP_DEBUG=true
-APP_KEY=base64:JqyMTmt5qr1CW6BH+GG+4iKfU4RiNjZTLy33TdTT7+4=
+APP_URL=http://localhost
 
-API_STANDARDS_TREE=vnd
-API_SUBTYPE=api
-API_PREFIX=api
-API_VERSION=v1
-API_DEBUG=true
+LOG_CHANNEL=stack
+LOG_LEVEL=debug
 
-DB_HOST=localhost
-DB_DATABASE=laravel_api
-DB_USERNAME=homestead
-DB_PASSWORD=secret
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
 
+BROADCAST_DRIVER=log
 CACHE_DRIVER=file
+QUEUE_CONNECTION=sync
 SESSION_DRIVER=file
-QUEUE_DRIVER=sync
+SESSION_LIFETIME=120
 
-MAIL_DRIVER=smtp
-MAIL_HOST=mailtrap.io
-MAIL_PORT=2525
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
 MAIL_USERNAME=null
 MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=null
+MAIL_FROM_NAME="${APP_NAME}"
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_APP_CLUSTER=mt1
+
+MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
 
 When you have the .env with your database connection set up you can run your migrations
@@ -61,13 +81,17 @@ php artisan migrate
 ```
 Then run `php artisan passport:install`
 
-Run `php artisan app:install` and fill out the information of the admin user.
-
-You should be done with the basic installation and configuration.
+Run `php artisan db:seed` and you should have a new user with the roles and permissions set up
 
 ## Tests
 
 Navigate to the project root and run `vendor/bin/phpunit` after installing all the composer dependencies and after the .env file was created.
+
+## API documentation
+The project uses API blueprint as API spec and [Aglio](https://github.com/danielgtaylor/aglio) to render the API docs, please install aglio and [merge-apib](https://github.com/ValeriaVG/merge-apib) in your machine and then you can run the following command to compile and render the API docs 
+```bash
+composer api-docs
+```
 
 ## License
 

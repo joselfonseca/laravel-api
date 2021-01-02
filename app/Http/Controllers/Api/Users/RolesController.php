@@ -5,26 +5,12 @@ namespace App\Http\Controllers\Api\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Transformers\Users\RoleTransformer;
-use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
 
-/**
- * Class RolesController.
- */
 class RolesController extends Controller
 {
-    use Helpers;
-
-    /**
-     * @var
-     */
     protected $model;
 
-    /**
-     * RolesController constructor.
-     *
-     * @param \App\Models\Role $model
-     */
     public function __construct(Role $model)
     {
         $this->model = $model;
@@ -35,10 +21,6 @@ class RolesController extends Controller
         $this->middleware('permission:Delete roles')->only('destroy');
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
     public function index(Request $request)
     {
         $paginator = $this->model->with('permissions')->paginate($request->get('limit', config('app.pagination_limit')));
@@ -46,24 +28,16 @@ class RolesController extends Controller
             $paginator->appends('limit', $request->get('limit'));
         }
 
-        return $this->response->paginator($paginator, new RoleTransformer());
+        return fractal($paginator, new RoleTransformer())->respond();
     }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
     public function show($id)
     {
         $role = $this->model->with('permissions')->byUuid($id)->firstOrFail();
 
-        return $this->response->item($role, new RoleTransformer());
+        return fractal($role, new RoleTransformer())->respond();
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -74,14 +48,9 @@ class RolesController extends Controller
             $role->syncPermissions($request['permissions']);
         }
 
-        return $this->response->created(url('api/roles/'.$role->uuid));
+        return fractal($role, new RoleTransformer())->respond(201);
     }
 
-    /**
-     * @param Request $request
-     * @param $uuid
-     * @return mixed
-     */
     public function update(Request $request, $uuid)
     {
         $role = $this->model->byUuid($uuid)->firstOrFail();
@@ -93,19 +62,14 @@ class RolesController extends Controller
             $role->syncPermissions($request['permissions']);
         }
 
-        return $this->response->item($role->fresh(), new RoleTransformer());
+        return fractal($role->fresh(), new RoleTransformer())->respond();
     }
 
-    /**
-     * @param Request $request
-     * @param $uuid
-     * @return mixed
-     */
     public function destroy(Request $request, $uuid)
     {
         $role = $this->model->byUuid($uuid)->firstOrFail();
         $role->delete();
 
-        return $this->response->noContent();
+        return response()->json(null, 204);
     }
 }

@@ -1,20 +1,31 @@
 {
     "name": "joselfonseca/laravel-api",
     "description": "Laravel API starter Kit will give you most of the boilerplate that you need for creating Laravel API's",
-    "keywords": ["framework", "laravel", "Api", "REST", "oAuth2", "Dingo API"],
+    "keywords": [
+        "framework",
+        "laravel",
+        "Api",
+        "REST",
+        "oAuth2"
+    ],
     "license": "MIT",
     "type": "project",
     "authors": [
         {
             "name": "Jose Fonseca",
             "email": "jose@ditecnologia.com",
-            "homepage": "https://josefonseca.me",
+            "homepage": "https://joselfonseca.dev",
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/joselfonseca/shift-php-cs"
+        }
+    ],
     "require": {
-        "php": "^7.3",
-        "dingo/api": "^3.0.2-rc1",
+        "php": ">=7.3",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -23,15 +34,16 @@
         "laravel/framework": "^8.0",
         "laravel/passport": "^10.0",
         "laravel/tinker": "^2.0",
+        "spatie/laravel-fractal": "^5.8",
         "spatie/laravel-permission": "^3.17"
     },
     "require-dev": {
-        "facade/ignition": "^2.3.6",
-        "fzaninotto/faker": "^1.9.1",
-        "laravel/legacy-factories": "^1.0",
-        "mockery/mockery": "^1.3.1",
+        "eduarguz/shift-php-cs": "dev-master",
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3"
+        "phpunit/phpunit": "^9.3.3"
     },
     "config": {
         "optimize-autoloader": true,
@@ -45,7 +57,9 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
         },
         "classmap": [
             "database/seeds",
@@ -69,6 +83,13 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "api-docs": [
+            "apibmerge docs/api/blueprint docs/api/apiblueprint.apib",
+            "aglio --theme-variables flatly --theme-template triple -i docs/api/blueprint/apidocs.apib -o resources/views/apidocs.blade.php"
+        ],
+        "cs": [
+            "vendor/bin/php-cs-fixer fix --config=.php_cs.dist -vvv --using-cache=no"
         ]
     }
 }

@@ -2,62 +2,62 @@
 
 namespace Tests\Unit\Entities;
 
+use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class RoleTest extends TestCase
 {
-
     use RefreshDatabase;
 
-    function test_it_syncs_permissions_by_object_collection()
+    public function test_it_syncs_permissions_by_object_collection()
     {
-        $role = factory(Role::class)->create();
-        $permissions = factory(\App\Models\Permission::class, 3)->create();
+        $role = Role::factory()->create();
+        $permissions = Permission::factory()->count(3)->create();
         $role->syncPermissions($permissions);
-        $permissions->each(function($permission) use ($role) {
+        $permissions->each(function ($permission) use ($role) {
             $this->assertDatabaseHas('role_has_permissions', [
                 'role_id' => $role->id,
-                'permission_id' => $permission->id
+                'permission_id' => $permission->id,
             ]);
         });
     }
 
-    function test_it_syncs_permissions_by_array_of_names()
+    public function test_it_syncs_permissions_by_array_of_names()
     {
-        $role = factory(\App\Models\Role::class)->create();
-        $permissions = factory(\App\Models\Permission::class, 3)->create();
+        $role = Role::factory()->create();
+        $permissions = Permission::factory()->count(3)->create();
         $role->syncPermissions($permissions->pluck('name')->toArray());
-        $permissions->each(function($permission) use ($role) {
+        $permissions->each(function ($permission) use ($role) {
             $this->assertDatabaseHas('role_has_permissions', [
                 'role_id' => $role->id,
-                'permission_id' => $permission->id
+                'permission_id' => $permission->id,
             ]);
         });
     }
 
-    function test_it_syncs_permissions_by_array_of_uuids()
+    public function test_it_syncs_permissions_by_array_of_uuids()
     {
-        $role = factory(Role::class)->create();
-        $permissions = factory(\App\Models\Permission::class, 3)->create();
+        $role = Role::factory()->create();
+        $permissions = Permission::factory()->count(3)->create();
         $role->syncPermissions($permissions->pluck('uuid')->toArray());
-        $permissions->each(function($permission) use ($role) {
+        $permissions->each(function ($permission) use ($role) {
             $this->assertDatabaseHas('role_has_permissions', [
                 'role_id' => $role->id,
-                'permission_id' => $permission->id
+                'permission_id' => $permission->id,
             ]);
         });
     }
 
-    function test_it_can_fill_uuid_at_creation()
+    public function test_it_can_fill_uuid_at_creation()
     {
         $uuid = '84e28c10-8991-11e7-ad89-056674746d73';
 
-        $roleNotFilled = factory(Role::class)->create();
+        $roleNotFilled = Role::factory()->create();
         $this->assertNotEquals($uuid, $roleNotFilled->uuid);
 
-        $roleFilled = factory(Role::class)->create(['uuid' => $uuid]);
+        $roleFilled = Role::factory()->create(['uuid' => $uuid]);
         $this->assertEquals($uuid, $roleFilled->uuid);
     }
 }

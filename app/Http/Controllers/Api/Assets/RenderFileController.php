@@ -9,31 +9,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
-/**
- * Class RenderFileController.
- */
 class RenderFileController extends Controller
 {
-    /**
-     * @var \App\Models\Asset
-     */
     protected $model;
 
-    /**
-     * RenderFileController constructor.
-     *
-     * @param \App\Models\Asset $model
-     */
     public function __construct(Asset $model)
     {
         $this->model = $model;
     }
 
-    /**
-     * @param $uuid
-     * @param \Illuminate\Http\Request $request
-     * @return mixed
-     */
     public function show($uuid, Request $request)
     {
         try {
@@ -45,12 +29,6 @@ class RenderFileController extends Controller
         }
     }
 
-    /**
-     * @param $model
-     * @param $width
-     * @param $height
-     * @return mixed
-     */
     public function renderFile($model, $width, $height)
     {
         $image = $this->makeFromPath($width, $height, $model->path);
@@ -58,11 +36,6 @@ class RenderFileController extends Controller
         return $image->response();
     }
 
-    /**
-     * @param $width
-     * @param $height
-     * @return mixed
-     */
     public function renderPlaceholder($width, $height)
     {
         $image = Image::cache(function ($image) use ($width, $height) {
@@ -75,28 +48,6 @@ class RenderFileController extends Controller
         return $image->response();
     }
 
-    /**
-     * @param $width
-     * @param $height
-     * @param $path
-     * @return mixed
-     */
-    protected function makeFromPath($width, $height, $path)
-    {
-        return Image::cache(function ($image) use ($path, $width, $height) {
-            $img = $image->make(Storage::get($path));
-            $this->resize($img, $width, $height);
-
-            return $img;
-        }, 10, true);
-    }
-
-    /**
-     * @param $img
-     * @param $width
-     * @param $height
-     * @return mixed
-     */
     protected function resize($img, $width, $height)
     {
         if (! empty($width) && ! empty($height)) {
@@ -112,5 +63,15 @@ class RenderFileController extends Controller
         }
 
         return $img;
+    }
+
+    protected function makeFromPath($width, $height, $path)
+    {
+        return Image::cache(function ($image) use ($path, $width, $height) {
+            $img = $image->make(Storage::get($path));
+            $this->resize($img, $width, $height);
+
+            return $img;
+        }, 10, true);
     }
 }

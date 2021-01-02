@@ -19,7 +19,7 @@ Please see the Authentication documentation to know how to get an access token.
 Make sure you have the following content type headers are set on every request:
 
 ```http
-Accept: application/vnd.api.v1+json
+Accept: application/json
 Content-Type: application/json
 ```
 
@@ -34,6 +34,7 @@ The API uses conventional HTTP response codes to indicate the success or failure
 | 401  | No valid API Key was given.                                            |
 | 404  | The request resource could not be found.                               |
 | 405  | The method is not implemented                                          |
+| 413  | The Body is too large                                                  |
 | 422  | The payload has missing required parameters or invalid data was given. |
 | 429  | Too many attempts.                                                     |
 | 500  | Request failed due to an internal error.                               |

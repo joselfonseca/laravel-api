@@ -2,33 +2,20 @@
 
 namespace App\Http\Controllers\Api\Users;
 
+use App\Exceptions\StoreResourceFailedException;
 use App\Http\Controllers\Controller;
 use App\Transformers\Users\UserTransformer;
-use Dingo\Api\Exception\ResourceException;
-use Dingo\Api\Routing\Helpers;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * Class ProfileController.
- */
 class ProfileController extends Controller
 {
-    use Helpers;
-
-    /**
-     * @return \Dingo\Api\Http\Response
-     */
     public function index()
     {
-        return $this->response->item(Auth::user(), new UserTransformer());
+        return fractal(Auth::user(), new UserTransformer())->respond();
     }
 
-    /**
-     * @param Request $request
-     * @return \Dingo\Api\Http\Response
-     */
     public function update(Request $request)
     {
         $user = Auth::user();
@@ -46,13 +33,9 @@ class ProfileController extends Controller
         // Except password as we don't want to let the users change a password from this endpoint
         $user->update($request->except('_token', 'password'));
 
-        return $this->response->item($user->fresh(), new UserTransformer());
+        return fractal($user->fresh(), new UserTransformer())->respond();
     }
 
-    /**
-     * @param Request $request
-     * @return \Dingo\Api\Http\Response
-     */
     public function updatePassword(Request $request)
     {
         $user = Auth::user();
@@ -62,13 +45,13 @@ class ProfileController extends Controller
         ]);
         // verify the old password given is valid
         if (! app(Hasher::class)->check($request->get('current_password'), $user->password)) {
-            throw new ResourceException('Validation Issue', [
+            throw new StoreResourceFailedException('Validation Issue', [
                 'old_password' => 'The current password is incorrect',
             ]);
         }
         $user->password = bcrypt($request->get('password'));
         $user->save();
 
-        return $this->response->item($user->fresh(), new UserTransformer());
+        return fractal($user->fresh(), new UserTransformer())->respond();
     }
 }

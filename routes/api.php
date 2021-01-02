@@ -1,53 +1,38 @@
 <?php
 
-$api = app('Dingo\Api\Routing\Router');
+Route::get('ping', 'Api\PingController@index');
 
-$api->version('v1', function($api){
+Route::get('assets/{uuid}/render', 'Api\Assets\RenderFileController@show');
 
-    $api->group(['middleware' => ['throttle:60,1', \Illuminate\Routing\Middleware\SubstituteBindings::class], 'namespace' => 'App\Http\Controllers'], function($api) {
-
-        $api->get('ping', 'Api\PingController@index');
-
-        $api->get('assets/{uuid}/render', 'Api\Assets\RenderFileController@show');
-
-        $api->group(['middleware' => ['auth:api'], ], function ($api) {
-
-            $api->group(['prefix' => 'users'], function ($api) {
-                $api->get('/', 'Api\Users\UsersController@index');
-                $api->post('/', 'Api\Users\UsersController@store');
-                $api->get('/{uuid}', 'Api\Users\UsersController@show');
-                $api->put('/{uuid}', 'Api\Users\UsersController@update');
-                $api->patch('/{uuid}', 'Api\Users\UsersController@update');
-                $api->delete('/{uuid}', 'Api\Users\UsersController@destroy');
-            });
-
-            $api->group(['prefix' => 'roles'], function ($api) {
-                $api->get('/', 'Api\Users\RolesController@index');
-                $api->post('/', 'Api\Users\RolesController@store');
-                $api->get('/{uuid}', 'Api\Users\RolesController@show');
-                $api->put('/{uuid}', 'Api\Users\RolesController@update');
-                $api->patch('/{uuid}', 'Api\Users\RolesController@update');
-                $api->delete('/{uuid}', 'Api\Users\RolesController@destroy');
-            });
-
-            $api->get('permissions', 'Api\Users\PermissionsController@index');
-
-            $api->group(['prefix' => 'me'], function($api) {
-                $api->get('/', 'Api\Users\ProfileController@index');
-                $api->put('/', 'Api\Users\ProfileController@update');
-                $api->patch('/', 'Api\Users\ProfileController@update');
-                $api->put('/password', 'Api\Users\ProfileController@updatePassword');
-            });
-
-            $api->group(['prefix' => 'assets'], function($api) {
-                $api->post('/', 'Api\Assets\UploadFileController@store');
-            });
-
-        });
-
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', 'Api\Users\UsersController@index');
+        Route::post('/', 'Api\Users\UsersController@store');
+        Route::get('/{uuid}', 'Api\Users\UsersController@show');
+        Route::put('/{uuid}', 'Api\Users\UsersController@update');
+        Route::patch('/{uuid}', 'Api\Users\UsersController@update');
+        Route::delete('/{uuid}', 'Api\Users\UsersController@destroy');
     });
 
+    Route::group(['prefix' => 'roles'], function () {
+        Route::get('/', 'Api\Users\RolesController@index');
+        Route::post('/', 'Api\Users\RolesController@store');
+        Route::get('/{uuid}', 'Api\Users\RolesController@show');
+        Route::put('/{uuid}', 'Api\Users\RolesController@update');
+        Route::patch('/{uuid}', 'Api\Users\RolesController@update');
+        Route::delete('/{uuid}', 'Api\Users\RolesController@destroy');
+    });
+
+    Route::get('permissions', 'Api\Users\PermissionsController@index');
+
+    Route::group(['prefix' => 'me'], function () {
+        Route::get('/', 'Api\Users\ProfileController@index');
+        Route::put('/', 'Api\Users\ProfileController@update');
+        Route::patch('/', 'Api\Users\ProfileController@update');
+        Route::put('/password', 'Api\Users\ProfileController@updatePassword');
+    });
+
+    Route::group(['prefix' => 'assets'], function () {
+        Route::post('/', 'Api\Assets\UploadFileController@store');
+    });
 });
-
-
-

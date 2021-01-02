@@ -5,28 +5,12 @@ namespace App\Http\Controllers\Api\Users;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Transformers\Users\UserTransformer;
-use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
 
-/**
- * Class UsersController.
- *
- * @author Jose Fonseca <jose@ditecnologia.com>
- */
 class UsersController extends Controller
 {
-    use Helpers;
-
-    /**
-     * @var \App\Model\\App\Models\User
-     */
     protected $model;
 
-    /**
-     * UsersController constructor.
-     *
-     * @param \App\Model\User $model
-     */
     public function __construct(User $model)
     {
         $this->model = $model;
@@ -37,12 +21,6 @@ class UsersController extends Controller
         $this->middleware('permission:Delete users')->only('destroy');
     }
 
-    /**
-     * Returns the Users resource with the roles relation.
-     *
-     * @param Request $request
-     * @return mixed
-     */
     public function index(Request $request)
     {
         $paginator = $this->model->with('roles.permissions')->paginate($request->get('limit', config('app.pagination_limit', 20)));
@@ -50,24 +28,16 @@ class UsersController extends Controller
             $paginator->appends('limit', $request->get('limit'));
         }
 
-        return $this->response->paginator($paginator, new UserTransformer());
+        return fractal($paginator, new UserTransformer())->respond();
     }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
     public function show($id)
     {
         $user = $this->model->with('roles.permissions')->byUuid($id)->firstOrFail();
 
-        return $this->response->item($user, new UserTransformer());
+        return fractal($user, new UserTransformer())->respond();
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -80,14 +50,9 @@ class UsersController extends Controller
             $user->syncRoles($request['roles']);
         }
 
-        return $this->response->created(url('api/users/'.$user->uuid));
+        return fractal($user, new UserTransformer())->respond(201);
     }
 
-    /**
-     * @param Request $request
-     * @param $uuid
-     * @return mixed
-     */
     public function update(Request $request, $uuid)
     {
         $user = $this->model->byUuid($uuid)->firstOrFail();
@@ -108,19 +73,14 @@ class UsersController extends Controller
             $user->syncRoles($request['roles']);
         }
 
-        return $this->response->item($user->fresh(), new UserTransformer());
+        return fractal($user->fresh(), new UserTransformer())->respond();
     }
 
-    /**
-     * @param Request $request
-     * @param $uuid
-     * @return mixed
-     */
     public function destroy(Request $request, $uuid)
     {
         $user = $this->model->byUuid($uuid)->firstOrFail();
         $user->delete();
 
-        return $this->response->noContent();
+        return response()->json(null, 204);
     }
 }
