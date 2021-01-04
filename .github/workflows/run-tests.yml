@@ -39,4 +39,4 @@ jobs:
         run: vendor/bin/phpunit
 
       - name: Test Code Style php-cs-fixer
-        run: vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run --stop-on-violation --using-cache=no
+        run: PHP_CS_FIXER_IGNORE_ENV=true vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run --stop-on-violation --using-cache=no
