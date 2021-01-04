@@ -40,4 +40,20 @@ class RegisterTest extends TestCase
             return $user->id === $event->user->id;
         });
     }
+
+    public function test_it_validates_input_for_registration()
+    {
+        Event::fake([Registered::class]);
+        $response = $this->json('POST', 'api/register', [
+            'name' => 'Some User',
+            'email' => 'some@email.com',
+            'password' => '123456789qq',
+        ]);
+        $response->assertStatus(422);
+        $this->assertDatabaseMissing('users', [
+            'name' => 'Some User',
+            'email' => 'some@email.com',
+        ]);
+        Event::assertNotDispatched(Registered::class);
+    }
 }
