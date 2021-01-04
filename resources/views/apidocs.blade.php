@@ -65,7 +65,7 @@
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jose Fonseca"</span></span>,
   "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"email@example.com"</span></span>,
   "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"Password123**"</span></span>,
-  "<span class="hljs-attribute">password_confirmation</span>": <span class="hljs-value"><span class="hljs-string">"123456789"</span>
+  "<span class="hljs-attribute">password_confirmation</span>": <span class="hljs-value"><span class="hljs-string">"Password123**"</span>
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
