@@ -1,0 +1,43 @@
+<?php
+
+namespace Tests\Feature\Auth;
+
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
+use Spatie\Permission\PermissionRegistrar;
+use Tests\TestCase;
+
+class RegisterTest extends TestCase
+{
+    use RefreshDatabase;
+
+    public function setUp() : void
+    {
+        parent::setUp();
+        $this->seed();
+        $this->app->make(PermissionRegistrar::class)->registerPermissions();
+    }
+
+    public function test_it_register_user_with_role()
+    {
+        Event::fake([Registered::class]);
+        $response = $this->json('POST', 'api/register/', [
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+            'password' => '12345678',
+            'password_confirmation' => '12345678',
+        ]);
+        $response->assertStatus(201);
+        $this->assertDatabaseHas('users', [
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+        ]);
+        $user = User::where('email', 'john@example.com')->first();
+        $this->assertTrue($user->hasRole('User'));
+        Event::assertDispatched(Registered::class, function ($event) use ($user) {
+            return $user->id === $event->user->id;
+        });
+    }
+}
