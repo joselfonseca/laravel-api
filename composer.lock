@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be338140ba27323acdc06fd12bb72541",
+    "content-hash": "e93289c278cb95f3f29085a6e1ae4ada",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6479,13 +6479,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/joselfonseca/shift-php-cs.git",
-                "reference": "c213a3acf884b6e6aee755d32305a2f8fe625cd4"
+                "url": "https://github.com/eduarguz/shift-php-cs.git",
+                "reference": "9e36957799dcfbe7e23f963f6c37cdd5161574ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joselfonseca/shift-php-cs/zipball/c213a3acf884b6e6aee755d32305a2f8fe625cd4",
-                "reference": "c213a3acf884b6e6aee755d32305a2f8fe625cd4",
+                "url": "https://api.github.com/repos/eduarguz/shift-php-cs/zipball/9e36957799dcfbe7e23f963f6c37cdd5161574ba",
+                "reference": "9e36957799dcfbe7e23f963f6c37cdd5161574ba",
                 "shasum": ""
             },
             "require": {
@@ -6499,6 +6499,7 @@
                     "./src/helpers.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6512,9 +6513,10 @@
             "description": "PHP CS Fixer - Laravel Coding Style Ruleset",
             "homepage": "https://github.com/eduarguz/shift-php-cs",
             "support": {
-                "source": "https://github.com/joselfonseca/shift-php-cs/tree/master"
+                "issues": "https://github.com/eduarguz/shift-php-cs/issues",
+                "source": "https://github.com/eduarguz/shift-php-cs/tree/master"
             },
-            "time": "2021-01-02T01:43:29+00:00"
+            "time": "2021-01-02T01:45:51+00:00"
         },
         {
             "name": "facade/flare-client-php",
