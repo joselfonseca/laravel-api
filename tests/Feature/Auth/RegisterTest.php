@@ -56,4 +56,19 @@ class RegisterTest extends TestCase
         ]);
         Event::assertNotDispatched(Registered::class);
     }
+
+    public function test_it_returns_422_on_validation_error()
+    {
+        Event::fake([Registered::class]);
+        $response = $this->json('POST', 'api/register', [
+            'name' => 'Some User',
+        ]);
+        $response->assertStatus(422);
+        $this->assertEquals('{"message":"The given data was invalid.","status_code":422,"errors":{"email":["The email field is required."],"password":["The password field is required."]}}', $response->getContent());
+        $this->assertDatabaseMissing('users', [
+            'name' => 'Some User',
+            'email' => 'some@email.com',
+        ]);
+        Event::assertNotDispatched(Registered::class);
+    }
 }
