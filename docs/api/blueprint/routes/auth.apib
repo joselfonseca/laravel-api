@@ -1,0 +1,34 @@
+# Group Auth
+
+The auth API will allow you to work with the users registration and password management.
+
+## Register [/api/register]
+Use this endpoint to register a new user from the client consuming the API.
+
+### Register user [POST]
+This endpoint will allow you to handle the user registration in the API
+
++ Request (application/json)
+
+    + Attributes (Registration input)
+
++ Response 201 (application/json)
+
+    + Attributes
+        + data (User Object)
+
++ Response 422 (application/json)
+
+    + Attributes (Error 422)
+
++ Response 401 (application/json)
+
+    + Attributes (Error 401)
+
++ Response 403 (application/json)
+
+    + Attributes (Error 403)
+
++ Response 404 (application/json)
+
+    + Attributes (Error 404)

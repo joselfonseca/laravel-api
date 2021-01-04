@@ -4,6 +4,8 @@ Route::get('ping', 'Api\PingController@index');
 
 Route::get('assets/{uuid}/render', 'Api\Assets\RenderFileController@show');
 
+Route::post('register', 'Api\Auth\RegisterController@store');
+
 Route::group(['middleware' => ['auth:api']], function () {
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', 'Api\Users\UsersController@index');

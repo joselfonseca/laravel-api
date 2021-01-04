@@ -13,6 +13,7 @@ class RoleTableSeeder extends Seeder
      */
     public $roles = [
         ['name' => 'Administrator'],
+        ['name' => 'User'],
     ];
 
     /**

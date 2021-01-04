@@ -43,11 +43,13 @@ The API uses conventional HTTP response codes to indicate the success or failure
 # Data Structures
 
 <!-- include(dataStructures/errors.apib) -->
+<!-- include(dataStructures/auth.apib) -->
 <!-- include(dataStructures/users.apib) -->
 <!-- include(dataStructures/roles.apib) -->
 <!-- include(dataStructures/permissions.apib) -->
 <!-- include(dataStructures/assets.apib) -->
 
+<!-- include(routes/auth.apib) -->
 <!-- include(routes/users.apib) -->
 <!-- include(routes/assets.apib) -->
 ### Asset Object (object)
@@ -59,7 +61,12 @@ The API uses conventional HTTP response codes to indicate the success or failure
     + full: `https://laravelapi.test/api/assets/0c244c51-0a3b-4b86-829a-ee161c2f966f/render` (string) - The asset link for render full size
     + thumb: `https://laravelapi.test/api/assets/0c244c51-0a3b-4b86-829a-ee161c2f966f/render?width=200&height=200` (string) - The asset link for render thumb size
 + created_at : `1997-07-16T19:20:30+01:00` (string) - Date in format iso 8601
-    ## Error 404 (object)
+    ### Registration input (object)
+- name: `Jose Fonseca`(string, required) - The name of the user
+- email: `email@example.com` (string, required) - The email of the user
+- password: `Password123**` (string, required) - The password of the user
+- password_confirmation: `Password123**` (string, required) - The password confirmation of the user
+## Error 404 (object)
 - message: `404 Not found` (string)
 - status_code: 404 (number) `status code number`
 
@@ -216,7 +223,41 @@ In the body of the requests you can send the raw binary data in base 64 encoded 
             {
                 "code": 413,
                 "message": "The body is too large"
-            }
+            }# Group Auth
+
+The auth API will allow you to work with the users registration and password management.
+
+## Register [/api/register]
+Use this endpoint to register a new user from the client consuming the API.
+
+### Register user [POST]
+This endpoint will allow you to handle the user registration in the API
+
++ Request (application/json)
+
+    + Attributes (Registration input)
+
++ Response 201 (application/json)
+
+    + Attributes
+        + data (User Object)
+
++ Response 422 (application/json)
+
+    + Attributes (Error 422)
+
++ Response 401 (application/json)
+
+    + Attributes (Error 401)
+
++ Response 403 (application/json)
+
+    + Attributes (Error 403)
+
++ Response 404 (application/json)
+
+    + Attributes (Error 404)
+
 ## Permissions resource [/api/permissions]
 It requires your user to have permissions to fetch, create, update or delete roles in the system depending on the request you want to make
 
