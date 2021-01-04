@@ -27,6 +27,7 @@ class RegisterController extends Controller
         $user = $this->model->create($request->all());
         $user->assignRole('User');
         event(new Registered($user));
+
         return fractal($user, new UserTransformer())->respond(201);
     }
 }
