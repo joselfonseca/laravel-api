@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders\Users;
+
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
@@ -35,7 +37,7 @@ class RoleTableSeeder extends Seeder
     ];
 
     /**
-     * Run the database seeds.
+     * Run the database seeders.
      *
      * @return void
      */
