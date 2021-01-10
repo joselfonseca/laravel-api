@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use App\Support\HasRolesUuid;
+use App\Support\HasSocialLogin;
 use App\Support\UuidScopeTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -16,7 +18,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class User extends Authenticatable
 {
-    use Notifiable, UuidScopeTrait, HasFactory, HasApiTokens, HasRoles, SoftDeletes, HasRolesUuid {
+    use Notifiable, UuidScopeTrait, HasFactory, HasApiTokens, HasRoles, SoftDeletes, HasSocialLogin, HasRolesUuid {
         HasRolesUuid::getStoredRole insteadof HasRoles;
     }
 
@@ -51,14 +53,15 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * @param array $attributes
-     * @return \Illuminate\Database\Eloquent\Model
-     */
+    public function socialProviders()
+    {
+        return $this->hasMany(SocialProvider::class);
+    }
+
     public static function create(array $attributes = [])
     {
         if (array_key_exists('password', $attributes)) {
-            $attributes['password'] = bcrypt($attributes['password']);
+            $attributes['password'] = Hash::make($attributes['password']);
         }
 
         $model = static::query()->create($attributes);
