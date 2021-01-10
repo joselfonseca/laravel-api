@@ -3,3 +3,14 @@
 - email: `email@example.com` (string, required) - The email of the user
 - password: `Password123**` (string, required) - The password of the user
 - password_confirmation: `Password123**` (string, required) - The password confirmation of the user
+
+### Forgot password input (object)
+- email: `email@example.com` (string, required) - The email of the user
+
+### Reset password input (object)
+- email: `email@example.com` (string, required) - The email of the user
+- token: `77d933717e14023a1ddcc4cfa0c1d20ccedeb3acb525092aae34ac1f3f708a51` (string, required) - The token received in the email
+- password: `Password123**` (string, required) - The new password of the user
+
+### Reset password response (object)
+- message: `The email has been updated` (string) - The message after the reset

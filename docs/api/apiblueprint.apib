@@ -66,6 +66,17 @@ The API uses conventional HTTP response codes to indicate the success or failure
 - email: `email@example.com` (string, required) - The email of the user
 - password: `Password123**` (string, required) - The password of the user
 - password_confirmation: `Password123**` (string, required) - The password confirmation of the user
+
+### Forgot password input (object)
+- email: `email@example.com` (string, required) - The email of the user
+
+### Reset password input (object)
+- email: `email@example.com` (string, required) - The email of the user
+- token: `77d933717e14023a1ddcc4cfa0c1d20ccedeb3acb525092aae34ac1f3f708a51` (string, required) - The token received in the email
+- password: `Password123**` (string, required) - The new password of the user
+
+### Reset password response (object)
+- message: `The email has been updated` (string) - The message after the reset
 ## Error 404 (object)
 - message: `404 Not found` (string)
 - status_code: 404 (number) `status code number`
@@ -231,7 +242,7 @@ The auth API will allow you to work with the users registration and password man
 Use this endpoint to register a new user from the client consuming the API.
 
 ### Register user [POST]
-This endpoint will allow you to handle the user registration in the API
+This endpoint will allow you to handle the user registration in the API.
 
 + Request (application/json)
 
@@ -246,17 +257,38 @@ This endpoint will allow you to handle the user registration in the API
 
     + Attributes (Error 422)
 
-+ Response 401 (application/json)
 
-    + Attributes (Error 401)
+## Password Recovery [/api/passwords/reset]
+Use this endpoints to reset the user's password with a recovery email.
 
-+ Response 403 (application/json)
+### Forgot Password [POST]
+This endpoint will allow you to trigger the recovery password email.
 
-    + Attributes (Error 403)
++ Request (application/json)
 
-+ Response 404 (application/json)
+    + Attributes (Forgot password input)
 
-    + Attributes (Error 404)
++ Response 201 (application/json)
+
++ Response 422 (application/json)
+
+    + Attributes (Error 422)
+
+### Reset Password [PUT]
+This endpoint will allow you to update the user's password with the token received in the email.
+
++ Request (application/json)
+
+    + Attributes (Reset password input)
+
++ Response 201 (application/json)
+
+    + Attributes (Reset password response)
+
++ Response 422 (application/json)
+
+    + Attributes (Error 422)
+
 
 ## Permissions resource [/api/permissions]
 It requires your user to have permissions to fetch, create, update or delete roles in the system depending on the request you want to make

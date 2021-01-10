@@ -6,7 +6,7 @@ The auth API will allow you to work with the users registration and password man
 Use this endpoint to register a new user from the client consuming the API.
 
 ### Register user [POST]
-This endpoint will allow you to handle the user registration in the API
+This endpoint will allow you to handle the user registration in the API.
 
 + Request (application/json)
 
@@ -21,14 +21,35 @@ This endpoint will allow you to handle the user registration in the API
 
     + Attributes (Error 422)
 
-+ Response 401 (application/json)
 
-    + Attributes (Error 401)
+## Password Recovery [/api/passwords/reset]
+Use this endpoints to reset the user's password with a recovery email.
 
-+ Response 403 (application/json)
+### Forgot Password [POST]
+This endpoint will allow you to trigger the recovery password email.
 
-    + Attributes (Error 403)
++ Request (application/json)
 
-+ Response 404 (application/json)
+    + Attributes (Forgot password input)
 
-    + Attributes (Error 404)
++ Response 201 (application/json)
+
++ Response 422 (application/json)
+
+    + Attributes (Error 422)
+
+### Reset Password [PUT]
+This endpoint will allow you to update the user's password with the token received in the email.
+
++ Request (application/json)
+
+    + Attributes (Reset password input)
+
++ Response 201 (application/json)
+
+    + Attributes (Reset password response)
+
++ Response 422 (application/json)
+
+    + Attributes (Error 422)
+
