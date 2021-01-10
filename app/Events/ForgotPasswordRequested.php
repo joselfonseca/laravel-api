@@ -12,7 +12,7 @@ class ForgotPasswordRequested
 
     public $email;
 
-    public function __construct(String $email)
+    public function __construct(string $email)
     {
         $this->email = $email;
     }
