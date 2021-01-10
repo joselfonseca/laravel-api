@@ -8,6 +8,7 @@ Laravel API starter Kit will provide you with the tools for making API's that ev
 Here is a list of the packages installed:
 
 - [Laravel Passport](https://laravel.com/docs/8.x/passport)
+- [Laravel Socialite](https://laravel.com/docs/8.x/socialite)
 - [Laravel Fractal](https://github.com/spatie/laravel-fractal)
 - [Laravel Permission](https://github.com/spatie/laravel-permission)
 - [Intervention Image](http://image.intervention.io/)
