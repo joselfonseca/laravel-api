@@ -1,10 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('ping', 'Api\PingController@index');
 
 Route::get('assets/{uuid}/render', 'Api\Assets\RenderFileController@show');
 
 Route::post('register', 'Api\Auth\RegisterController@store');
+Route::post('passwords/reset', 'Api\Auth\PasswordsController@store');
+Route::put('passwords/reset', 'Api\Auth\PasswordsController@update');
 
 Route::group(['middleware' => ['auth:api']], function () {
     Route::group(['prefix' => 'users'], function () {
