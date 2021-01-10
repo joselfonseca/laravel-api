@@ -14,7 +14,7 @@ class CreateAssetsTable extends Migration
     public function up()
     {
         Schema::create('assets', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->uuid('uuid')->index()->unique();
             $table->string('type', 45)->nullable();
