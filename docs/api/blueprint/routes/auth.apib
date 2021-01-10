@@ -2,6 +2,37 @@
 
 The auth API will allow you to work with the users registration and password management.
 
+## Tokens [/oauth/token]
+
+### Get a token [POST]
+Use this endpoint to get access tokens for the user, the API currently uses oAuth2 and supports 2 grants.
+- **Password:** Use grant `password` when the user is providing username and password
+- **Social grant:** Use grant `social_grant` when the user has a token from a supported OAuth provider.
+
++ Request (application/json)
+
+    + Attributes (Get tokens with credentials)
+
++ Response 200 (application/json)
+
+    + Attributes (Tokens)
+
++ Response 401 (application/json)
+
+    + Attributes (Error 401)
+
++ Request (application/json)
+
+    + Attributes (Get tokens with social token)
+
++ Response 200 (application/json)
+
+    + Attributes (Tokens)
+
++ Response 401 (application/json)
+
+    + Attributes (Error 401)
+
 ## Register [/api/register]
 Use this endpoint to register a new user from the client consuming the API.
 

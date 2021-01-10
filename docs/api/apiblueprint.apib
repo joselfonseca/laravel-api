@@ -77,6 +77,26 @@ The API uses conventional HTTP response codes to indicate the success or failure
 
 ### Reset password response (object)
 - message: `The email has been updated` (string) - The message after the reset
+
+### Get tokens with credentials (object)
+- grant_type: `password` (string, required) - The grant type to use
+- client_id: `1` (string, required) - the client id
+- client_secret: `isudaiusyd87a6s87atsd8a7std` (string, required) - The client secret
+- username: `jose@example.com` (string, required) - The username for the user being authenticated
+- password: `Password123**` (string, required) - The password for the user being authenticated
+
+### Get tokens with social token (object)
+- grant_type: `social_grant` (string, required) - The grant type to use
+- client_id: `1` (string, required) - the client id
+- client_secret: `isudaiusyd87a6s87atsd8a7std` (string, required) - The client secret
+- provider: `github` (string, required) - The provider to use
+- token: `sdoifu98a7sd87fytbs8d67ftnabs786dnta76std` (string, required) - The token obtained by the provider
+
+### Tokens (object)
+- token_type: `Bearer` (string) - The token type
+- expires_in: `86400` (string) - When the token expires
+- access_token: `eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDNjYTE2ZDNjZTEwYmIyZDZjYmQwYjE1ZjU0ZmY2NDhiODkxZGVlYzJmZGE4YTE3NGEzNjE3NzZlMDEzMzdmMDcyMDVjYzM2OGUzYzkwMjUiLCJpYXQiOiIxNjEwMjQ3NTUwLjkwMzEzMSIsIm5iZiI6IjE2MTAyNDc1NTAuOTAzMTM3IiwiZXhwIjoiMTYxMDMzMzk1MC41MTc3ODAiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.YNlBKazrYQ0CSFmWIUFeOl7ODDC3Sw-fiQyZ1Behyl7-_9fp7akuhmvGXeOJCYQiS1-tsYbkckaauVRlgpfeMExcxe261-8WWEGU0HQDaHxrXcojWQr5LwsnCno_elxLsqoXRZXrKe8s70zs6wwKnqc8tZkrUDkpFt4bjHHtCF1M4xGxA8kNNFs_sqyN0P-amWt1gfuMaALWxgYeISpAAzfP6KgqWVmP3JqDWQAIMhh8NO2kEkfE6rgxQXp0zzvlvvZ7RSYc0sV8JrSnwa15z-q7-1oQ4XFqmYxv-90i_Jrf5N3gz-VON6ovt26Vh7qNeHKFkf98DwHiu5XF6cDHpiZBKwfjlFzG6-0ZPN1ROIXPt5Bk35xLlUUgB6f5kPHZMPfMTuWGneeTbFm_5igdyxwaBqEVfVnuFPnIv5oaKKbAQleyo-yt_LZe9qxFNx-LFlMHmDyAqdfKkra0HG6dCfxynV6x2RtRZHyicN6fDPekTMBs356vNlRRL1dEEzZ4Fbpft4TRZylyqarAXfGb7kCKCuuuHbO8LT6f2yk5JW3Ngc-gfb1dfTO0bfgtl0Rg6l8PWGStSnmyXqeNxLej0XKhrPuqft1JFtucUCw8gUjrcuqSmAAzvXBTbLLvb65WSTnl_tOFviaSeBF-zCJxkxD2uJ1b31YuKMkVd-9dpMs` (string) - The Access token
+- refresh_token: `def50200cd296202fa3d84fb5fedb48f09453ac34afafaa05446bab2b0d927821b9c79ba8239ef2c1825fdee70d03e9504d3e739ec8d5efcf79b5cae61dd081972105d75d196b16214087a80df5c1a2616bbff9c22b75077ca7cc2c9c1176cb3fe1404d3ae3e868e01989ef432521839912fe8ffd39a4048ced88f0c4cd52d01fa7c25166bdab9ab104a419705444bf3b316f00e4b0b1edcee80b0b1b6ec748a62a974089994f215abdc2a6b537f0ceb93dbe0f828bbd338d00f4583ec992bb1bee5fec646082e5a38a1f35ed1931ed3a05b7a0e261261e3e31430d134392ffe6b4a4dcd4e8247b4646ad64e42533ebe9357794d331f77566b3e1b236f27afd4b29d44c109997042d918c2243d43a49e3847b084989639e9b5765b8da62f67f497f3b0a965f7cb36a1fecb738370537c8be4d432a518cbe78a0ebc8704fdd0111afe1bd705f9b5b0257aeb88da6c681a88219940e5ac7b9b686dd57ad4b466ab57` (string) - The Refresh token
 ## Error 404 (object)
 - message: `404 Not found` (string)
 - status_code: 404 (number) `status code number`
@@ -237,6 +257,37 @@ In the body of the requests you can send the raw binary data in base 64 encoded 
             }# Group Auth
 
 The auth API will allow you to work with the users registration and password management.
+
+## Tokens [/oauth/token]
+
+### Get a token [POST]
+Use this endpoint to get access tokens for the user, the API currently uses oAuth2 and supports 2 grants.
+- **Password:** Use grant `password` when the user is providing username and password
+- **Social grant:** Use grant `social_grant` when the user has a token from a supported OAuth provider.
+
++ Request (application/json)
+
+    + Attributes (Get tokens with credentials)
+
++ Response 200 (application/json)
+
+    + Attributes (Tokens)
+
++ Response 401 (application/json)
+
+    + Attributes (Error 401)
+
++ Request (application/json)
+
+    + Attributes (Get tokens with social token)
+
++ Response 200 (application/json)
+
+    + Attributes (Tokens)
+
++ Response 401 (application/json)
+
+    + Attributes (Error 401)
 
 ## Register [/api/register]
 Use this endpoint to register a new user from the client consuming the API.
