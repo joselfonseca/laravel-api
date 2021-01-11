@@ -3,6 +3,8 @@
 [![Total Downloads](https://poser.pugx.org/joselfonseca/laravel-api/downloads.svg)](https://packagist.org/packages/joselfonseca/laravel-api) 
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
+![](https://dev-to-uploads.s3.amazonaws.com/i/4om2rgvulc688tlcj31c.jpg)
+
 Laravel API starter Kit will provide you with the tools for making API's that everyone will love, API Authentication is already provided with passport. 
 
 Here is a list of the packages installed:
