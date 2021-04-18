@@ -33,6 +33,7 @@
         "spatie/laravel-permission": "^3.17"
     },
     "require-dev": {
+        "brianium/paratest": "^6.2",
         "eduarguz/shift-php-cs": "dev-master",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
@@ -81,6 +82,9 @@
         ],
         "cs": [
             "vendor/bin/php-cs-fixer fix --config=.php_cs.dist -vvv --using-cache=no"
+        ],
+        "test": [
+            "php artisan test --parallel"
         ]
     }
 }
