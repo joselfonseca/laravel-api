@@ -24,7 +24,7 @@ class SocialGrant extends AbstractGrant
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function respondToAccessTokenRequest(ServerRequestInterface $request, ResponseTypeInterface $responseType, DateInterval $accessTokenTTL)
     {
@@ -45,7 +45,7 @@ class SocialGrant extends AbstractGrant
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getIdentifier()
     {
