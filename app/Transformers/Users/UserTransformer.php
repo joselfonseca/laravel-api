@@ -13,7 +13,7 @@ class UserTransformer extends TransformerAbstract
     /**
      * @var array
      */
-    protected $defaultIncludes = ['roles'];
+    protected array $defaultIncludes = ['roles'];
 
     /**
      * @param \App\Model\User $model

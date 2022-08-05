@@ -74,19 +74,19 @@ class UploadImageTest extends TestCase
         $this->expectsEvents([AssetWasCreated::class]);
         Passport::actingAs(User::factory()->create());
         $response = $this->json('POST', 'api/assets', [
-            'url' => 'http://via.placeholder.com/350x150',
+            'url' => 'https://images.unsplash.com/photo-1657299156538-e08595d224ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
         ]);
         $image = json_decode($response->getContent());
         $this->assertEquals(201, $response->getStatusCode());
         $response->assertJson([
             'data' => [
                 'type' => 'image',
-                'mime' => 'image/png',
+                'mime' => 'image/jpeg',
             ],
         ]);
         $this->assertDatabaseHas('assets', [
             'type' => 'image',
-            'mime' => 'image/png',
+            'mime' => 'image/jpeg',
             'uuid' => $image->data->id,
         ]);
         $this->assertTrue(Storage::has($image->data->path));
