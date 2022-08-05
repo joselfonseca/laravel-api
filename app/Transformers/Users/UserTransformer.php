@@ -16,7 +16,7 @@ class UserTransformer extends TransformerAbstract
     protected array $defaultIncludes = ['roles'];
 
     /**
-     * @param \App\Model\User $model
+     * @param  \App\Model\User  $model
      * @return array
      */
     public function transform(User $model)
@@ -31,7 +31,7 @@ class UserTransformer extends TransformerAbstract
     }
 
     /**
-     * @param \App\Model\User $model
+     * @param  \App\Model\User  $model
      * @return \League\Fractal\Resource\Collection
      */
     public function includeRoles(User $model)

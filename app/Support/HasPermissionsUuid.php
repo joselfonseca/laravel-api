@@ -13,8 +13,7 @@ trait HasPermissionsUuid
     /**
      * Added support to use a UUID to find the Permission.
      *
-     * @param string|array|Permission|\Illuminate\Support\Collection $permissions
-     *
+     * @param  string|array|Permission|\Illuminate\Support\Collection  $permissions
      * @return Permission
      */
     protected function getStoredPermission($permissions): Permission

@@ -10,7 +10,7 @@ use League\Fractal\TransformerAbstract;
 class AssetTransformer extends TransformerAbstract
 {
     /**
-     * @param \App\Models\Asset $model
+     * @param  \App\Models\Asset  $model
      * @return array
      */
     public function transform(\App\Models\Asset $model)

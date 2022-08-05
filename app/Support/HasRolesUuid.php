@@ -9,7 +9,6 @@ trait HasRolesUuid
 {
     /**
      * @param $role
-     *
      * @return Role
      */
     protected function getStoredRole($role): Role

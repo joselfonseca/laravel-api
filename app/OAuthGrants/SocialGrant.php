@@ -53,11 +53,10 @@ class SocialGrant extends AbstractGrant
     }
 
     /**
-     * @param ServerRequestInterface $request
+     * @param  ServerRequestInterface  $request
+     * @return UserEntityInterface
      *
      * @throws OAuthServerException
-     *
-     * @return UserEntityInterface
      */
     protected function validateUser(ServerRequestInterface $request)
     {
@@ -75,11 +74,10 @@ class SocialGrant extends AbstractGrant
     /**
      * Retrieve user by request.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
+     * @return null|\Laravel\Passport\Bridge\User
      *
      * @throws \League\OAuth2\Server\Exception\OAuthServerException
-     *
-     * @return null|\Laravel\Passport\Bridge\User
      */
     protected function getUserEntityByRequest(Request $request)
     {
