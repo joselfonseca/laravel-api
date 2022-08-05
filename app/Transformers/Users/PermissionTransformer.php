@@ -11,7 +11,7 @@ use League\Fractal\TransformerAbstract;
 class PermissionTransformer extends TransformerAbstract
 {
     /**
-     * @param \App\Models\Permission $model
+     * @param  \App\Models\Permission  $model
      * @return array
      */
     public function transform(Permission $model)

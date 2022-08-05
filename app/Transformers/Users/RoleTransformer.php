@@ -16,7 +16,7 @@ class RoleTransformer extends TransformerAbstract
     protected array $defaultIncludes = ['permissions'];
 
     /**
-     * @param \App\Models\Role $model
+     * @param  \App\Models\Role  $model
      * @return array
      */
     public function transform(Role $model)
@@ -30,7 +30,7 @@ class RoleTransformer extends TransformerAbstract
     }
 
     /**
-     * @param Role $model
+     * @param  Role  $model
      * @return \League\Fractal\Resource\Collection
      */
     public function includePermissions(Role $model)

@@ -17,7 +17,7 @@ class AssetWasCreated
     /**
      * AssetWasCreated constructor.
      *
-     * @param \App\Models\Asset $asset
+     * @param  \App\Models\Asset  $asset
      */
     public function __construct(Asset $asset)
     {
