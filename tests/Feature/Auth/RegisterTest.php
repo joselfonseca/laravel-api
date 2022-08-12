@@ -64,7 +64,7 @@ class RegisterTest extends TestCase
             'name' => 'Some User',
         ]);
         $response->assertStatus(422);
-        $this->assertEquals('{"message":"The given data was invalid.","status_code":422,"errors":{"email":["The email field is required."],"password":["The password field is required."]}}', $response->getContent());
+        $this->assertEquals('{"message":"The email field is required. (and 1 more error)","status_code":422,"errors":{"email":["The email field is required."],"password":["The password field is required."]}}', $response->getContent());
         $this->assertDatabaseMissing('users', [
             'name' => 'Some User',
             'email' => 'some@email.com',

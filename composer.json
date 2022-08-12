@@ -19,27 +19,26 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "fideloper/proxy": "^4.2",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "intervention/image": "^2.5",
+        "php": "^8.0.2",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^9.19",
+        "intervention/image": "^2.7",
         "intervention/imagecache": "^2.4",
-        "laravel/framework": "^8.0",
-        "laravel/passport": "^10.0",
-        "laravel/socialite": "^5.1",
-        "laravel/tinker": "^2.0",
-        "spatie/laravel-fractal": "^5.8",
-        "spatie/laravel-permission": "^3.17"
+        "laravel/passport": "^10.4",
+        "laravel/socialite": "^5.5",
+        "laravel/tinker": "^2.7",
+        "spatie/laravel-fractal": "^6.0",
+        "spatie/laravel-permission": "^5.5"
     },
     "require-dev": {
         "brianium/paratest": "^6.2",
-        "eduarguz/shift-php-cs": "dev-master",
-        "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0"
     },
     "config": {
         "optimize-autoloader": true,
