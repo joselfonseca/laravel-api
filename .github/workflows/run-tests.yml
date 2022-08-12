@@ -37,6 +37,3 @@ jobs:
           php artisan passport:keys
       - name: Execute tests
         run: vendor/bin/phpunit
-
-      - name: Test Code Style php-cs-fixer
-        run: PHP_CS_FIXER_IGNORE_ENV=true vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php -v --dry-run --stop-on-violation --using-cache=no
